@@ -15,11 +15,11 @@ class SignUpContact(BasePage):
 
         input_companyName = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_companyName)
-        input_companyName.send_keys("Amazatic")
+        input_companyName.send_keys(fake.company())
 
         input_contactName = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_contactName)
-        input_contactName.send_keys("Amazatic")
+        input_contactName.send_keys(fake.name())
 
         input_phn = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_phn)
