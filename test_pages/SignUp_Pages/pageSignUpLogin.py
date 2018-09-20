@@ -3,7 +3,7 @@ sys.path.append('../test_locators')
 
 import datetime
 
-from .Basepage import BasePage
+from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
 

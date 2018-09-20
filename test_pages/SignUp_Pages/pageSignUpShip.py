@@ -6,7 +6,7 @@ import time
 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common import action_chains
-from .Basepage import BasePage
+from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
 

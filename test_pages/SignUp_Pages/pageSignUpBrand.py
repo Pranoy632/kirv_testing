@@ -2,7 +2,7 @@ import sys
 sys.path.append('../test_locators')
 
 
-from .Basepage import BasePage
+from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
 
