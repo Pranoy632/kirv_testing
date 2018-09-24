@@ -6,22 +6,21 @@ import time
 
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common import action_chains
-from Basepage import BasePage
+from Basepage import BasePage, fake
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
 
 class SignUpLocation(BasePage):
 
     def fill_fields(self):
-        time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         self.wait_for_element(SigninPageLocators.location_signUp_name1)
 
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_name1).send_keys("Amz1")
+            *SigninPageLocators.location_signUp_name1).send_keys(fake.street_name())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_street_add1).send_keys("Bake-street, st-111")
+            *SigninPageLocators.location_signUp_street_add1).send_keys(fake.building_number() + " " + fake.street_name())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_city1).send_keys("colorado")
+            *SigninPageLocators.location_signUp_city1).send_keys(fake.city())
         self.driver.find_element(
             *SigninPageLocators.location_signUp_state1).click()
         time.sleep(1)
@@ -31,9 +30,9 @@ class SignUpLocation(BasePage):
         action.perform()
 
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_post_code1).send_keys("12345")
+            *SigninPageLocators.location_signUp_post_code1).send_keys(fake.postcode())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_email1).send_keys("amazatic" + "+" + time_now + "@amazatic.com")
+            *SigninPageLocators.location_signUp_email1).send_keys(fake.email())
         self.driver.find_element(
             *SigninPageLocators.location_signUp_phn1).send_keys("12345678901")
         self.driver.find_element(
@@ -48,11 +47,11 @@ class SignUpLocation(BasePage):
         time.sleep(1)
 
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_name2).send_keys("Amz2")
+            *SigninPageLocators.location_signUp_name2).send_keys(fake.street_name())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_street_add2).send_keys("Bake-street, st-222")
+            *SigninPageLocators.location_signUp_street_add2).send_keys(fake.building_number() + " " + fake.street_name())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_city2).send_keys("Michigan")
+            *SigninPageLocators.location_signUp_city2).send_keys(fake.city())
 
         self.driver.find_element(
             *SigninPageLocators.location_signUp_state2).click()
@@ -63,9 +62,9 @@ class SignUpLocation(BasePage):
         action.perform()
 
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_post_code2).send_keys("12345")
+            *SigninPageLocators.location_signUp_post_code2).send_keys(fake.postcode())
         self.driver.find_element(
-            *SigninPageLocators.location_signUp_email2).send_keys("amazatic" + "+" + time_now + "@amazatic.com")
+            *SigninPageLocators.location_signUp_email2).send_keys(fake.email())
         self.driver.find_element(
             *SigninPageLocators.location_signUp_phn2).send_keys("12345678901")
         self.driver.find_element(

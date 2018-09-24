@@ -7,6 +7,13 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > label > input')
     pwd_login_signup = (
         By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(2) > div > label > input')
+    email_login_signup_error = (
+        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > span')
+    pwd_login_signup_error = (
+        By.CSS_SELECTOR,
+        'ng-component > div > div > div > div > form > fieldset > field:nth-child(2) > div > span')
+    signup_login_btn = (
+        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right.pr-3')
 
     contactInfo_signUp_companyName = (
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > label > input')

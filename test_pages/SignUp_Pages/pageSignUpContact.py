@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../test_locators')
-
+import time
 
 from Basepage import BasePage, fake
 from SignUp_Locators.locatorSignup import SigninPageLocators

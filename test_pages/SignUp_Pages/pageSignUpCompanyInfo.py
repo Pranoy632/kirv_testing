@@ -13,7 +13,6 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 class SignUpCompanyInfo(BasePage):
 
     def fill_fields(self):
-        time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         self.wait_for_element(SigninPageLocators.compyinfo_signUp_reseller_id)
 
         self.driver.find_element(
