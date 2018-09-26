@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 
 class SigninPageLocators(object):
 
+    # SignUp
+
     email_login_signup = (
         By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > label > input')
     pwd_login_signup = (
@@ -13,7 +15,9 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR,
         'ng-component > div > div > div > div > form > fieldset > field:nth-child(2) > div > span')
     signup_login_btn = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right.pr-3')
+        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
+
+    # contactInfo
 
     contactInfo_signUp_companyName = (
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > label > input')
@@ -21,8 +25,22 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(2) > field > div > label > input')
     contactInfo_signUp_phn = (
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(3) > field > div > label > input')
+    contactInfo_companyName_error = (
+        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > span')
+    contactInfo_contactName_error = (
+        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(2) > field > div > span')
+    contactInfo_signUp_phn_number_error = (
+        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(3) > field > div > span')
+    contactInfo_signUp_btn = (
+        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
+
+    # brand
 
     brand_signUp = (By.CLASS_NAME, 'select-check')
+    brand_start_app_btn = (
+        By.CSS_SELECTOR, 'app-brands > div > div > app-brands-form > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
+
+    # companyInfo
 
     compyinfo_signUp_reseller_id = (
         By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(1) > field > div > label > input')
@@ -42,6 +60,35 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(8) > field > div > label > input')
     compyinfo_signUp_otherphn = (
         By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(9) > field > div > label > input')
+
+    companyinfo_street_add_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(2) > field > div > span')
+
+    companyinfo_city_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(3) > field > div > span')
+
+    companyinfo_state_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(4) > field > div > span')
+
+    companyinfo_post_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(5) > field > div > span')
+
+    companyinfo_website_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(6) > field > div > span')
+
+    companyinfo_email_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(7) > field > div > span')
+
+    companyinfo_phn_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(8) > field > div > span')
+
+    companyinfo_othr_error = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(9) > field > div > span')
+
+    companyinfo_next_btn = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
+
+    # location
 
     location_signUp_name1 = (
         By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > input')
@@ -83,7 +130,9 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, '#heading3 > h5 > div > i.material-icons.delete-location')
     location_signUp_del_modal = (
         By.XPATH, '//*[@id="remove-location-modal3"]/div/div/div[2]/button[2]')
-    loc_next_btn = (By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(5) > div > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right')
+    loc_next_btn = (By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(5) > div > div > div > button.btn.btn-green')
+
+    # warehouse/ship
 
     ship_signUp_start_time = (
         By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(9) > field > div > label > input')
@@ -98,7 +147,10 @@ class SigninPageLocators(object):
     ship_signUp_delete2 = (By.XPATH, '//*[@id="heading2"]/h5/div/i[1]')
     ship_signUp_del_modal = (
         By.XPATH, '//*[@id="remove-location-modal2"]/div/div/div[2]/button[2]')
-    ship_next_btn = (By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(4) > div > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right')
+    ship_next_btn = (
+        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(4) > div > div > div > button.btn.btn-green')
+
+    # categories
 
     categories_signUp_cook_microwave = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
@@ -130,7 +182,9 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(3) > field > div > label > div > input')
 
     categories_signUp_next_btn = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div.row > div > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right')
+        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
+
+    # volumes
 
     volumes_signUp_quarter_truck_q1 = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
@@ -151,7 +205,9 @@ class SigninPageLocators(object):
     volumes_signUp_acknowledge_check = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.custom-control.custom-checkbox > label')
     volumes_signUp_sub_app_btn = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button.btn.btn-green.mt-10.btn-arrow.float-right')
+        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
+
+    # congratulations
 
     congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > button')
 

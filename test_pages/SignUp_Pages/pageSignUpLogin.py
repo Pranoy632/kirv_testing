@@ -66,6 +66,7 @@ class SignUpLogin(BasePage):
         input_email = self.driver.find_element(
             *SigninPageLocators.email_login_signup)
         input_email.send_keys("pranoy.s" + "+" + time_now + "@amazatic.com")
+        #input_email.send_keys("priyanka.c" + "+" + time_now + "@amazatic.com")
         print("email", input_email.get_attribute('value'))
 
         input_pwd = self.driver.find_element(

@@ -31,7 +31,7 @@ class kirvTest(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page.click_signup_button()
 
-        #*************************SignUp**********************************
+        # SignUp
 
         signUp_login = SignUpLogin(self.driver)
 
@@ -62,49 +62,48 @@ class kirvTest(unittest.TestCase):
         signUp_login.fill_email_pwd()
         signUp_login.click_login_signup_button()
 
-        #************************contactInfo***********************************
+        # contactInfo
 
         signUp_contactInfo = SignUpContact(self.driver)
         signUp_contactInfo.fill_fields()
-        signUp_contactInfo.click_contact_signup_button()
 
-        #*************************Brand****************************************
+        # Brand
 
         signUp_brand = SignUpBrand(self.driver)
         signUp_brand.select_checkbox()
         signUp_brand.click_brand_signup_button()
 
-        #***********************companyInfo************************************
+        # companyInfo
 
         signUp_companyInfo = SignUpCompanyInfo(self.driver)
         signUp_companyInfo.fill_fields()
-        signUp_companyInfo.click_companyInfo_signup_button()
+        # signUp_companyInfo.click_companyInfo_signup_button()
 
-        #***********************location***************************************
+        # location
 
         signUp_location = SignUpLocation(self.driver)
         signUp_location.fill_fields()
         signUp_location.click_location_signup_button()
 
-        #*********************warehouse/ship***********************************
+        # warehouse/ship
 
         signUp_ship = SignUpShipTo(self.driver)
         signUp_ship.fill_fields()
         signUp_ship.click_ship_signup_button()
 
-        #**********************categories**************************************
+        # categories
 
         signUp_categories = SignUpCategories(self.driver)
         signUp_categories.fill_fields()
         signUp_categories.click_categories_signup_button()
 
-        #************************volumes***************************************
+        # volumes
 
         signUp_volumes = SignUpVolumes(self.driver)
         signUp_volumes.fill_fields()
         signUp_volumes.click_volumes_signup_button()
 
-        #*********************congratulation***********************************
+        # congratulation
 
         signUp_congratulation = SignUpCongratulations(self.driver)
         signUp_congratulation.click_modal_close_btn()

@@ -16,5 +16,5 @@ class SignUpBrand(BasePage):
 
     def click_brand_signup_button(self):
         element_brand_signup_btn = self.driver.find_element(
-            *SigninPageLocators.signup)
+            *SigninPageLocators.brand_start_app_btn)
         element_brand_signup_btn.click()
