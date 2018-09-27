@@ -20,12 +20,29 @@ class Supplier_Test(unittest.TestCase):
 
     def check_table_header(self):
         supplier_homepage = SupplierHomepage(self.driver)
-        assert supplier_homepage.check_customer_name_table_header()
-        assert supplier_homepage.check_state_table_header()
-        assert supplier_homepage.check_no_of_locations_table_header()
-        assert supplier_homepage.check_main_contact_table_header()
-        assert supplier_homepage.check_phone_number_table_header()
-        assert supplier_homepage.check_account_status_table_header()
+        assert supplier_homepage.check_customer_name_table_header().is_displayed()
+        assert supplier_homepage.check_state_table_header().is_displayed()
+        assert supplier_homepage.check_no_of_locations_table_header().is_displayed()
+        assert supplier_homepage.check_main_contact_table_header().is_displayed()
+        assert supplier_homepage.check_phone_number_table_header().is_displayed()
+        assert supplier_homepage.check_account_status_table_header().is_displayed()
+
+    def check_status_tab(self, status_tab_name):
+        supplier_homepage = SupplierHomepage(self.driver)
+        try:
+            supplier_homepage.goto_required_status_tab(status_tab_name)
+            self.check_table_header()
+            assert supplier_homepage.is_tab_active(status_tab_name) == 'active'
+            if status_tab_name != 'all_customers':
+                assert supplier_homepage.get_required_status_count(status_tab_name) == supplier_homepage.get_total_table_records()
+            else:
+                assert supplier_homepage.get_all_customers_status_count() == supplier_homepage.get_total_table_records()
+        except:
+            print ("AssertionError --------> Element not found on %s tab"%(status_tab_name))
+    
+    def check_all_status_tab(self, status_tab):
+        for status_tab_name in status_tab:
+            self.check_status_tab(status_tab_name)
 
     def test_supplier(self):
         sign_in = SignIn(self.driver)
@@ -34,26 +51,22 @@ class Supplier_Test(unittest.TestCase):
         supplier_homepage = SupplierHomepage(self.driver)
         # Following try block checks homepage of supplier
         try:
-            assert supplier_homepage.check_supplier_kirv_logo()
-            assert supplier_homepage.check_products_link() == 'Products'
-            assert supplier_homepage.check_customers_link() == 'Customers'
-            assert supplier_homepage.check_search_input_box()
-            assert supplier_homepage.check_search_button()
-            assert supplier_homepage.check_logout_button()
-            assert supplier_homepage.check_customers_title() == 'Customers'
+            assert supplier_homepage.check_supplier_kirv_logo().is_displayed()
+            assert supplier_homepage.check_products_link().text == 'Products'
+            assert supplier_homepage.check_customers_link().text == 'Customers'
+            assert supplier_homepage.check_search_input_box().is_displayed()
+            assert supplier_homepage.check_search_button().is_displayed()
+            assert supplier_homepage.check_logout_button().is_displayed()
+            assert supplier_homepage.check_customers_title().text == 'Customers'
             assert supplier_homepage.get_all_customer_tab().is_displayed()
             assert supplier_homepage.get_pending_tab().is_displayed()
             assert supplier_homepage.get_active_tab().is_displayed()
             assert supplier_homepage.get_inactive_tab().is_displayed()
         except:
-            print ("AssertionError --------> Element not found on Contract page")
+            print ("AssertionError --------> Element not found on Home page of supplier")
 
-        # Following try block checks All Customers tab
-        try:
-            supplier_homepage.click_all_customers_tab()
-            self.check_table_header()
-        except:
-            print ("AssertionError --------> Element not found on All Customers tab")
-        
+        status_tab = ["all_customers", "Pending", "Active", "Inactive"]
+        self.check_all_status_tab(status_tab)
+
 if __name__ == "__main__":
     unittest.main()
