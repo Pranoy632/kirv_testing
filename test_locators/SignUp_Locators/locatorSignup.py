@@ -242,6 +242,21 @@ class SigninPageLocators(object):
     categories_signUp_refrigeration_refrigerator = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(3) > field > div > label > div > input')
 
+    categories_cooking_stove_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(4) > field > div > span')
+    categories_laundry_combo_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > field > div > span')
+
+    categories_laundry_dryer_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(4) > field > div > span')
+    categories_other_compactor_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(4) > div > div:nth-child(2) > field > div > span')
+    categories_refrigeration_icemaker_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(1) > field > div > span')
+
+    categories_refrigeration_freezer_er = (
+        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(2) > field > div > span')
+
     categories_signUp_next_btn = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
 
