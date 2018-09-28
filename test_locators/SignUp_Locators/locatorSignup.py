@@ -93,19 +93,34 @@ class SigninPageLocators(object):
     location_signUp_name1 = (
         By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > input')
     location_signUp_street_add1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > input')
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field > div > label > input')
+
+    # location_signUp_street_add1 = (
+    # By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field >
+    # div > label > input')
     location_signUp_city1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(3) > field > div > label > input')
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(3) > field > div > label > input')
     location_signUp_state1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(4) > field > div > label > div > input')
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(4) > field > div > label > div > input')
     location_signUp_post_code1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(5) > field > div > label > input')
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(5) > field > div > label > input')
     location_signUp_email1 = (
         By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(6) > field > div > label > input')
     location_signUp_phn1 = (
         By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(7) > field > div > label > input')
     location_signUp_otherphn1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(8) > field > div > label > input')
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(8) > field > div > label > input')
+
+    street_error1 = (
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field > div > span')
+    city_error1 = (
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(3) > field > div > span')
+    state_error1 = (
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(4) > field > div > span')
+    post_error1 = (
+        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(5) > field > div > span')
+    otr_phn_error1 = (By.CSS_SELECTOR,
+                      '#collapse1 > div > div > div:nth-child(8) > field > div > span')
 
     location_signUp_name2 = (
         By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(1) > field > div > label > input')
@@ -125,6 +140,14 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > label > input')
     location_signUp_check2 = (
         By.CSS_SELECTOR, '#collapse2 > div > div > div.col-md-4.location-checkbox > div > label')
+
+    loc2_post_code_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > span')
+    loc2_email_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > span')
+    loc2_phn_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(7) > field > div > span')
+
     location_signUp_add_loc = (By.CLASS_NAME, 'add-location')
     location_signUp_delete3 = (
         By.CSS_SELECTOR, '#heading3 > h5 > div > i.material-icons.delete-location')
@@ -142,13 +165,51 @@ class SigninPageLocators(object):
     ship_end_time = (By.ID, 'timepicker-item-id-6')
     ship_ok_btn_start_end = (
         By.XPATH, '//*[@id="time-picker"]/div[3]/button[2]')
-    ship_signUp_add_ship = (
+    ship_signUp_add_ship2 = (
         By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(3) > div > a')
-    ship_signUp_delete2 = (By.XPATH, '//*[@id="heading2"]/h5/div/i[1]')
+
+    ship2_name = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(1) > field > div > label > input')
+    ship2_street_add = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(2) > field > div > label > input')
+    ship2_city = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(3) > field > div > label > input')
+    ship2_state = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(4) > field > div > label > div > input')
+    ship2_post = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > label > input')
+    ship2_email = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > label > input')
+    ship2_phn = (By.CSS_SELECTOR,
+                 '#collapse2 > div > div > div:nth-child(7) > field > div > label > input')
+    ship2_othr_phn = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > label > input')
+    ship2_start = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(9) > field > div > label > input')
+    ship2_end = (By.CSS_SELECTOR,
+                 '#collapse2 > div > div > div:nth-child(10) > field > div > label > input')
+
+    ship2_street_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(2) > field > div > span')
+    ship2_city_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(3) > field > div > span')
+    ship2_post_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > span')
+    ship2_email_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > span')
+    ship2_phn_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(7) > field > div > span')
+    ship2_othr_phn_err = (
+        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > span')
+
+    ship_signUp_add_ship3 = (
+        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(4) > div > a')
+
+    ship_signUp_delete3 = (By.XPATH, '//*[@id="heading3"]/h5/div/i[1]')
     ship_signUp_del_modal = (
-        By.XPATH, '//*[@id="remove-location-modal2"]/div/div/div[2]/button[2]')
+        By.XPATH, '//*[@id="remove-location-modal3"]/div/div/div[2]/button[2]')
     ship_next_btn = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(4) > div > div > div > button.btn.btn-green')
+        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(5) > div > div > div > button.btn.btn-green')
 
     # categories
 

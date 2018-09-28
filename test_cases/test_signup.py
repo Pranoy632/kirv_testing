@@ -77,19 +77,16 @@ class kirvTest(unittest.TestCase):
 
         signUp_companyInfo = SignUpCompanyInfo(self.driver)
         signUp_companyInfo.fill_fields()
-        # signUp_companyInfo.click_companyInfo_signup_button()
 
         # location
 
         signUp_location = SignUpLocation(self.driver)
         signUp_location.fill_fields()
-        signUp_location.click_location_signup_button()
 
         # warehouse/ship
 
         signUp_ship = SignUpShipTo(self.driver)
         signUp_ship.fill_fields()
-        signUp_ship.click_ship_signup_button()
 
         # categories
 
