@@ -8,8 +8,9 @@ import time
 
 class SupplierHomepage(BasePage):
 
-    def get_web_element(self,locator):
-        return self.driver.find_element(locator)
+    def click_button(self, get_button):
+        get_button.click()
+        time.sleep(2)
 
     def check_supplier_kirv_logo(self):
         return self.driver.find_element(*SupplierPageLocators.kirv_logo)
@@ -21,10 +22,10 @@ class SupplierHomepage(BasePage):
     def check_customers_link(self):
         return self.driver.find_element(*SupplierPageLocators.customers_link)
 
-    def check_search_input_box(self):
+    def get_search_input_box(self):
         return self.driver.find_element(*SupplierPageLocators.input_search_customers)
 
-    def check_search_button(self):
+    def get_search_button(self):
         return self.driver.find_element(*SupplierPageLocators.search_button)
 
     def check_logout_button(self):
@@ -97,3 +98,24 @@ class SupplierHomepage(BasePage):
                 'Inactive': self.get_inactive_tab
         }
         return required_status_tab[status_tab_name]().get_attribute("class")
+
+    def get_first_table_record(self):
+        first_record = self.get_row_values()[1].text
+        return first_record.split(' ', 1)[0]
+
+    def send_keys_to_search(self):
+        self.get_search_input_box().send_keys(self.get_first_table_record())
+
+    def search_record(self):
+        self.send_keys_to_search()
+        self.click_button(self.get_search_button())
+
+    def clear_search_text(self):
+        self.get_search_input_box().clear()
+
+    def search_invalid_record(self):
+        self.get_search_input_box().send_keys("[]")
+        self.click_button(self.get_search_button())
+
+    def get_search_message(self):
+        return self.driver.find_element(*SupplierPageLocators.search_message)

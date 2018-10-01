@@ -24,3 +24,6 @@ class SupplierPageLocators(object):
     table_rows = (By.XPATH, '//tr')
     table_data = (By.XPATH, '//td')
     total_table_records = (By.XPATH, '//quick-filter/ul/li[1]')
+    page_number1 = (By.XPATH, '//div/ul/li[1]')
+    page_number2 = (By.XPATH, '//div/ul/li[2]')
+    search_message = (By.XPATH, '//h3[text()="Contracts Not Found!"]')
