@@ -97,7 +97,6 @@ class kirvTest(unittest.TestCase):
 
         signUp_volumes = SignUpVolumes(self.driver)
         signUp_volumes.fill_fields()
-        signUp_volumes.click_volumes_signup_button()
 
         # congratulation
 

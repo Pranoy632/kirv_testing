@@ -278,6 +278,15 @@ class SigninPageLocators(object):
     volumes_signUp_full_truck_q2 = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(3) > field > div > label > div > input')
 
+    volumes_num_full_trucks_q1_err = (
+        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(3) > field > div > span')
+
+    volumes_num_half_trucks_q2_err = (
+        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2) > field > div > span')
+
+    volumes_num_full_trucks_q2_err = (
+        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(3) > field > div > span')
+
     volumes_signUp_acknowledge_check = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.custom-control.custom-checkbox > label')
     volumes_signUp_sub_app_btn = (
