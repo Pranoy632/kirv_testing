@@ -16,6 +16,7 @@ class Supplier_Test(unittest.TestCase):
         options.add_argument("--start-maximized")
         options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
+        self.driver.implicitly_wait(10)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def check_home_page(self):
@@ -24,21 +25,23 @@ class Supplier_Test(unittest.TestCase):
         """
         supplier_homepage = SupplierHomepage(self.driver)
         try:
-            assert supplier_homepage.check_supplier_kirv_logo().is_displayed()
+            assert supplier_homepage.get_supplier_kirv_logo().is_displayed()
             assert supplier_homepage.check_products_link().text == 'Products'
             assert supplier_homepage.check_customers_link().text == 'Customers'
+            assert supplier_homepage.check_orders_link().text == 'Orders'
             assert supplier_homepage.get_search_input_box().is_displayed()
             assert supplier_homepage.get_search_button().is_displayed()
-            assert supplier_homepage.check_logout_button().is_displayed()
+            assert supplier_homepage.get_logout_button().is_displayed()
             assert supplier_homepage.check_customers_title().text == 'Customers'
             assert supplier_homepage.get_all_customer_tab().is_displayed()
             assert supplier_homepage.get_pending_tab().is_displayed()
             assert supplier_homepage.get_active_tab().is_displayed()
             assert supplier_homepage.get_inactive_tab().is_displayed()
+            self.check_tab_is_active("Customers")
         except:
             print ("AssertionError --------> Element not found on Home page of supplier")
 
-    def check_table_header(self):
+    def check_table_header(self, status_tab_name):
         """
             Checks header line of table.
         """
@@ -81,19 +84,27 @@ class Supplier_Test(unittest.TestCase):
             print ("AssertionError --------> %s tab total count mismatch"%(status_tab_name))
 
     def check_pagination(self, status_tab_name):
+        """
+            Checks if pagination tab works or not
+        """
         supplier_homepage = SupplierHomepage(self.driver)
         try:
-            if (supplier_homepage.get_total_table_records == 50):
+            if (supplier_homepage.get_total_table_records() == 50):
+                supplier_homepage.scroll_down_window()
                 if (supplier_homepage.get_first_pagination_tab().is_displayed()):      # is_enabled() for buttons or clickable buttons
                     self.check_tab_is_active("1")
                     supplier_homepage.click_button(supplier_homepage.get_second_pagination_tab())
                     self.check_tab_is_active(status_tab_name)
+                    self.check_customers_count(status_tab_name)
+                    supplier_homepage.scroll_down_window()
                     self.check_tab_is_active("2")
-                    self.check_customers_count()           # supplier_homepage -> get_first_pagination_tab(), get_second_pagination_tab(), add 1 and 2 to list of tab in supplier_homepage 
+                    supplier_homepage.scroll_up_window()
+        except:
+            print ("AssertionError --------> %s pagination error"%(status_tab_name))
 
     def check_search_functionallity(self, status_tab_name):
         """
-            Checks search customers functionllity
+            Checks search customers without any text, with valid text and with invalid text
         """
 
         supplier_homepage = SupplierHomepage(self.driver)
@@ -116,18 +127,29 @@ class Supplier_Test(unittest.TestCase):
         except:
             print ("AssertionError --------> %s tab search customers error"%(status_tab_name))
 
+    def goto_homepage(self):
+        """
+            Clicks Kirv Logo and checks the homepage
+        """
+        try:
+            supplier_homepage = SupplierHomepage(self.driver)
+            supplier_homepage.click_button(supplier_homepage.get_supplier_kirv_logo())
+            self.check_home_page()
+        except:
+            print ("AssertionError --------> Failed to Goto Homepage")
+
     def check_status_tab(self, status_tab_name):
         """
             Checks given status tab of page, filters respective account status and compares total count with it, Checks Search functionallity
         """
-
         supplier_homepage = SupplierHomepage(self.driver)
         supplier_homepage.goto_required_status_tab(status_tab_name)
-        self.check_table_header()
+        self.check_table_header(status_tab_name)
         self.check_tab_is_active(status_tab_name)
         self.check_customers_count(status_tab_name)
         self.check_pagination(status_tab_name)
         #self.check_search_functionallity(status_tab_name)
+        self.goto_homepage()
     
     def check_all_status_tab(self, status_tab):
         """
@@ -135,6 +157,17 @@ class Supplier_Test(unittest.TestCase):
         """
         for status_tab_name in status_tab:
             self.check_status_tab(status_tab_name)
+
+    def logout(self):
+        """
+            Logouts from current user
+        """
+        try:
+            supplier_homepage = SupplierHomepage(self.driver)
+            supplier_homepage.click_button(supplier_homepage.get_logout_button())
+            supplier_homepage.get_signin_button().is_displayed()
+        except:
+            print ("AssertionError --------> Failed to logout")
 
     def test_supplier(self):
         sign_in = SignIn(self.driver)
@@ -145,6 +178,8 @@ class Supplier_Test(unittest.TestCase):
 
         status_tab = ["all_customers", "Pending", "Active", "Inactive"]
         self.check_all_status_tab(status_tab)
+
+        self.logout()
 
 if __name__ == "__main__":
     unittest.main()

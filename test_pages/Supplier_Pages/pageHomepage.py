@@ -4,23 +4,23 @@ sys.path.append('../test_locators')
 from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
 from Supplier_Locators.locatorSupplier import SupplierPageLocators
-import time
 
 class SupplierHomepage(BasePage):
 
     def click_button(self, get_button):
         get_button.click()
-        time.sleep(2)
 
-    def check_supplier_kirv_logo(self):
+    def get_supplier_kirv_logo(self):
         return self.driver.find_element(*SupplierPageLocators.kirv_logo)
 
     def check_products_link(self):
-        time.sleep(5)
         return self.driver.find_element(*SupplierPageLocators.products_link)
 
     def check_customers_link(self):
         return self.driver.find_element(*SupplierPageLocators.customers_link)
+
+    def check_orders_link(self):
+        return self.driver.find_element(*SupplierPageLocators.orders_link)
 
     def get_search_input_box(self):
         return self.driver.find_element(*SupplierPageLocators.input_search_customers)
@@ -28,7 +28,7 @@ class SupplierHomepage(BasePage):
     def get_search_button(self):
         return self.driver.find_element(*SupplierPageLocators.search_button)
 
-    def check_logout_button(self):
+    def get_logout_button(self):
         return self.driver.find_element(*SupplierPageLocators.logout_button)
 
     def check_customers_title(self):
@@ -72,7 +72,6 @@ class SupplierHomepage(BasePage):
                 'Inactive': self.get_inactive_tab
         }
         required_status_tab[status_tab_name]().click()
-        time.sleep(5)
         
     def get_row_values(self):
         return self.driver.find_elements(*SupplierPageLocators.table_rows)
@@ -92,12 +91,16 @@ class SupplierHomepage(BasePage):
 
     def is_tab_active(self, status_tab_name):
         required_status_tab = {
+                'Customers': self.check_customers_link,
                 'all_customers': self.get_all_customer_tab,
                 'Pending': self.get_pending_tab,
                 'Active': self.get_active_tab,
-                'Inactive': self.get_inactive_tab
+                'Inactive': self.get_inactive_tab,
+                '1': self.get_first_pagination_tab,
+                '2': self.get_second_pagination_tab
         }
-        return required_status_tab[status_tab_name]().get_attribute("class")
+        tab_class = required_status_tab[status_tab_name]().get_attribute("class")
+        return "active" if "active" in tab_class.split() else None
 
     def get_first_table_record(self):
         first_record = self.get_row_values()[1].text
@@ -119,3 +122,18 @@ class SupplierHomepage(BasePage):
 
     def get_search_message(self):
         return self.driver.find_element(*SupplierPageLocators.search_message)
+
+    def get_first_pagination_tab(self):
+        return self.driver.find_element(*SupplierPageLocators.page_number1)
+        
+    def get_second_pagination_tab(self):
+        return self.driver.find_element(*SupplierPageLocators.page_number2)
+
+    def scroll_down_window(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    def scroll_up_window(self):
+        self.driver.execute_script("window.scrollTo(document.body.scrollHeight, 0);")
+
+    def get_signin_button(self):
+        return self.driver.find_element(*SupplierPageLocators.signin)
