@@ -1,6 +1,6 @@
 import sys
 sys.path.append('../test_locators')
-
+import time
 
 from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
@@ -10,6 +10,7 @@ class SignUpBrand(BasePage):
 
     def select_checkbox(self):
         self.wait_for_element(SigninPageLocators.brand_signUp)
+        time.sleep(1)
         element_brand_signup = self.driver.find_element(
             *SigninPageLocators.brand_signUp)
         element_brand_signup.click()

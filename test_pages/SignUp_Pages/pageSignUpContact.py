@@ -31,52 +31,53 @@ class SignUpContact(BasePage):
         self.wait_for_element(
             SigninPageLocators.contactInfo_signUp_companyName)
 
-        input_companyName = self.driver.find_element(
-            *SigninPageLocators.contactInfo_signUp_companyName)
-        input_companyName.send_keys('')
         self.click_contact_signup_button()
         time.sleep(1)
+
         try:
             assert self.company_name_error()
         except:
             print("No result found for blank comapany-name.")
-        time.sleep(1)
-        input_companyName.clear()
+
+        input_companyName = self.driver.find_element(
+            *SigninPageLocators.contactInfo_signUp_companyName)
         input_companyName.send_keys(fake.company())
 
-        input_contactName = self.driver.find_element(
-            *SigninPageLocators.contactInfo_signUp_contactName)
-        input_contactName.send_keys('')
         self.click_contact_signup_button()
         time.sleep(1)
+
         try:
             assert self.contact_name_error()
         except:
             print("No result found for blank contact-name.")
-        time.sleep(1)
-        input_contactName.clear()
-        input_contactName.send_keys(fake.name())
 
-        input_phn = self.driver.find_element(
-            *SigninPageLocators.contactInfo_signUp_phn)
-        input_phn.send_keys('')
-        self.click_contact_signup_button()
-        time.sleep(1)
         try:
             assert self.phone_number_error()
         except:
             print("No result found for blank phone-number")
-        input_phn.clear()
-        input_phn.send_keys('454545')
+
+        self.wait_for_element_clickable(
+            SigninPageLocators.contactInfo_signUp_contactName)
+
+        input_contactName = self.driver.find_element(
+            *SigninPageLocators.contactInfo_signUp_contactName)
+        input_contactName.send_keys(fake.name())
+
+        input_phn = self.driver.find_element(
+            *SigninPageLocators.contactInfo_signUp_phn)
+        input_phn.send_keys('4545')
+
         self.click_contact_signup_button()
         time.sleep(1)
+
         try:
             assert self.phone_number_error()
         except:
-            print("No result found for invalid phone-number")
-        time.sleep(1)
+            print("No result found for blank phone-number")
+
         input_phn.clear()
-        input_phn.send_keys("12345678901")
+        input_phn.send_keys('12345678901')
+
         self.click_contact_signup_button()
 
     def click_contact_signup_button(self):

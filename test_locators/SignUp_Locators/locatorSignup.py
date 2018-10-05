@@ -289,6 +289,10 @@ class SigninPageLocators(object):
 
     volumes_signUp_acknowledge_check = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.custom-control.custom-checkbox > label')
+
+    volumes_back_button = (
+        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button:nth-child(3)')
+
     volumes_signUp_sub_app_btn = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
 

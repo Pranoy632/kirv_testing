@@ -16,6 +16,7 @@ from SignUp_Pages.pageSignUpShip import SignUpShipTo
 from SignUp_Pages.pageSignUpCategories import SignUpCategories
 from SignUp_Pages.pageSignUpVolumes import SignUpVolumes
 from SignUp_Pages.pageSignUpCongratulations import SignUpCongratulations
+from email_check import EmailCheck
 
 
 class kirvTest(unittest.TestCase):
@@ -102,6 +103,17 @@ class kirvTest(unittest.TestCase):
 
         signUp_congratulation = SignUpCongratulations(self.driver)
         signUp_congratulation.click_modal_close_btn()
+
+        # email check
+        email_chk = EmailCheck()
+        try:
+            i = 1
+            while i < 10:
+                email_chk.email_check()
+                time.sleep(5)
+                i = i + 1
+        except:
+            print("No email found")
 
 
 if __name__ == "__main__":

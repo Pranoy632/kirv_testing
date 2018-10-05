@@ -32,6 +32,31 @@ class SignUpVolumes(BasePage):
 
     def fill_fields(self):
 
+        # back button check from volumes to categories
+
+        self.wait_for_element(
+            SigninPageLocators.volumes_back_button)
+
+        self.click_volumes_signup_back_btn()
+
+        time.sleep(1)
+        self.driver.execute_script(
+            "window.scrollTo(document.body.scrollHeight, 0);")
+        time.sleep(1)
+
+        time.sleep(1)
+        self.driver.execute_script(
+            "window.scrollTo(0, document.body.scrollHeight);")
+        time.sleep(1)
+
+        self.wait_for_element(
+            SigninPageLocators.categories_signUp_next_btn)
+
+        self.driver.find_element(
+            *SigninPageLocators.categories_signUp_next_btn).click()
+
+        # volumes
+
         self.wait_for_element(
             SigninPageLocators.volumes_signUp_quarter_truck_q1)
 
@@ -124,3 +149,9 @@ class SignUpVolumes(BasePage):
         vol = self.driver.find_element(
             *SigninPageLocators.volumes_signUp_sub_app_btn)
         vol.click()
+
+    def click_volumes_signup_back_btn(self):
+        time.sleep(1)
+        vol_back = self.driver.find_element(
+            *SigninPageLocators.volumes_back_button)
+        vol_back.click()
