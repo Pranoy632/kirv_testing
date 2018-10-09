@@ -15,37 +15,41 @@ class SignUpShipTo(BasePage):
     def ship2_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.ship2_street_err)
-        print("ship street blank",  street_er.is_displayed())
+        print("signup shipTo-2 street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def ship2_city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.ship2_city_err)
-        print("ship city blank",  city_er.is_displayed())
+        print("signup shipTo-2 city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def ship2_post_error(self):
         post_error = self.driver.find_element(
             *SigninPageLocators.ship2_post_err)
-        print("ship post blank",  post_error.is_displayed())
+        print("signup shipTo-2 postal-code blank or invalid",
+              post_error.is_displayed())
         return post_error.is_displayed()
 
     def ship2_email_error(self):
         email_error = self.driver.find_element(
             *SigninPageLocators.ship2_email_err)
-        print("ship email blank",  email_error.is_displayed())
+        print("signup shipTo-2  email blank or invalid",
+              email_error.is_displayed())
         return email_error.is_displayed()
 
     def ship2_phn_error(self):
         phn_error = self.driver.find_element(
             *SigninPageLocators.ship2_phn_err)
-        print("ship phone blank",  phn_error.is_displayed())
+        print("signup shipTo-2 phone-number blank or invalid",
+              phn_error.is_displayed())
         return phn_error.is_displayed()
 
     def ship_other_phone_error(self):
         othr_er = self.driver.find_element(
             *SigninPageLocators.ship2_othr_phn_err)
-        print("ship other-phn blank",  othr_er.is_displayed())
+        print("signup shipTo-2  other-phone-number invalid",
+              othr_er.is_displayed())
         return othr_er.is_displayed()
 
     def fill_fields(self):

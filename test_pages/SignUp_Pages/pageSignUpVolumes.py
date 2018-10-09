@@ -15,19 +15,19 @@ class SignUpVolumes(BasePage):
     def full_truck_q1_err(self):
         full_q1_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_full_trucks_q1_err)
-        print(" full truck q1 blank",  full_q1_er.is_displayed())
+        print("signup volumes full truck q1 blank",  full_q1_er.is_displayed())
         return full_q1_er.is_displayed()
 
     def half_truck_q2_err(self):
         half_q2_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_half_trucks_q2_err)
-        print(" half truck q2 blank", half_q2_er.is_displayed())
+        print("signup volumes half truck q2 blank", half_q2_er.is_displayed())
         return half_q2_er.is_displayed()
 
     def full_truck_q2_err(self):
         full_q2_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_full_trucks_q2_err)
-        print(" full truck q2 blank",  full_q2_er.is_displayed())
+        print("signup volumes full truck q2 blank",  full_q2_er.is_displayed())
         return full_q2_er.is_displayed()
 
     def fill_fields(self):

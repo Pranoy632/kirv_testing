@@ -15,37 +15,38 @@ class SignUpCategories(BasePage):
     def categories_stove_err(self):
         stove_er = self.driver.find_element(
             *SigninPageLocators.categories_cooking_stove_er)
-        print(" stove blank",  stove_er.is_displayed())
+        print("signup categories stove blank",  stove_er.is_displayed())
         return stove_er.is_displayed()
 
     def categories_combo_err(self):
         combo_er = self.driver.find_element(
             *SigninPageLocators.categories_laundry_combo_er)
-        print(" combo blank",  combo_er.is_displayed())
+        print("signup categories  combo blank",  combo_er.is_displayed())
         return combo_er.is_displayed()
 
     def categories_dryer_err(self):
         dryer_er = self.driver.find_element(
             *SigninPageLocators.categories_laundry_dryer_er)
-        print(" dryer blank",  dryer_er.is_displayed())
+        print("signup categories dryer blank",  dryer_er.is_displayed())
         return dryer_er.is_displayed()
 
     def categories_compactor_err(self):
         compactor_er = self.driver.find_element(
             *SigninPageLocators.categories_other_compactor_er)
-        print(" compactor blank",  compactor_er.is_displayed())
+        print("signup categories  compactor blank",
+              compactor_er.is_displayed())
         return compactor_er.is_displayed()
 
     def categories_icemaker_err(self):
         ice_er = self.driver.find_element(
             *SigninPageLocators.categories_refrigeration_icemaker_er)
-        print(" icemaker blank",  ice_er.is_displayed())
+        print("signup categories  icemaker blank",  ice_er.is_displayed())
         return ice_er.is_displayed()
 
     def categories_freezer_err(self):
         freezer_er = self.driver.find_element(
             *SigninPageLocators.categories_refrigeration_freezer_er)
-        print(" freezer blank",  freezer_er.is_displayed())
+        print("signup categories freezer blank",  freezer_er.is_displayed())
         return freezer_er.is_displayed()
 
     def fill_fields(self):

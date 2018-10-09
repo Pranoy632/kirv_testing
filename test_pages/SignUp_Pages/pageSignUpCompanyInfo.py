@@ -15,49 +15,54 @@ class SignUpCompanyInfo(BasePage):
     def street_add_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_street_add_error)
-        print("street blank",  street_er.is_displayed())
+        print("signup company-info street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_city_error)
-        print("city blank",  city_er.is_displayed())
+        print("signup company-info city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def state_error(self):
         state_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_state_error)
-        print("state blank",  state_er.is_displayed())
+        print("signup company-info state blank",  state_er.is_displayed())
         return state_er.is_displayed()
 
     def post_error(self):
         post_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_post_error)
-        print("post blank/invalid",  post_er.is_displayed())
+        print("signup company-info  postal-code blank or invalid",
+              post_er.is_displayed())
         return post_er.is_displayed()
 
     def website_error(self):
         web_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_website_error)
-        print("web blank/invalid",  web_er.is_displayed())
+        print("signup company-info website-name blank or invalid",
+              web_er.is_displayed())
         return web_er.is_displayed()
 
     def email_error(self):
         email_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_email_error)
-        print("email blank/invalid",  email_er.is_displayed())
+        print("signup company-info email blank or invalid",
+              email_er.is_displayed())
         return email_er.is_displayed()
 
     def phn_error(self):
         phn_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_phn_error)
-        print("phn blank/invalid",  phn_er.is_displayed())
+        print("signup company-info phone-number blank or invalid",
+              phn_er.is_displayed())
         return phn_er.is_displayed()
 
     def othr_error(self):
         othr_phn_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_othr_error)
-        print("other phn invalid/invalid", othr_phn_er.is_displayed())
+        print("signup company-info other-phone-number invalid",
+              othr_phn_er.is_displayed())
         return othr_phn_er.is_displayed()
 
     def fill_fields(self):

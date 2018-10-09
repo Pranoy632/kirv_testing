@@ -300,4 +300,6 @@ class SigninPageLocators(object):
 
     congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > button')
 
+    # sign-up
+
     signup = (By.CLASS_NAME, 'btn-green')

@@ -11,19 +11,21 @@ class SignUpContact(BasePage):
     def company_name_error(self):
         companyName = self.driver.find_element(
             *SigninPageLocators.contactInfo_companyName_error)
-        print("comapanyname blank",  companyName.is_displayed())
+        print("signup-contact comapany-name blank",
+              companyName.is_displayed())
         return companyName.is_displayed()
 
     def contact_name_error(self):
         contactName = self.driver.find_element(
             *SigninPageLocators.contactInfo_contactName_error)
-        print("contactname blank",  contactName.is_displayed())
+        print("signup-contact contact-name blank",  contactName.is_displayed())
         return contactName.is_displayed()
 
     def phone_number_error(self):
         phn_number = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_phn_number_error)
-        print("phone-number blank/valid",  phn_number.is_displayed())
+        print("signup-contact phone-number blank or invalid",
+              phn_number.is_displayed())
         return phn_number.is_displayed()
 
     def fill_fields(self):

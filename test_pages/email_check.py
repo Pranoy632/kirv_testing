@@ -15,14 +15,10 @@ class EmailCheck(object):
     def email_check(self):
         try:
             mail.select("INBOX")
-            #n = 0
             (retcode, message) = mail.search(None, '(UNSEEN)')
             if retcode == 'OK':
                 for num in message[0].split():
-                    #n = n + 1
-                    # print(n)
                     typ, data = mail.fetch(num, '(RFC822)')
-                    #print("Fetch type", typ)
                     for response_part in data:
                         if isinstance(response_part, tuple):
                             # print(response_part)
@@ -32,7 +28,5 @@ class EmailCheck(object):
                             data = original['Subject']
                             print(data)
                             typ, data = mail.store(num, '+FLAGS', '\\Seen')
-                            # print(n)
-                            # return original['From']
         except Exception as e:
             print("Email:", str(e))

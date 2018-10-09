@@ -15,49 +15,51 @@ class SignUpLocation(BasePage):
     def loc1_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.street_error1)
-        print("loc street blank",  street_er.is_displayed())
+        print("sign-up location-1 street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def loc1_city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.city_error1)
-        print("loc city blank",  city_er.is_displayed())
+        print("sign-up location-1 city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def loc1_state_error(self):
         state_er = self.driver.find_element(
             *SigninPageLocators.state_error1)
-        print("loc state blank",  state_er.is_displayed())
+        print("sign-up location-1 state blank",  state_er.is_displayed())
         return state_er.is_displayed()
 
     def loc1_post_error(self):
         post_er = self.driver.find_element(
             *SigninPageLocators.post_error1)
-        print("loc post blank",  post_er.is_displayed())
+        print("sign-up location-1 postal-code blank",  post_er.is_displayed())
         return post_er.is_displayed()
 
     def loc1_other_phone_error(self):
         othr_er = self.driver.find_element(
             *SigninPageLocators.otr_phn_error1)
-        print("loc other-phn blank",  othr_er.is_displayed())
+        print("sign-up location-1 other-phone-number blank",
+              othr_er.is_displayed())
         return othr_er.is_displayed()
 
     def loc2_post_error(self):
         post_error = self.driver.find_element(
             *SigninPageLocators.loc2_post_code_err)
-        print("loc2 post blank",  post_error.is_displayed())
+        print("sign-up location-2  postal-code blank",
+              post_error.is_displayed())
         return post_error.is_displayed()
 
     def loc2_email_error(self):
         email_error = self.driver.find_element(
             *SigninPageLocators.loc2_email_err)
-        print("loc2 email blank",  email_error.is_displayed())
+        print("sign-up location-2 email blank",  email_error.is_displayed())
         return email_error.is_displayed()
 
     def loc2_phn_error(self):
         phn_error = self.driver.find_element(
             *SigninPageLocators.loc2_phn_err)
-        print("loc2 phone blank",  phn_error.is_displayed())
+        print("sign-up location-2 phone-number blank",  phn_error.is_displayed())
         return phn_error.is_displayed()
 
     def fill_fields(self):
