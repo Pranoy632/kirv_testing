@@ -15,38 +15,31 @@ class SignUpCategories(BasePage):
     def categories_stove_err(self):
         stove_er = self.driver.find_element(
             *SigninPageLocators.categories_cooking_stove_er)
-        print("signup categories stove blank",  stove_er.is_displayed())
         return stove_er.is_displayed()
 
     def categories_combo_err(self):
         combo_er = self.driver.find_element(
             *SigninPageLocators.categories_laundry_combo_er)
-        print("signup categories  combo blank",  combo_er.is_displayed())
         return combo_er.is_displayed()
 
     def categories_dryer_err(self):
         dryer_er = self.driver.find_element(
             *SigninPageLocators.categories_laundry_dryer_er)
-        print("signup categories dryer blank",  dryer_er.is_displayed())
         return dryer_er.is_displayed()
 
     def categories_compactor_err(self):
         compactor_er = self.driver.find_element(
             *SigninPageLocators.categories_other_compactor_er)
-        print("signup categories  compactor blank",
-              compactor_er.is_displayed())
         return compactor_er.is_displayed()
 
     def categories_icemaker_err(self):
         ice_er = self.driver.find_element(
             *SigninPageLocators.categories_refrigeration_icemaker_er)
-        print("signup categories  icemaker blank",  ice_er.is_displayed())
         return ice_er.is_displayed()
 
     def categories_freezer_err(self):
         freezer_er = self.driver.find_element(
             *SigninPageLocators.categories_refrigeration_freezer_er)
-        print("signup categories freezer blank",  freezer_er.is_displayed())
         return freezer_er.is_displayed()
 
     def fill_fields(self):
@@ -129,32 +122,38 @@ class SignUpCategories(BasePage):
         time.sleep(1)
 
         try:
-            assert self.categories_stove_err()
+            assert self.categories_stove_err() == True
+            print("Success: signup categories cooking stove blank error found.")
         except:
             print("No result found for cooking stove")
 
         try:
-            assert self.categories_combo_err()
+            assert self.categories_combo_err() == True
+            print("Success: signup categories laundry combo blank error found.")
         except:
             print("No result found for laundry combo")
 
         try:
-            assert self.categories_dryer_err()
+            assert self.categories_dryer_err() == True
+            print("Success: signup categories laundry dryer blank error found.")
         except:
             print("No result found for laundry dryer")
 
         try:
-            assert self.categories_compactor_err()
+            assert self.categories_compactor_err() == True
+            print("Success: signup categories other compactor blank error found.")
         except:
             print("No result found for other compactor")
 
         try:
-            assert self.categories_icemaker_err()
+            assert self.categories_icemaker_err() == True
+            print("Success: signup categories refrigeration icemaker blank error found.")
         except:
             print("No result found for refrigeration icemaker")
 
         try:
-            assert self.categories_freezer_err()
+            assert self.categories_freezer_err() == True
+            print("Success: signup categories refrigeration freezer blank error found.")
         except:
             print("No result found for refrigeration freezer")
 

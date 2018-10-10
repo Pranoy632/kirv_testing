@@ -15,19 +15,16 @@ class SignUpVolumes(BasePage):
     def full_truck_q1_err(self):
         full_q1_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_full_trucks_q1_err)
-        print("signup volumes full truck q1 blank",  full_q1_er.is_displayed())
         return full_q1_er.is_displayed()
 
     def half_truck_q2_err(self):
         half_q2_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_half_trucks_q2_err)
-        print("signup volumes half truck q2 blank", half_q2_er.is_displayed())
         return half_q2_er.is_displayed()
 
     def full_truck_q2_err(self):
         full_q2_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_full_trucks_q2_err)
-        print("signup volumes full truck q2 blank",  full_q2_er.is_displayed())
         return full_q2_er.is_displayed()
 
     def fill_fields(self):
@@ -98,17 +95,20 @@ class SignUpVolumes(BasePage):
         time.sleep(1)
 
         try:
-            assert self.full_truck_q1_err()
+            assert self.full_truck_q1_err() == True
+            print("Success: signup volumes full truck q1 blank error found.")
         except:
             print("No result found for q1 full-truck")
 
         try:
-            assert self.half_truck_q2_err()
+            assert self.half_truck_q2_err() == True
+            print("Success: signup volumes half truck q2 blank error found.")
         except:
             print("No result found for q2 half-truck")
 
         try:
-            assert self.full_truck_q2_err()
+            assert self.full_truck_q2_err() == True
+            print("Success: signup volumes full truck q2 blank error found.")
         except:
             print("No result found for q2 full-truck")
 

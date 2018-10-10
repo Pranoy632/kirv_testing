@@ -15,51 +15,41 @@ class SignUpLocation(BasePage):
     def loc1_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.street_error1)
-        print("sign-up location-1 street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def loc1_city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.city_error1)
-        print("sign-up location-1 city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def loc1_state_error(self):
         state_er = self.driver.find_element(
             *SigninPageLocators.state_error1)
-        print("sign-up location-1 state blank",  state_er.is_displayed())
         return state_er.is_displayed()
 
     def loc1_post_error(self):
         post_er = self.driver.find_element(
             *SigninPageLocators.post_error1)
-        print("sign-up location-1 postal-code blank",  post_er.is_displayed())
         return post_er.is_displayed()
 
     def loc1_other_phone_error(self):
         othr_er = self.driver.find_element(
             *SigninPageLocators.otr_phn_error1)
-        print("sign-up location-1 other-phone-number blank",
-              othr_er.is_displayed())
         return othr_er.is_displayed()
 
     def loc2_post_error(self):
         post_error = self.driver.find_element(
             *SigninPageLocators.loc2_post_code_err)
-        print("sign-up location-2  postal-code blank",
-              post_error.is_displayed())
         return post_error.is_displayed()
 
     def loc2_email_error(self):
         email_error = self.driver.find_element(
             *SigninPageLocators.loc2_email_err)
-        print("sign-up location-2 email blank",  email_error.is_displayed())
         return email_error.is_displayed()
 
     def loc2_phn_error(self):
         phn_error = self.driver.find_element(
             *SigninPageLocators.loc2_phn_err)
-        print("sign-up location-2 phone-number blank",  phn_error.is_displayed())
         return phn_error.is_displayed()
 
     def fill_fields(self):
@@ -113,39 +103,46 @@ class SignUpLocation(BasePage):
         time.sleep(1)
 
         try:
-            assert self.loc1_street_error()
+            assert self.loc1_street_error() == True
+            print("Success: sign-up location-1 blank street-address error found.")
         except:
-            print("No result found for street-address")
+            print("No result found for location-1  blank street-address")
 
         try:
-            assert self.loc1_city_error()
+            assert self.loc1_city_error() == True
+            print("Success: sign-up location-1 blank city error found.")
         except:
-            print("No result found for city")
+            print("No result found for location-1  blank city")
 
         try:
-            assert self.loc1_state_error()
+            assert self.loc1_state_error() == True
+            print("Success: sign-up location-1 blank state error found.")
         except:
-            print("No result found for state")
+            print("No result found for location-1  blank  state")
 
         try:
-            assert self.loc1_post_error()
+            assert self.loc1_post_error() == True
+            print("Success: sign-up location-1 blank post-code error found.")
         except:
-            print("No result found for post-code")
+            print("No result found for location-1  blank  post-code")
 
         try:
-            assert self.loc2_post_error()
+            assert self.loc2_post_error() == True
+            print("Success: sign-up location-2 blank post-code error found.")
         except:
-            print("No result found for location-2 post-code")
+            print("No result found for location-2 blank post-code")
 
         try:
-            assert self.loc2_email_error()
+            assert self.loc2_email_error() == True
+            print("Success: sign-up location-2 blank email error found.")
         except:
-            print("No result found for location-2 email")
+            print("No result found for location-2 blank email")
 
         try:
-            assert self.loc2_phn_error()
+            assert self.loc2_phn_error() == True
+            print("Success: sign-up location-2 blank phone-number error found.")
         except:
-            print("No result found for location-2 phone")
+            print("No result found for location-2 blank phone-number")
 
         time.sleep(1)
         self.driver.execute_script(
@@ -198,29 +195,34 @@ class SignUpLocation(BasePage):
         time.sleep(1)
 
         try:
-            assert self.loc1_post_error()
+            assert self.loc1_post_error() == True
+            print("Success: sign-up location-1 invalid post-code error found.")
         except:
-            print("No result found for invalid post-code")
+            print("No result found for invalid location-1 post-code")
 
         try:
-            assert self.loc1_other_phone_error()
+            assert self.loc1_other_phone_error() == True
+            print("Success: sign-up location-1 invalid other-number error found.")
         except:
-            print("No result found for invalid other-phone number")
+            print("No result found for invalid location-1 other-phone number")
 
         try:
-            assert self.loc2_post_error()
+            assert self.loc2_post_error() == True
+            print("Success: sign-up location-2 invalid post-code error found.")
         except:
             print("No result found for invalid location-2 post-code")
 
         try:
-            assert self.loc2_email_error()
+            assert self.loc2_email_error() == True
+            print("Success: sign-up location-2 invalid email error found.")
         except:
             print("No result found for invalid location-2 email")
 
         try:
-            assert self.loc2_phn_error()
+            assert self.loc2_phn_error() == True
+            print("Success: sign-up location-2 invalid phone-number error found.")
         except:
-            print("No result found for invalid location-2 phone")
+            print("No result found for invalid location-2 phone-number")
 
         time.sleep(1)
         self.driver.execute_script(

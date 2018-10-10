@@ -15,54 +15,41 @@ class SignUpCompanyInfo(BasePage):
     def street_add_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_street_add_error)
-        print("signup company-info street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_city_error)
-        print("signup company-info city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def state_error(self):
         state_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_state_error)
-        print("signup company-info state blank",  state_er.is_displayed())
         return state_er.is_displayed()
 
     def post_error(self):
         post_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_post_error)
-        print("signup company-info  postal-code blank or invalid",
-              post_er.is_displayed())
         return post_er.is_displayed()
 
     def website_error(self):
         web_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_website_error)
-        print("signup company-info website-name blank or invalid",
-              web_er.is_displayed())
         return web_er.is_displayed()
 
     def email_error(self):
         email_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_email_error)
-        print("signup company-info email blank or invalid",
-              email_er.is_displayed())
         return email_er.is_displayed()
 
     def phn_error(self):
         phn_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_phn_error)
-        print("signup company-info phone-number blank or invalid",
-              phn_er.is_displayed())
         return phn_er.is_displayed()
 
     def othr_error(self):
         othr_phn_er = self.driver.find_element(
             *SigninPageLocators.companyinfo_othr_error)
-        print("signup company-info other-phone-number invalid",
-              othr_phn_er.is_displayed())
         return othr_phn_er.is_displayed()
 
     def fill_fields(self):
@@ -75,34 +62,41 @@ class SignUpCompanyInfo(BasePage):
         self.click_companyInfo_signup_button()
         time.sleep(1)
         try:
-            assert self.street_add_error()
+            assert self.street_add_error() == True
+            print("Success: signup company-info street-address blank error found.")
         except:
-            print("No result found for street-address")
+            print("No result found for blank street-address")
         try:
-            assert self.city_error()
+            assert self.city_error() == True
+            print("Success: signup company-info city blank error found.")
         except:
-            print("No result found for city")
+            print("No result found for blank  city")
         try:
-            assert self.state_error()
+            assert self.state_error() == True
+            print("Success: signup company-info state blank error found.")
         except:
-            print("No result found for state")
+            print("No result found for blank  state")
 
         try:
-            assert self.post_error()
+            assert self.post_error() == True
+            print("Success: signup company-info post-code blank error found.")
         except:
-            print("No result found for post-code")
+            print("No result found for blank  post-code")
         try:
-            assert self.website_error()
+            assert self.website_error() == True
+            print("Success: signup company-info website blank error found.")
         except:
-            print("No result found for website")
+            print("No result found for blank  website")
         try:
-            assert self.email_error()
+            assert self.email_error() == True
+            print("Success: signup company-info email blank error found.")
         except:
-            print("No result found for email")
+            print("No result found for blank  email")
         try:
-            assert self.phn_error()
+            assert self.phn_error() == True
+            print("Success: signup company-info phone-number blank error found.")
         except:
-            print("No result found for phone-number")
+            print("No result found for blank  phone-number")
 
         street_add = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_street_add)
@@ -144,23 +138,28 @@ class SignUpCompanyInfo(BasePage):
         time.sleep(1)
 
         try:
-            assert self.post_error()
+            assert self.post_error() == True
+            print("Success: signup company-info post-code invalid error found.")
         except:
             print("No result found for post-code")
         try:
-            assert self.website_error()
+            assert self.website_error() == True
+            print("Success: signup company-info website invalid error found.")
         except:
             print("No result found for website")
         try:
-            assert self.email_error()
+            assert self.email_error() == True
+            print("Success: signup company-info email invalid error found.")
         except:
             print("No result found for email")
         try:
-            assert self.phn_error()
+            assert self.phn_error() == True
+            print("Success: signup company-info phone-number invalid error found.")
         except:
             print("No result found for phone-number")
         try:
-            assert self.othr_error()
+            assert self.othr_error() == True
+            print("Success: signup company-info other-number invalid error found.")
         except:
             print("No result found for other-number")
 

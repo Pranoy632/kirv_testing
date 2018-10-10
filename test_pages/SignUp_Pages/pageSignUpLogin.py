@@ -15,14 +15,11 @@ class SignUpLogin(BasePage):
     def login_email_error_displayed(self):
         emailElement = self.driver.find_element(
             *SigninPageLocators.email_login_signup_error)
-        print("signup-login email blank or invalid",
-              emailElement.is_displayed())
         return emailElement.is_displayed()
 
     def login_pwd_error_displayed(self):
         pwdElement = self.driver.find_element(
             *SigninPageLocators.pwd_login_signup_error)
-        print("signup-login password blank", pwdElement.is_displayed())
         return pwdElement.is_displayed()
 
     def login_with_blank_email(self):

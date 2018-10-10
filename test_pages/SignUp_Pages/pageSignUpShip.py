@@ -15,41 +15,31 @@ class SignUpShipTo(BasePage):
     def ship2_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.ship2_street_err)
-        print("signup shipTo-2 street blank",  street_er.is_displayed())
         return street_er.is_displayed()
 
     def ship2_city_error(self):
         city_er = self.driver.find_element(
             *SigninPageLocators.ship2_city_err)
-        print("signup shipTo-2 city blank",  city_er.is_displayed())
         return city_er.is_displayed()
 
     def ship2_post_error(self):
         post_error = self.driver.find_element(
             *SigninPageLocators.ship2_post_err)
-        print("signup shipTo-2 postal-code blank or invalid",
-              post_error.is_displayed())
         return post_error.is_displayed()
 
     def ship2_email_error(self):
         email_error = self.driver.find_element(
             *SigninPageLocators.ship2_email_err)
-        print("signup shipTo-2  email blank or invalid",
-              email_error.is_displayed())
         return email_error.is_displayed()
 
     def ship2_phn_error(self):
         phn_error = self.driver.find_element(
             *SigninPageLocators.ship2_phn_err)
-        print("signup shipTo-2 phone-number blank or invalid",
-              phn_error.is_displayed())
         return phn_error.is_displayed()
 
     def ship_other_phone_error(self):
         othr_er = self.driver.find_element(
             *SigninPageLocators.ship2_othr_phn_err)
-        print("signup shipTo-2  other-phone-number invalid",
-              othr_er.is_displayed())
         return othr_er.is_displayed()
 
     def fill_fields(self):
@@ -129,29 +119,34 @@ class SignUpShipTo(BasePage):
         time.sleep(1)
 
         try:
-            assert self.ship2_street_error()
+            assert self.ship2_street_error() == True
+            print("Success: signup shipTo-2  street-address blank error found.")
         except:
-            print("No result found for blank street-address")
+            print("No result found for shipTo-2 blank street-address")
 
         try:
-            assert self.ship2_city_error()
+            assert self.ship2_city_error() == True
+            print("Success: signup shipTo-2  city blank error found.")
         except:
-            print("No result found for blank city")
+            print("No result found for shipTo-2 blank city")
 
         try:
-            assert self.ship2_post_error()
+            assert self.ship2_post_error() == True
+            print("Success: signup shipTo-2  post-code blank error found.")
         except:
-            print("No result found for blank post-code")
+            print("No result found for shipTo-2 blank post-code")
 
         try:
-            assert self.ship2_email_error()
+            assert self.ship2_email_error() == True
+            print("Success: signup shipTo-2  email blank error found.")
         except:
-            print("No result found for blank email")
+            print("No result found for shipTo-2 blank email")
 
         try:
-            assert self.ship2_phn_error()
+            assert self.ship2_phn_error() == True
+            print("Success: signup shipTo-2 phone-number blank error found.")
         except:
-            print("No result found for blank phone")
+            print("No result found for shipTo-2 blank phone-number")
 
         ship_street2 = self.driver.find_element(
             *SigninPageLocators.ship2_street_add)
@@ -182,24 +177,28 @@ class SignUpShipTo(BasePage):
         time.sleep(1)
 
         try:
-            assert self.ship2_post_error()
+            assert self.ship2_post_error() == True
+            print("Success: signup shipTo-2  post-code invalid error found.")
         except:
             print("No result found for invalid ship-2 post-code")
 
         try:
-            assert self.ship2_email_error()
+            assert self.ship2_email_error() == True
+            print("Success: signup shipTo-2  email invalid error found.")
         except:
             print("No result found for invalid ship-2 email")
 
         try:
-            assert self.ship2_phn_error()
+            assert self.ship2_phn_error() == True
+            print("Success: signup shipTo-2  phone-number invalid error found.")
         except:
-            print("No result found for invalid ship-2 phone")
+            print("No result found for invalid ship-2 phone-number")
 
         try:
-            assert self.ship_other_phone_error()
+            assert self.ship_other_phone_error() == True
+            print("Success: signup shipTo-2  other-phone-number invalid error found.")
         except:
-            print("No result found for invalid ship-2 other-phone")
+            print("No result found for invalid ship-2 other-phone-number")
 
         ship_post2.clear()
         ship_post2.send_keys(fake.postcode())

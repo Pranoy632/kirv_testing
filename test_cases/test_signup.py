@@ -19,7 +19,7 @@ from SignUp_Pages.pageSignUpCongratulations import SignUpCongratulations
 from email_check import EmailCheck
 
 
-class kirvTest(unittest.TestCase):
+class kirvSignupTest(unittest.TestCase):
 
     def setUp(self):
         options = ChromeOptions()
@@ -32,14 +32,15 @@ class kirvTest(unittest.TestCase):
         main_page = MainPage(self.driver)
         main_page.click_signup_button()
 
-        # SignUp
+        # SignUp-login
 
         signUp_login = SignUpLogin(self.driver)
 
         signUp_login.login_with_blank_pwd()
         signUp_login.click_login_signup_button()
         try:
-            assert signUp_login.login_pwd_error_displayed()
+            assert signUp_login.login_pwd_error_displayed() == True
+            print("Success: signup login password blank error found.")
         except:
             print("No results found for blank password.")
         signUp_login.clear_data()
@@ -47,7 +48,8 @@ class kirvTest(unittest.TestCase):
         signUp_login.login_with_invalid_email()
         signUp_login.click_login_signup_button()
         try:
-            assert signUp_login.login_email_error_displayed()
+            assert signUp_login.login_email_error_displayed() == True
+            print("Success: signup login email invalid error found.")
         except:
             print("No results found for invalid email.")
         signUp_login.clear_data()
@@ -55,7 +57,8 @@ class kirvTest(unittest.TestCase):
         signUp_login.login_with_blank_email()
         signUp_login.click_login_signup_button()
         try:
-            assert signUp_login.login_email_error_displayed()
+            assert signUp_login.login_email_error_displayed() == True
+            print("Success: signup login email blank error found.")
         except:
             print("No results found for blank email.")
         signUp_login.clear_data()
