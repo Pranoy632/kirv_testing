@@ -77,13 +77,12 @@ class SupplierHomepage(BasePage):
         return self.driver.find_elements(*SupplierPageLocators.table_rows)
 
     def get_required_status_count(self, status_name):
-        table_rows = self.get_row_values()
-        return ((list(filter (lambda value: value == status_name ,[row.text.rsplit(' ',2)[1] for row in table_rows][1:]))).count(status_name))
-
-    def get_all_customers_status_count(self):
         status_list = ['Pending', 'Active', 'Inactive']
         table_rows = self.get_row_values()
-        return len(list(filter (lambda value: value in status_list,[row.text.rsplit(' ',2)[1] for row in table_rows][1:])))
+        if status_name != 'all_customers':
+            return ((list(filter (lambda value: value == status_name ,[row.text.rsplit(' ',2)[1] for row in table_rows][1:]))).count(status_name))
+        else:
+            return len(list(filter (lambda value: value in status_list,[row.text.rsplit(' ',2)[1] for row in table_rows][1:])))
 
     def get_total_table_records(self):
         total_record_text = self.driver.find_element(*SupplierPageLocators.total_table_records).text
@@ -137,3 +136,13 @@ class SupplierHomepage(BasePage):
 
     def get_signin_button(self):
         return self.driver.find_element(*SupplierPageLocators.signin)
+
+'''
+    def get_pagination(self):
+        a= self.driver.find_elements(*SupplierPageLocators.page_number1)
+        print (len(a))
+        for i in a:
+            #print (i.find_element(*SupplierPageLocators.page_number1).get_attribute("class"))
+            #print (i.find_element(*SupplierPageLocators.page_number1).text)
+            print (i.get_attribute("class"))
+'''
