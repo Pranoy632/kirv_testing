@@ -2,39 +2,53 @@ import sys
 sys.path.append('../test_locators')
 import time
 
+
 from Basepage import BasePage
 
-from Buyer_Locators.locatorBuyer import BuyerPageLocators
+from signin_buyer_supplier_locator import SigInLocators
 
 
 class MainSigninPage(BasePage):
 
     def check_signin_img(self):
         sigin_img = self.driver.find_element(
-            *BuyerPageLocators.signin_kirv_image)
+            *SigInLocators.signin_kirv_image)
         return sigin_img.is_displayed()
 
     def check_signin_title(self):
         signin_title = self.driver.find_element(
-            *BuyerPageLocators.signin_title)
+            *SigInLocators.signin_title)
         return signin_title.is_displayed()
 
     def email_error(self):
         email_er = self.driver.find_element(
-            *BuyerPageLocators.email_login_error)
+            *SigInLocators.email_login_error)
         return email_er.is_displayed()
 
     def pwd_error(self):
-        pwd_er = self.driver.find_element(*BuyerPageLocators.pwd_login_error)
+        pwd_er = self.driver.find_element(*SigInLocators.pwd_login_error)
         return pwd_er.is_displayed()
 
-    def fill_fields(self):
+    def fill_fields(self, username, password):
+
+        try:
+            assert self.check_signin_img() == True
+            print("Success: Kirv image found.")
+        except:
+            print("No result for kirv image.")
+
+        try:
+            assert self.check_signin_title() == True
+            print("Success: sign in title found.")
+        except:
+            print("No result found for kirv title.")
+
         self.wait_for_element(
-            BuyerPageLocators.email_login)
+            SigInLocators.email_login)
 
         email_input = self.driver.find_element(
-            *BuyerPageLocators.email_login)
-        email_input.send_keys("amztest18+20181010142126@gmail.com")
+            *SigInLocators.email_login)
+        email_input.send_keys(username)
 
         self.click_signin_btn()
         time.sleep(1)
@@ -46,7 +60,7 @@ class MainSigninPage(BasePage):
             print("No result found for blank password.")
 
         pwd_input = self.driver.find_element(
-            *BuyerPageLocators.pwd_login)
+            *SigInLocators.pwd_login)
         pwd_input.send_keys("amz")
 
         self.click_signin_btn()
@@ -73,7 +87,7 @@ class MainSigninPage(BasePage):
         email_input.clear()
 
         pwd_input.clear()
-        pwd_input.send_keys("amazatic")
+        pwd_input.send_keys(password)
 
         self.click_signin_btn()
         time.sleep(1)
@@ -85,10 +99,10 @@ class MainSigninPage(BasePage):
         except:
             print("No result found for blank email.")
 
-        email_input.send_keys("amztest18+20181010142126@gmail.com")
+        email_input.send_keys(username)
         self.click_signin_btn()
 
     def click_signin_btn(self):
         signin_btn = self.driver.find_element(
-            *BuyerPageLocators.signin_login_btn)
+            *SigInLocators.signin_login_btn)
         signin_btn.click()

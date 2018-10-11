@@ -21,9 +21,11 @@ class EmailCheck(object):
                     typ, data = mail.fetch(num, '(RFC822)')
                     for response_part in data:
                         if isinstance(response_part, tuple):
-                            # print(response_part)
                             original = email.message_from_bytes(
                                 response_part[1])
+                            # print('<html>\n<body>' + original.get_payload(
+                            # decode=True).decode("utf-8") + '\n' + '</body>\n'
+                            # + '</html>')
                             print(original['From'])
                             data = original['Subject']
                             print(data)

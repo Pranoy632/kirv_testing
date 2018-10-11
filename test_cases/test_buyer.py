@@ -7,10 +7,10 @@ sys.path.append('../test_pages')
 import time
 
 
-from Buyer_Pages.pageSignin import MainSigninPage
+from page_buyer_supplier_signin import MainSigninPage
 
 
-class kirvBuyerTest(unittest.TestCase):
+class kirvBuyerSupplierSiginTest(unittest.TestCase):
 
     def setUp(self):
         options = ChromeOptions()
@@ -20,20 +20,13 @@ class kirvBuyerTest(unittest.TestCase):
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_buyer(self):
+        user = 'amztest18+20181010142126@gmail.com'
+        pwd = 'amazatic'
+
+        # Sign In
+
         signin_page = MainSigninPage(self.driver)
-        try:
-            signin_page.check_signin_img() == True
-            print("Success: Kirv image found.")
-        except:
-            print("No result for kirv image.")
-
-        try:
-            signin_page.check_signin_title() == True
-            print("Success: sign in title found.")
-        except:
-            print("No result found for kirv title.")
-
-        signin_page.fill_fields()
+        signin_page.fill_fields(user, pwd)
 
 
 if __name__ == "__main__":
