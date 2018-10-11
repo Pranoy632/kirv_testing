@@ -10,7 +10,7 @@ import time
 from page_buyer_supplier_signin import MainSigninPage
 
 
-class kirvBuyerSupplierSiginTest(unittest.TestCase):
+class kirvBuyerTest(unittest.TestCase):
 
     def setUp(self):
         options = ChromeOptions()
