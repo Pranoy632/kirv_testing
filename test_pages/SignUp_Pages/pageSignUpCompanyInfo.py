@@ -12,16 +12,100 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpCompanyInfo(BasePage):
 
+    def street_add_error(self):
+        street_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_street_add_error)
+        return street_er.is_displayed()
+
+    def city_error(self):
+        city_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_city_error)
+        return city_er.is_displayed()
+
+    def state_error(self):
+        state_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_state_error)
+        return state_er.is_displayed()
+
+    def post_error(self):
+        post_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_post_error)
+        return post_er.is_displayed()
+
+    def website_error(self):
+        web_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_website_error)
+        return web_er.is_displayed()
+
+    def email_error(self):
+        email_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_email_error)
+        return email_er.is_displayed()
+
+    def phn_error(self):
+        phn_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_phn_error)
+        return phn_er.is_displayed()
+
+    def othr_error(self):
+        othr_phn_er = self.driver.find_element(
+            *SigninPageLocators.companyinfo_othr_error)
+        return othr_phn_er.is_displayed()
+
     def fill_fields(self):
-        time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
         self.wait_for_element(SigninPageLocators.compyinfo_signUp_reseller_id)
 
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_reseller_id).send_keys(fake.random_int(min=0, max=9999))
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_street_add).send_keys(fake.building_number() + " " + fake.street_name())
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_city).send_keys(fake.city())
+        reseller_id = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_reseller_id)
+        reseller_id.send_keys(fake.random_int(min=0, max=9999))
+
+        self.click_companyInfo_signup_button()
+        time.sleep(1)
+        try:
+            assert self.street_add_error() == True
+            print("Success: signup company-info street-address blank error found.")
+        except:
+            print("No result found for blank street-address")
+        try:
+            assert self.city_error() == True
+            print("Success: signup company-info city blank error found.")
+        except:
+            print("No result found for blank  city")
+        try:
+            assert self.state_error() == True
+            print("Success: signup company-info state blank error found.")
+        except:
+            print("No result found for blank  state")
+
+        try:
+            assert self.post_error() == True
+            print("Success: signup company-info post-code blank error found.")
+        except:
+            print("No result found for blank  post-code")
+        try:
+            assert self.website_error() == True
+            print("Success: signup company-info website blank error found.")
+        except:
+            print("No result found for blank  website")
+        try:
+            assert self.email_error() == True
+            print("Success: signup company-info email blank error found.")
+        except:
+            print("No result found for blank  email")
+        try:
+            assert self.phn_error() == True
+            print("Success: signup company-info phone-number blank error found.")
+        except:
+            print("No result found for blank  phone-number")
+
+        street_add = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_street_add)
+        street_add.send_keys(fake.building_number() + " " + fake.street_name())
+
+        city = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_city)
+        city.send_keys(fake.city())
+
         self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_state).click()
         time.sleep(1)
@@ -30,18 +114,73 @@ class SignUpCompanyInfo(BasePage):
         action.send_keys(Keys.ENTER)
         action.perform()
 
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_post_code).send_keys(fake.postcode())
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_website).send_keys(fake.domain_name())
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_email).send_keys(fake.company_email())
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_phn).send_keys("12345678901")
-        self.driver.find_element(
-            *SigninPageLocators.compyinfo_signUp_otherphn).send_keys("12345678902")
+        post_code = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_post_code)
+        post_code.send_keys('test post')
+
+        domain = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_website)
+        domain.send_keys('test website')
+
+        email = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_email)
+        email.send_keys('testemail.com')
+
+        phn_num = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_phn)
+        phn_num.send_keys("11111")
+
+        otr_phn = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_otherphn)
+        otr_phn.send_keys("2222")
+
+        self.click_companyInfo_signup_button()
+        time.sleep(1)
+
+        try:
+            assert self.post_error() == True
+            print("Success: signup company-info post-code invalid error found.")
+        except:
+            print("No result found for post-code")
+        try:
+            assert self.website_error() == True
+            print("Success: signup company-info website invalid error found.")
+        except:
+            print("No result found for website")
+        try:
+            assert self.email_error() == True
+            print("Success: signup company-info email invalid error found.")
+        except:
+            print("No result found for email")
+        try:
+            assert self.phn_error() == True
+            print("Success: signup company-info phone-number invalid error found.")
+        except:
+            print("No result found for phone-number")
+        try:
+            assert self.othr_error() == True
+            print("Success: signup company-info other-number invalid error found.")
+        except:
+            print("No result found for other-number")
+
+        post_code.clear()
+        post_code.send_keys(fake.postcode())
+
+        domain.clear()
+        domain.send_keys(fake.domain_name())
+
+        email.clear()
+        email.send_keys(fake.company_email())
+
+        phn_num.clear()
+        phn_num.send_keys("12345678901")
+
+        otr_phn.clear()
+        otr_phn.send_keys("12345678902")
+
+        self.click_companyInfo_signup_button()
 
     def click_companyInfo_signup_button(self):
         element_companyInfo_signup = self.driver.find_element(
-            *SigninPageLocators.signup)
+            *SigninPageLocators.companyinfo_next_btn)
         element_companyInfo_signup.click()

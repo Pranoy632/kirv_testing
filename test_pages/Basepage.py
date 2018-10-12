@@ -14,3 +14,12 @@ class BasePage(object):
         " Performs wait for time provided"
         WebDriverWait(self.driver, 15).until(
             EC.visibility_of_element_located(*locator))
+
+    def wait_for_element_clickable(self, *locator):
+        " wait for element to be clickable "
+        WebDriverWait(self.driver, 15).until(
+            EC.element_to_be_clickable(*locator))
+
+    def wait_for_element_presence(self, *locator):
+        WebDriverWait(self.driver, 15).until(
+            EC.presence_of_element_located(*locator))
