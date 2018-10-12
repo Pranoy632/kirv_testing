@@ -33,13 +33,13 @@ class MainSigninPage(BasePage):
 
         try:
             assert self.check_signin_img() == True
-            print("Success: Kirv image found.")
+            print("Success: signin Kirv image found.")
         except:
             print("No result for kirv image.")
 
         try:
             assert self.check_signin_title() == True
-            print("Success: sign in title found.")
+            print("Success: signin sign-In title found.")
         except:
             print("No result found for kirv title.")
 

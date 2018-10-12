@@ -8,6 +8,7 @@ import time
 
 
 from page_buyer_supplier_signin import MainSigninPage
+from Buyer_Pages.page_header import HeaderPage
 
 
 class kirvBuyerTest(unittest.TestCase):
@@ -27,6 +28,13 @@ class kirvBuyerTest(unittest.TestCase):
 
         signin_page = MainSigninPage(self.driver)
         signin_page.fill_fields(user, pwd)
+
+        # header
+
+        header = HeaderPage(self.driver)
+        header.check_img_labels()
+
+        # home-page
 
 
 if __name__ == "__main__":
