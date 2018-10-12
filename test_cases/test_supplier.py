@@ -17,7 +17,7 @@ class Supplier_Test(unittest.TestCase):
         options.add_argument("--start-maximized")
         options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
-        self.driver.implicitly_wait(10)
+        self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def check_home_page(self):
@@ -58,10 +58,11 @@ class Supplier_Test(unittest.TestCase):
             assert supplier_homepage.check_account_status_table_header().is_displayed()
             print ("Success -> check table header of %s tab"%(status_tab_name))
         except:
-            assert supplier_homepage.get_search_message().is_displayed()
-            print ("Success -> check table header of %s tab"%(status_tab_name))
-        except:
-            print ("AssertionError --------> %s tab table header error"%(status_tab_name))
+            try:
+                assert supplier_homepage.get_search_message().is_displayed()
+                print ("Success -> check table header (contracts not found) of %s tab"%(status_tab_name))
+            except:
+                print ("AssertionError --------> %s tab table header error"%(status_tab_name))
 
 
     def check_tab_is_active(self, status_tab_name):
@@ -82,34 +83,38 @@ class Supplier_Test(unittest.TestCase):
         """
         supplier_homepage = SupplierHomepage(self.driver)
         try:
-            assert supplier_homepage.get_required_status_count(status_tab_name) == supplier_homepage.get_total_table_records()
+            assert supplier_homepage.get_required_status_count(status_tab_name) == supplier_homepage.get_single_page_records_count()
             print ("Success -> Checks total customer count of %s tab"%(status_tab_name))
         except:
             print ("AssertionError --------> %s tab total count mismatch"%(status_tab_name))
 
 
-    def check_pagination(self, status_tab_name):
+    def check_pagination(self, status_tab_name):               ##### Pagination still in progress -> check if no of pages matches with page line below #####
         """
             Checks if pagination tab works or not
         """
         supplier_homepage = SupplierHomepage(self.driver)
-        try:
-            if (supplier_homepage.get_total_table_records() == 50):
-                supplier_homepage.scroll_down_window()
-                if (supplier_homepage.get_first_pagination_tab().is_displayed()):      # is_enabled() for buttons or clickable buttons
-                    self.check_tab_is_active("1")
-                    supplier_homepage.click_button(supplier_homepage.get_second_pagination_tab())
-                    self.check_tab_is_active(status_tab_name)
-                    self.check_customers_count(status_tab_name)
-                    supplier_homepage.scroll_down_window()
-                    self.check_tab_is_active("2")
-                    supplier_homepage.scroll_up_window()
-            print ("Success -> check pagination of %s tab"%(status_tab_name))
-        except:
-            print ("AssertionError --------> %s pagination error"%(status_tab_name))
+        #try:
+        total_table_records = supplier_homepage.get_total_table_records()
+        pages=0 if total_table_records==0 else int(total_table_records/50) if total_table_records%50==0 else int((total_table_records/50)+1)
+        print (pages)
+        if pages == 0:
+            assert supplier_homepage.get_search_message().is_displayed()
+        if pages > 1:
+            supplier_homepage.scroll_down_window()
+            self.check_tab_is_active("1")
+            supplier_homepage.click_button(supplier_homepage.get_second_pagination_tab())
+            self.check_tab_is_active(status_tab_name)
+            supplier_homepage.scroll_down_window()
+            self.check_tab_is_active("2")
+            supplier_homepage.scroll_up_window()
+        print ("Success -> check pagination of %s tab"%(status_tab_name))
+        #except:
+        #    supplier_homepage.scroll_up_window()
+        #    print ("AssertionError --------> %s pagination error"%(status_tab_name))
 
 
-    def check_search_functionallity(self, status_tab_name):
+    def check_search_functionallity(self, status_tab_name):     #### Search functionallity have some things to implement by dev (like after searching empty string it should remain on same page) ####
         """
             Checks search customers without any text, with valid text and with invalid text
         """
@@ -157,7 +162,7 @@ class Supplier_Test(unittest.TestCase):
         self.check_table_header(status_tab_name)
         self.check_tab_is_active(status_tab_name)
         self.check_customers_count(status_tab_name)
-        self.check_pagination(status_tab_name)
+        #self.check_pagination(status_tab_name)
         #self.check_search_functionallity(status_tab_name)         # Search Functionallity yet to complete by dev
         self.goto_homepage()
 
@@ -192,7 +197,7 @@ class Supplier_Test(unittest.TestCase):
 
         status_tab = ["all_customers", "Pending", "Active", "Inactive"]
         self.check_all_status_tab(status_tab)
-
+        
         #self.logout()
 
 if __name__ == "__main__":

@@ -84,9 +84,13 @@ class SupplierHomepage(BasePage):
         else:
             return len(list(filter (lambda value: value in status_list,[row.text.rsplit(' ',2)[1] for row in table_rows][1:])))
 
-    def get_total_table_records(self):
+    def get_single_page_records_count(self):
         total_record_text = self.driver.find_element(*SupplierPageLocators.total_table_records).text
         return int(total_record_text.split()[0])
+
+    def get_total_table_records(self):
+        total_record_text = self.driver.find_element(*SupplierPageLocators.total_table_records).text
+        return int(total_record_text.split()[2])
 
     def is_tab_active(self, status_tab_name):
         required_status_tab = {
