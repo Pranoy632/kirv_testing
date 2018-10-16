@@ -298,6 +298,7 @@ class SigninPageLocators(object):
 
     # congratulations
 
+    congrats_title = (By.CSS_SELECTOR, '#congrats > div > div > div > h3')
     congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > button')
 
     # sign-up

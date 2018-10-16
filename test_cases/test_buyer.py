@@ -9,6 +9,7 @@ import time
 
 from page_buyer_supplier_signin import MainSigninPage
 from Buyer_Pages.page_header import HeaderPage
+from Buyer_Pages.page_home import HomePage
 
 
 class kirvBuyerTest(unittest.TestCase):
@@ -18,6 +19,7 @@ class kirvBuyerTest(unittest.TestCase):
         options.add_argument("--start-maximized")
         options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
+        self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_buyer(self):
@@ -35,6 +37,9 @@ class kirvBuyerTest(unittest.TestCase):
         header.check_img_labels()
 
         # home-page
+
+        home = HomePage(self.driver)
+        home.check_labels_prodlist()
 
 
 if __name__ == "__main__":

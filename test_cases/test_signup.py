@@ -26,6 +26,7 @@ class kirvSignupTest(unittest.TestCase):
         options.add_argument("--start-maximized")
         options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
+        self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_signUp(self):
@@ -105,6 +106,7 @@ class kirvSignupTest(unittest.TestCase):
         # congratulation
 
         signUp_congratulation = SignUpCongratulations(self.driver)
+        signUp_congratulation.congrats_title_check()
         signUp_congratulation.click_modal_close_btn()
 
         # email check
