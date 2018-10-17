@@ -8,6 +8,19 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpBrand(BasePage):
 
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.brand_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.brand_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: brand title found.")
+        except:
+            print("No result found for brand title.")
+
     def select_checkbox(self):
         self.wait_for_element(SigninPageLocators.brand_signUp)
         time.sleep(1)

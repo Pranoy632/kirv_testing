@@ -12,6 +12,36 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpVolumes(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_5 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_5 = item.text
+        if step_5 == str(5):
+            print("Success: Step %s is active." % (step_5))
+        else:
+            print("No result found for step %s active." % (step_5))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.volumes_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.volumes_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: volumes title found.")
+        except:
+            print("No result found for volumes title.")
+
     def full_truck_q1_err(self):
         full_q1_er = self.driver.find_element(
             *SigninPageLocators.volumes_num_full_trucks_q1_err)

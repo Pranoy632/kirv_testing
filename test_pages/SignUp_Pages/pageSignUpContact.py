@@ -8,6 +8,19 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpContact(BasePage):
 
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.contactInfo_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.contactInfo_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: contactInfo title found.")
+        except:
+            print("No result found for contactInfo title.")
+
     def company_name_error(self):
         companyName = self.driver.find_element(
             *SigninPageLocators.contactInfo_companyName_error)

@@ -12,6 +12,36 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpLocation(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_2 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_2 = item.text
+        if step_2 == str(2):
+            print("Success: Step %s is active." % (step_2))
+        else:
+            print("No result found for step %s active." % (step_2))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.location_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.location_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: location title found.")
+        except:
+            print("No result found for location title.")
+
     def loc1_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.street_error1)

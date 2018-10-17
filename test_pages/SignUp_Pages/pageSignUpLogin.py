@@ -12,6 +12,19 @@ time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 class SignUpLogin(BasePage):
 
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.title_login_signup)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.title_login_signup)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: signup-login title found.")
+        except:
+            print("No result found for signup-login title ")
+
     def login_email_error_displayed(self):
         emailElement = self.driver.find_element(
             *SigninPageLocators.email_login_signup_error)

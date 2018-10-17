@@ -12,6 +12,36 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpShipTo(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_3 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_3 = item.text
+        if step_3 == str(3):
+            print("Success: Step %s is active." % (step_3))
+        else:
+            print("No result found for step %s active." % (step_3))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.ship_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.ship_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: ship/warehouse title found.")
+        except:
+            print("No result found for ship/warehouse title.")
+
     def ship2_street_error(self):
         street_er = self.driver.find_element(
             *SigninPageLocators.ship2_street_err)

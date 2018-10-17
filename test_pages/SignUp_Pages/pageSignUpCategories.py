@@ -12,6 +12,36 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 class SignUpCategories(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_4 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_4 = item.text
+        if step_4 == str(4):
+            print("Success: Step %s is active." % (step_4))
+        else:
+            print("No result found for step %s active." % (step_4))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.categories_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.categories_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: categories title found.")
+        except:
+            print("No result found for categories title.")
+
     def categories_stove_err(self):
         stove_er = self.driver.find_element(
             *SigninPageLocators.categories_cooking_stove_er)
