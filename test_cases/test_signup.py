@@ -26,6 +26,7 @@ class kirvSignupTest(unittest.TestCase):
         options.add_argument("--start-maximized")
         options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
+        self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_signUp(self):
@@ -117,7 +118,8 @@ class kirvSignupTest(unittest.TestCase):
                 i = i + 1
         except:
             print("No email found")
-
+        
+        self.driver.close()
 
 if __name__ == "__main__":
     unittest.main()

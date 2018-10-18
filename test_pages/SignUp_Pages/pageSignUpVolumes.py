@@ -9,8 +9,10 @@ from selenium.webdriver.common import action_chains
 from Basepage import BasePage
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
+volumeInfo = {}
 
 class SignUpVolumes(BasePage):
+
 
     def full_truck_q1_err(self):
         full_q1_er = self.driver.find_element(
@@ -65,6 +67,8 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('1) q1_quarterTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value'))
+        volumeInfo['q1_quarterTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_half_truck_q1).click()
@@ -75,6 +79,8 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('2) q1_halfTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value'))
+        volumeInfo['q1_halfTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_check_q2).click()
@@ -87,6 +93,8 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('3) q2_quarterTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value'))
+        volumeInfo['q2_quarterTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_acknowledge_check).click()
@@ -122,6 +130,8 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('4) q1_fullTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value'))
+        volumeInfo['q1_fullTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_half_truck_q2).click()
@@ -131,6 +141,8 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('5) q2_halfTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value'))
+        volumeInfo['q2_halfTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_full_truck_q2).click()
@@ -141,6 +153,9 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
+        print ('6) q2_fullTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value'))
+        volumeInfo['q2_fullTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value')
+        print (volumeInfo)
 
         self.click_volumes_signup_button()
 

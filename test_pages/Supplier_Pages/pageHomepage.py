@@ -86,10 +86,15 @@ class SupplierHomepage(BasePage):
 
     def get_single_page_records_count(self):
         total_record_text = self.driver.find_element(*SupplierPageLocators.total_table_records).text
-        return int(total_record_text.split()[0])
+        count = total_record_text.split()[0]
+        if count == '0':
+            return 0
+        return int(total_record_text.split()[0].split('-')[1])
 
     def get_total_table_records(self):
         total_record_text = self.driver.find_element(*SupplierPageLocators.total_table_records).text
+        if total_record_text.split()[0] == '0':
+            return 0
         return int(total_record_text.split()[2])
 
     def is_tab_active(self, status_tab_name):
@@ -140,6 +145,11 @@ class SupplierHomepage(BasePage):
 
     def get_signin_button(self):
         return self.driver.find_element(*SupplierPageLocators.signin)
+
+    def get_total_pages(self):
+        return len(self.driver.find_elements(*SupplierPageLocators.page_link))
+        #for i in a:
+        #    print (i)
 
 '''
     def get_pagination(self):

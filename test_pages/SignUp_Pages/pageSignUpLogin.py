@@ -9,9 +9,11 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
+signupLogin = {}
 
 class SignUpLogin(BasePage):
-
+    
+        
     def login_email_error_displayed(self):
         emailElement = self.driver.find_element(
             *SigninPageLocators.email_login_signup_error)
@@ -58,7 +60,6 @@ class SignUpLogin(BasePage):
             *SigninPageLocators.pwd_login_signup).clear()
 
     def fill_email_pwd(self):
-
         self.wait_for_element_clickable(SigninPageLocators.email_login_signup)
 
         input_email = self.driver.find_element(
@@ -67,11 +68,16 @@ class SignUpLogin(BasePage):
         #input_email.send_keys("aaditi.d" + "+" + time_now + "@amazatic.com")
         #input_email.send_keys("priyanka.c" + "+" + time_now + "@amazatic.com")
         print("email", input_email.get_attribute('value'))
+        print ('1) email: %s'%input_email.get_attribute('value'))
+        signupLogin['email'] = input_email.get_attribute('value')
 
         input_pwd = self.driver.find_element(
             *SigninPageLocators.pwd_login_signup)
         input_pwd.send_keys("amazatic")
         print("password", input_pwd.get_attribute('value'))
+        print ('2) password: %s'%input_pwd.get_attribute('value'))
+        signupLogin['password'] = input_pwd.get_attribute('value')
+        print (signupLogin)
 
     def click_login_signup_button(self):
 

@@ -27,7 +27,8 @@ class kirvBuyerTest(unittest.TestCase):
 
         signin_page = MainSigninPage(self.driver)
         signin_page.fill_fields(user, pwd)
-
+        
+        self.driver.close()
 
 if __name__ == "__main__":
     unittest.main()

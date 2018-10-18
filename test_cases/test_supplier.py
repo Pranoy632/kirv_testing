@@ -9,6 +9,17 @@ sys.path.append('../test_pages')
 
 from Supplier_Pages.pageSignIn import SignIn
 from Supplier_Pages.pageHomepage import SupplierHomepage
+from Supplier_Pages.pageCustomers import SupplierCustomers
+from page_buyer_supplier_signin import MainSigninPage
+#from test_signup import kirvSignupTest
+from SignUp_Pages.pageSignUpContact import contactInfo
+from SignUp_Pages.pageSignUpCompanyInfo import companyInfo
+from SignUp_Pages.pageSignUpLocation import locationInfo
+
+
+contactInfo = {'company_name': 'Brown Inc', 'contact_name': 'John Dominguez', 'phone_no': '+12345678900'}
+companyInfo = {'reseller_id': '4378', 'street_address': '359 Lisa Tunnel', 'city': 'North Gabrielburgh', 'state': 'Alabama', 'post_code': '53015', 'domain': 'ryan.com', 'email': 'fphillips@garcia.com', 'phone_no': '12345678901', 'other_phone_no': '12345678902'}
+locationInfo = {'name1': 'Jennifer Mountains', 'email1': 'sarah98@gmail.com', 'phone_no1': '12345678904', 'name2': 'Preston Ridges', 'street2': '46347 Garcia Land', 'city2': 'Tylerburgh', 'state2': 'Alabama', 'street1': '8726 Debra Mission', 'city1': 'South Jeffreyport', 'state1': 'Alabama', 'post_code1': '87863', 'other_phone_no1': '12345678905', 'post_code2': '26124', 'email2': 'jamesmayer@mcgee.org', 'phone_no2': '12345678906'}
 
 class Supplier_Test(unittest.TestCase):
 
@@ -50,19 +61,18 @@ class Supplier_Test(unittest.TestCase):
         """
         supplier_homepage = SupplierHomepage(self.driver)
         try:
-            assert supplier_homepage.check_customer_name_table_header().is_displayed()
-            assert supplier_homepage.check_state_table_header().is_displayed()
-            assert supplier_homepage.check_no_of_locations_table_header().is_displayed()
-            assert supplier_homepage.check_main_contact_table_header().is_displayed()
-            assert supplier_homepage.check_phone_number_table_header().is_displayed()
-            assert supplier_homepage.check_account_status_table_header().is_displayed()
+            if supplier_homepage.get_total_table_records() != 0:
+                assert supplier_homepage.check_customer_name_table_header().is_displayed()
+                assert supplier_homepage.check_state_table_header().is_displayed()
+                assert supplier_homepage.check_no_of_locations_table_header().is_displayed()
+                assert supplier_homepage.check_main_contact_table_header().is_displayed()
+                assert supplier_homepage.check_phone_number_table_header().is_displayed()
+                assert supplier_homepage.check_account_status_table_header().is_displayed()
+            else:
+                assert supplier_homepage.get_search_message().is_displayed()
             print ("Success -> check table header of %s tab"%(status_tab_name))
         except:
-            try:
-                assert supplier_homepage.get_search_message().is_displayed()
-                print ("Success -> check table header (contracts not found) of %s tab"%(status_tab_name))
-            except:
-                print ("AssertionError --------> %s tab table header error"%(status_tab_name))
+            print ("AssertionError --------> %s tab table header error"%(status_tab_name))
 
 
     def check_tab_is_active(self, status_tab_name):
@@ -83,7 +93,10 @@ class Supplier_Test(unittest.TestCase):
         """
         supplier_homepage = SupplierHomepage(self.driver)
         try:
-            assert supplier_homepage.get_required_status_count(status_tab_name) == supplier_homepage.get_single_page_records_count()
+            if supplier_homepage.get_total_table_records() != 0:
+                assert supplier_homepage.get_required_status_count(status_tab_name) == supplier_homepage.get_single_page_records_count()
+            else:
+                assert supplier_homepage.get_search_message().is_displayed()
             print ("Success -> Checks total customer count of %s tab"%(status_tab_name))
         except:
             print ("AssertionError --------> %s tab total count mismatch"%(status_tab_name))
@@ -94,24 +107,25 @@ class Supplier_Test(unittest.TestCase):
             Checks if pagination tab works or not
         """
         supplier_homepage = SupplierHomepage(self.driver)
-        #try:
-        total_table_records = supplier_homepage.get_total_table_records()
-        pages=0 if total_table_records==0 else int(total_table_records/50) if total_table_records%50==0 else int((total_table_records/50)+1)
-        print (pages)
-        if pages == 0:
-            assert supplier_homepage.get_search_message().is_displayed()
-        if pages > 1:
-            supplier_homepage.scroll_down_window()
-            self.check_tab_is_active("1")
-            supplier_homepage.click_button(supplier_homepage.get_second_pagination_tab())
-            self.check_tab_is_active(status_tab_name)
-            supplier_homepage.scroll_down_window()
-            self.check_tab_is_active("2")
+        try:
+            total_table_records = supplier_homepage.get_total_table_records()
+            pages=0 if total_table_records==0 else int(total_table_records/50) if total_table_records%50==0 else int((total_table_records/50)+1)
+            print (pages)
+            if pages == 0:
+                assert supplier_homepage.get_search_message().is_displayed()
+            if pages > 1:
+                supplier_homepage.scroll_down_window()
+                assert supplier_homepage.get_total_pages() == pages
+                self.check_tab_is_active("1")
+                supplier_homepage.click_button(supplier_homepage.get_second_pagination_tab())
+                self.check_tab_is_active(status_tab_name)
+                supplier_homepage.scroll_down_window()
+                self.check_tab_is_active("2")
+                supplier_homepage.scroll_up_window()
+            print ("Success -> check pagination of %s tab"%(status_tab_name))
+        except:
             supplier_homepage.scroll_up_window()
-        print ("Success -> check pagination of %s tab"%(status_tab_name))
-        #except:
-        #    supplier_homepage.scroll_up_window()
-        #    print ("AssertionError --------> %s pagination error"%(status_tab_name))
+            print ("AssertionError --------> %s pagination error"%(status_tab_name))
 
 
     def check_search_functionallity(self, status_tab_name):     #### Search functionallity have some things to implement by dev (like after searching empty string it should remain on same page) ####
@@ -152,6 +166,23 @@ class Supplier_Test(unittest.TestCase):
         except:
             print ("AssertionError --------> Failed to Goto Homepage")
 
+    '''    
+    def check_pending_customer_first_record(self):
+        """
+            checks first customer partial information
+        """
+        supplier_customer = SupplierCustomers(self.driver)
+        try:
+            assert supplier_customer.get_first_customer_name().text == contactInfo['company_name']
+            assert supplier_customer.get_first_state().text == companyInfo['state']
+            total_locations = 0 if not bool(locationInfo) else 2 if 'name1' in locationInfo and 'name2' in locationInfo else 1
+            assert supplier_customer.get_first_no_of_location().text == str(total_locations)
+            assert supplier_customer.get_first_main_contact().text == contactInfo['contact_name']
+            assert supplier_customer.get_first_phone_number().text == contactInfo['phone_no']
+            assert supplier_customer.get_first_account_status().text == 'Pending'
+        except:
+            print ("AssertionError --------> Customer details not found")
+    '''
 
     def check_status_tab(self, status_tab_name):
         """
@@ -162,7 +193,7 @@ class Supplier_Test(unittest.TestCase):
         self.check_table_header(status_tab_name)
         self.check_tab_is_active(status_tab_name)
         self.check_customers_count(status_tab_name)
-        #self.check_pagination(status_tab_name)
+        self.check_pagination(status_tab_name)
         #self.check_search_functionallity(status_tab_name)         # Search Functionallity yet to complete by dev
         self.goto_homepage()
 
@@ -191,14 +222,31 @@ class Supplier_Test(unittest.TestCase):
     def test_supplier(self):
         sign_in = SignIn(self.driver)
         sign_in.sign_in_credentials()
+        
+        #signupTest = kirvSignupTest()
+        #signupTest.test_signUp()
+        
+        #username = 'w@kirv.co'
+        #password = 'qwerty123'
+        #signin_page = MainSigninPage(self.driver)
+        #signin_page.fill_fields(username, password)
 
         supplier_homepage = SupplierHomepage(self.driver)
-        self.check_home_page()
+        supplier_customer = SupplierCustomers(self.driver)
+        #self.check_home_page()
 
         status_tab = ["all_customers", "Pending", "Active", "Inactive"]
-        self.check_all_status_tab(status_tab)
-        
+        #self.check_all_status_tab(status_tab)
+
+        supplier_customer.check_pending_customer_first_record()
+        supplier_customer.check_pending_customer_first_record_detail()
+
         #self.logout()
+        #print (contactInfo)
+        #print (companyInfo)
+        #unittest.main(module=test_signup).signUpJourney()
+        #self.driver.close()
+
 
 if __name__ == "__main__":
     unittest.main()
