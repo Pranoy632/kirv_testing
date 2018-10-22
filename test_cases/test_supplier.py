@@ -17,9 +17,9 @@ from SignUp_Pages.pageSignUpCompanyInfo import companyInfo
 from SignUp_Pages.pageSignUpLocation import locationInfo
 
 
-contactInfo = {'company_name': 'Brown Inc', 'contact_name': 'John Dominguez', 'phone_no': '+12345678900'}
-companyInfo = {'reseller_id': '4378', 'street_address': '359 Lisa Tunnel', 'city': 'North Gabrielburgh', 'state': 'Alabama', 'post_code': '53015', 'domain': 'ryan.com', 'email': 'fphillips@garcia.com', 'phone_no': '12345678901', 'other_phone_no': '12345678902'}
-locationInfo = {'name1': 'Jennifer Mountains', 'email1': 'sarah98@gmail.com', 'phone_no1': '12345678904', 'name2': 'Preston Ridges', 'street2': '46347 Garcia Land', 'city2': 'Tylerburgh', 'state2': 'Alabama', 'street1': '8726 Debra Mission', 'city1': 'South Jeffreyport', 'state1': 'Alabama', 'post_code1': '87863', 'other_phone_no1': '12345678905', 'post_code2': '26124', 'email2': 'jamesmayer@mcgee.org', 'phone_no2': '12345678906'}
+#contactInfo = {'company_name': 'Brown Inc', 'contact_name': 'John Dominguez', 'phone_no': '+12345678900'}
+#companyInfo = {'reseller_id': '4378', 'street_address': '359 Lisa Tunnel', 'city': 'North Gabrielburgh', 'state': 'Alabama', 'post_code': '53015', 'domain': 'ryan.com', 'email': 'fphillips@garcia.com', 'phone_no': '12345678901', 'other_phone_no': '12345678902'}
+#locationInfo = {'name1': 'Jennifer Mountains', 'email1': 'sarah98@gmail.com', 'phone_no1': '12345678904', 'name2': 'Preston Ridges', 'street2': '46347 Garcia Land', 'city2': 'Tylerburgh', 'state2': 'Alabama', 'street1': '8726 Debra Mission', 'city1': 'South Jeffreyport', 'state1': 'Alabama', 'post_code1': '87863', 'other_phone_no1': '12345678905', 'post_code2': '26124', 'email2': 'jamesmayer@mcgee.org', 'phone_no2': '12345678906'}
 
 class Supplier_Test(unittest.TestCase):
 
@@ -239,7 +239,7 @@ class Supplier_Test(unittest.TestCase):
         #self.check_all_status_tab(status_tab)
 
         supplier_customer.check_pending_customer_first_record()
-        supplier_customer.check_pending_customer_first_record_detail()
+        supplier_customer.check_pending_customer_company_detail()
 
         #self.logout()
         #print (contactInfo)
