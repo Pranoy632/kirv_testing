@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
 
 class SupplierPageLocators(object):
-
+    
+    #--------------Home page locators--------------#
     signin = (By.CLASS_NAME, 'btn-primary')
     kirv_logo = (By.XPATH, '//img[@alt = "KIRV"]')
     products_link = (By.XPATH, '//*[@id = "main-navigation"]/ul/li[1]')
@@ -29,13 +30,17 @@ class SupplierPageLocators(object):
     page_number2 = (By.XPATH, '//a[text()="2"]//parent::li')
     page_link = (By.CLASS_NAME, 'page-link')
     search_message = (By.XPATH, '//h3[text()="Contracts Not Found!"]')
-    first_record_customer_name = (By.XPATH, '//table/tbody/tr/td[1]')
+    first_record_customer_name = (By.XPATH, '//table/tbody/tr[1]/td[1]')
     first_record_state = (By.XPATH, '//table/tbody/tr/td[2]')
     first_record_no_of_location = (By.XPATH, '//table/tbody/tr/td[3]')
     first_record_main_contact = (By.XPATH, '//table/tbody/tr/td[4]')
     first_record_phone_number = (By.XPATH, '//table/tbody/tr/td[5]')
     first_record_account_status = (By.XPATH, '//table/tbody/tr/td[6]')
     view = (By.XPATH, '//table/tbody/tr/td[7]')
+    body = (By.XPATH, '/html/body')
+
+
+    #--------------Customers page Company Information locators--------------#
     edit_company_information = (By.XPATH, '//fieldset//span[text()="Edit"]')
     company_name_input = (By.XPATH, '//fieldset//input')
     company_address_input = (By.XPATH, '//fieldset/div[2]/div/div[2]//input')
@@ -50,6 +55,23 @@ class SupplierPageLocators(object):
     company_website_input = (By.XPATH, '//fieldset/div[2]/div/div[12]//input')
     company_cancel_button = (By.XPATH, '//fieldset//button[text()="Cancel"]')
     company_save_button = (By.XPATH, '//fieldset//button[text()="Save"]')
+
+    company_name_error = (By.XPATH, '//fieldset/div[2]/div/div/field/div')
+    company_address_error = (By.XPATH, '//fieldset/div[2]/div/div[2]/field/div')
+    company_city_error = (By.XPATH, '//fieldset/div[2]/div/div[3]/field/div')
+    company_state_error = (By.XPATH, '//fieldset/div[2]/div/div[4]/field/div')
+    company_post_code_error = (By.XPATH, '//fieldset/div[2]/div/div[5]/field/div')
+    company_reseller_id_error = (By.XPATH, '//fieldset/div[2]/div/div[7]/field/div')
+    company_account_no_error = (By.XPATH, '//fieldset/div[2]/div/div[8]/field/div')
+    company_phone_error = (By.XPATH, '//fieldset/div[2]/div/div[9]/field/div')
+    company_other_phone_error = (By.XPATH, '//fieldset/div[2]/div/div[10]/field/div')
+    company_email_error = (By.XPATH, '//fieldset/div[2]/div/div[11]/field/div')
+    company_website_error = (By.XPATH, '//fieldset/div[2]/div/div[12]/field/div')
+
+    success_popup = (By.XPATH, '//toastr/div')
+    error_popup = (By.XPATH, '//toastr/div')
+    
+    #--------------Customer page Contract Information locators--------------#
     edit_contact_information = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div/div[2]/span')
     contact_name_input = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div//input')
     contact_phone_input = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div[2]//input')
@@ -57,6 +79,9 @@ class SupplierPageLocators(object):
     contact_cancel_button = (By.XPATH, '//div/div[2]/form//button[text()="Cancel"]')
     contact_save_button = (By.XPATH, '//div/div[2]/form//button[text()="Save"]')
     edit_location_information = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div/div[2]/span')
+
+
+    #--------------Customer page Location Information locators--------------#
     location_name1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div//input')
     location_address1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
     location_city1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[3]//input')
@@ -73,6 +98,9 @@ class SupplierPageLocators(object):
     location_phone2_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[8]//input')
     location_cancel_button = (By.XPATH, '//div/div[3]/form//button[text()="Cancel"]')
     location_save_button = (By.XPATH, '//div/div[3]/form//button[text()="Save"]')
+
+
+    #--------------Customer page Shipping Information locators--------------#
     edit_ship_information = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div/div[2]/span')
     ship_name1_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div//input')
     ship_address1_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
@@ -94,6 +122,9 @@ class SupplierPageLocators(object):
     ship_end_time2_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[10]//input')
     ship_cancel_button = (By.XPATH, '//div/div[4]/form//button[text()="Cancel"]')
     ship_save_button = (By.XPATH, '//div/div[4]/form//button[text()="Save"]')
+
+
+    #--------------Customer page Categories Information locators--------------#
     edit_categories_information = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div/div[2]/span')
     categories_microwave = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div//input')
     categories_oven = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
@@ -111,6 +142,9 @@ class SupplierPageLocators(object):
     categories_refrigerator = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[10]/div[3]//input')
     categories_cancel_button = (By.XPATH, '//div/div[5]/form//button[text()="Cancel"]')
     categories_save_button = (By.XPATH, '//div/div[5]/form//button[text()="Save"]')
+
+
+    #--------------Customer page Volume Information locators--------------#
     edit_volume_information = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div/div[2]/span')
     volume_q1_quarter_trucks = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div[2]/div/div/div//input')
     volume_q1_half_trucks = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div[2]/div/div/div[2]//input')
@@ -126,4 +160,3 @@ class SupplierPageLocators(object):
     volume_q4_full_trucks = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div[2]/div/div[4]/div[3]//input')
     volume_cancel_button = (By.XPATH, '//div/div[6]/form//button[text()="Cancel"]')
     volume_save_button = (By.XPATH, '//div/div[6]/form//button[text()="Save"]')
-    body = (By.XPATH, '/html/body')

@@ -109,6 +109,7 @@ class kirvSignupTest(unittest.TestCase):
         signUp_congratulation.click_modal_close_btn()
 
         # email check
+        '''
         email_chk = EmailCheck()
         try:
             i = 1
@@ -118,7 +119,7 @@ class kirvSignupTest(unittest.TestCase):
                 i = i + 1
         except:
             print("No email found")
-        
+        '''
         self.driver.close()
 
 if __name__ == "__main__":

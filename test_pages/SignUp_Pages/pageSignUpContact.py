@@ -82,7 +82,7 @@ class SignUpContact(BasePage):
             print("No result found for invalid phone-number")
 
         input_phn.clear()
-        input_phn.send_keys('+12345678900')
+        input_phn.send_keys('12345678900')
         print ('3) Phone no.: %s'%input_phn.get_attribute('value'))
         contactInfo['phone_no'] = input_phn.get_attribute('value')
         print (contactInfo)
