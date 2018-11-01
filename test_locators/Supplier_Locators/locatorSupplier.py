@@ -78,10 +78,13 @@ class SupplierPageLocators(object):
     contact_email_input = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div[3]//input')
     contact_cancel_button = (By.XPATH, '//div/div[2]/form//button[text()="Cancel"]')
     contact_save_button = (By.XPATH, '//div/div[2]/form//button[text()="Save"]')
-    edit_location_information = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div/div[2]/span')
-
+    
+    contact_name_error = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div/field/div')
+    contact_phone_error = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div[2]/field/div')
+    contact_email_error = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div[3]/field/div')
 
     #--------------Customer page Location Information locators--------------#
+    edit_location_information = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div/div[2]/span')
     location_name1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div//input')
     location_address1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
     location_city1_input = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[3]//input')

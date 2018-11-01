@@ -237,6 +237,7 @@ class Supplier_Test(unittest.TestCase):
         #supplier_customer.check_pending_customer_first_record()
         supplier_customer.get_first_view_tab().click()
         supplier_customer.check_edited_pending_customer_company_detail()
+        #supplier_customer.check_edited_pending_customer_contact_detail()
         #supplier_customer.check_pending_customer_company_detail()
 
         #self.logout()
