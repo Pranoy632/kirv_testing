@@ -1,6 +1,10 @@
 import sys
 sys.path.append('../test_locators')
 
+import time
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common import action_chains
+
 from Basepage import BasePage
 from Supplier_Locators.locatorSupplier import SupplierPageLocators
 
@@ -11,8 +15,6 @@ from SignUp_Pages.pageSignUpLocation import locationInfo
 from SignUp_Pages.pageSignUpShip import shippingInfo
 from SignUp_Pages.pageSignUpCategories import categoriesInfo
 from SignUp_Pages.pageSignUpVolumes import volumeInfo
-import time
-from selenium.webdriver.common.keys import Keys
 
 '''
 signupLogin = {'email': 'amztest18+20181101145334@gmail.com', 'password': 'amazatic'}
@@ -158,6 +160,9 @@ class SupplierCustomers(BasePage):
     def get_contact_email_error(self):
         return self.driver.find_element(*SupplierPageLocators.contact_email_error)
 
+    def get_chat(self):
+        return self.driver.find_element(*SupplierPageLocators.chat)
+
     def page_down(self):
         body = self.driver.find_element(*SupplierPageLocators.body)
         body.send_keys(Keys.PAGE_DOWN)
@@ -194,11 +199,24 @@ class SupplierCustomers(BasePage):
         """
         for key, value in input_data_dic.items():
             for input_value in value['invalid']:
-                #if key == 'state':
-                    # select 1st option from list and save also handle assertion
-            #else:
-                self.clear_put_value(value['input'], input_value)
-                save.click()
+                if key == 'state':
+                    self.get_company_state_input().click()
+                    time.sleep(1)
+                    action = action_chains.ActionChains(self.driver)
+                    #action.send_keys(Keys.DOWN)
+                    action.send_keys(Keys.ENTER)
+                    #time.sleep(1)
+                    action.perform()
+                else:
+                    self.clear_put_value(value['input'], input_value)
+                try:
+                    save.click()
+                except:
+                    self.driver.switch_to.frame(self.get_chat())
+                    self.driver.find_element(*SupplierPageLocators.close_chat).click()
+                    self.driver.switch_to.default_content()
+                    time.sleep(2)
+                    save.click()
                 time.sleep(2)
                 if (key == 'account_no' or key == 'other_phone_no') and input_value == '':
                     pass
@@ -254,18 +272,33 @@ class SupplierCustomers(BasePage):
                 #'email': {'invalid': ['abc','abc@gmail','abc.com','.abc@gmail.com','abc.@gmail.com','abc@.gmail.com','abc@gmail.com.','abc ef@gmail.com',''], 'valid': ['abc@gmail.com'], 'input': self.get_company_email_input(), 'error': self.get_company_email_error()},
                 'domain': {'invalid': ['abc','.com',''], 'valid': ['abc.com'], 'input': self.get_company_website_input(), 'error': self.get_company_website_error()},
             }
-        
+       
         self.get_edit_company_information().click()
+        time.sleep(2)
         self.check_invalid_input(companyInfo_testcase_input, self.get_company_save_button(), self.get_edit_company_information())
 
-        #self.get_company_cancel_button().click()
+        self.get_company_cancel_button().click()
         #self.check_pending_customer_company_detail()
         
         for key, value in companyInfo_testcase_input.items():
             for input_value in value['valid']:
                 self.get_edit_company_information().click()
-                self.clear_put_value(value['input'], input_value)
-                self.get_company_save_button().click()
+                if key == 'state':
+                    action = action_chains.ActionChains(self.driver)
+                    action.send_keys(Keys.DOWN)
+                    action.send_keys(Keys.ENTER)
+                    #time.sleep(1)
+                    action.perform()
+                else:
+                    self.clear_put_value(value['input'], input_value)
+                try:
+                    self.get_company_save_button().click()
+                except:
+                    self.driver.switch_to.frame(self.get_chat())
+                    self.driver.find_element(*SupplierPageLocators.close_chat).click()
+                    self.driver.switch_to.default_content()
+                    time.sleep(2)
+                    self.get_company_save_button().click()
                 time.sleep(2)
                 try:
                     assert 'success' in self.get_success_message().get_attribute('class').split()

@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 import logging
 import time
+import pickle
 
 import sys
 sys.path.append('../test_pages')
@@ -15,7 +16,6 @@ from page_buyer_supplier_signin import MainSigninPage
 from SignUp_Pages.pageSignUpContact import contactInfo
 from SignUp_Pages.pageSignUpCompanyInfo import companyInfo
 from SignUp_Pages.pageSignUpLocation import locationInfo
-
 
 class Supplier_Test(unittest.TestCase):
 
@@ -218,7 +218,7 @@ class Supplier_Test(unittest.TestCase):
     def test_supplier(self):
         sign_in = SignIn(self.driver)
         sign_in.sign_in_credentials()
-        
+
         #signupTest = kirvSignupTest()
         #signupTest.test_signUp()
         
@@ -237,7 +237,7 @@ class Supplier_Test(unittest.TestCase):
         #supplier_customer.check_pending_customer_first_record()
         supplier_customer.get_first_view_tab().click()
         supplier_customer.check_edited_pending_customer_company_detail()
-        #supplier_customer.check_edited_pending_customer_contact_detail()
+        supplier_customer.check_edited_pending_customer_contact_detail()
         #supplier_customer.check_pending_customer_company_detail()
 
         #self.logout()

@@ -38,6 +38,9 @@ class SupplierPageLocators(object):
     first_record_account_status = (By.XPATH, '//table/tbody/tr/td[6]')
     view = (By.XPATH, '//table/tbody/tr/td[7]')
     body = (By.XPATH, '/html/body')
+    #chat = (By.XPATH, '//iframe[@id="drift-widget"]')
+    chat = (By.TAG_NAME, 'iframe')
+    close_chat = (By.XPATH, '//*[@id="root"]/div/div[2]/button')
 
 
     #--------------Customers page Company Information locators--------------#

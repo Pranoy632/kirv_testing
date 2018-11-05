@@ -5,7 +5,7 @@ import time
 
 from Basepage import BasePage
 
-from signin_buyer_supplier_locator import SigInLocators
+from signin_buyer_supplier_locator import SignInLocators
 
 
 class MainSigninPage(BasePage):
