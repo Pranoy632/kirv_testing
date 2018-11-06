@@ -80,10 +80,13 @@ class SignUpLogin(BasePage):
         print (signupLogin)
 
     def click_login_signup_button(self):
-
         self.wait_for_element(
             SigninPageLocators.signup_login_btn)
 
         element_login_signup = self.driver.find_element(
             *SigninPageLocators.signup_login_btn)
-        element_login_signup.click()
+        try:
+            element_login_signup.click()
+        except:
+            self.close_chat_popup()
+            element_login_signup.click()

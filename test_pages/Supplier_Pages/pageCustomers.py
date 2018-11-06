@@ -160,8 +160,10 @@ class SupplierCustomers(BasePage):
     def get_contact_email_error(self):
         return self.driver.find_element(*SupplierPageLocators.contact_email_error)
 
+    '''
     def get_chat(self):
         return self.driver.find_element(*SupplierPageLocators.chat)
+    '''
 
     def page_down(self):
         body = self.driver.find_element(*SupplierPageLocators.body)
@@ -212,9 +214,12 @@ class SupplierCustomers(BasePage):
                 try:
                     save.click()
                 except:
+                    '''
                     self.driver.switch_to.frame(self.get_chat())
                     self.driver.find_element(*SupplierPageLocators.close_chat).click()
                     self.driver.switch_to.default_content()
+                    '''
+                    self.close_chat_popup()
                     time.sleep(2)
                     save.click()
                 time.sleep(2)
@@ -260,16 +265,16 @@ class SupplierCustomers(BasePage):
             edit and checks pending customers company details
         """
         companyInfo_testcase_input = {
-                #'company_name': {'invalid': [''], 'valid': ['John'], 'input': self.get_company_name_input(), 'error': self.get_company_name_error()}, 
-                #'street_address': {'invalid': [''], 'valid': ['234 China Town'], 'input': self.get_company_address_input(), 'error': self.get_company_address_error()}, 
+                'company_name': {'invalid': [''], 'valid': ['John'], 'input': self.get_company_name_input(), 'error': self.get_company_name_error()}, 
+                'street_address': {'invalid': [''], 'valid': ['234 China Town'], 'input': self.get_company_address_input(), 'error': self.get_company_address_error()}, 
                 'city': {'invalid': [''], 'valid': ['Swe'], 'input': self.get_company_city_input(), 'error': self.get_company_city_error()},
                 'state': {'invalid': [''], 'valid': ['alaska'], 'input': self.get_company_state_input(), 'error': self.get_company_state_error()},
-                #'post_code': {'invalid': ['1234567','123sd','abcd',''], 'valid': ['32145'], 'input': self.get_company_post_code_input(), 'error': self.get_company_post_code_error()},
-                #'reseller_id': {'invalid': ['abcd',''],'valid':['ab123','1233'], 'input': self.get_company_reseller_id_input(), 'error': self.get_company_reseller_id_error()},
-                #'account_no': {'invalid': ['abcd'], 'valid': ['ab123','2345',''], 'input': self.get_company_account_no_input(), 'error': self.get_company_account_no_error()},
-                #'phone_no': {'invalid': ['12345','abcd','12345678909abe','123456789009',''], 'valid': ['12345678911'], 'input': self.get_company_phone_input(), 'error': self.get_company_phone_error()},
-                #'other_phone_no': {'invalid': ['12345','abcd','12345678900acs','123456789098'], 'valid': ['12312345645',''], 'input': self.get_company_other_phone_input(), 'error': self.get_company_other_phone_error()},
-                #'email': {'invalid': ['abc','abc@gmail','abc.com','.abc@gmail.com','abc.@gmail.com','abc@.gmail.com','abc@gmail.com.','abc ef@gmail.com',''], 'valid': ['abc@gmail.com'], 'input': self.get_company_email_input(), 'error': self.get_company_email_error()},
+                'post_code': {'invalid': ['1234567','123sd','abcd',''], 'valid': ['32145'], 'input': self.get_company_post_code_input(), 'error': self.get_company_post_code_error()},
+                'reseller_id': {'invalid': ['abcd',''],'valid':['ab123','1233'], 'input': self.get_company_reseller_id_input(), 'error': self.get_company_reseller_id_error()},
+                'account_no': {'invalid': ['abcd'], 'valid': ['ab123','2345',''], 'input': self.get_company_account_no_input(), 'error': self.get_company_account_no_error()},
+                'phone_no': {'invalid': ['12345','abcd','12345678909abe','123456789009',''], 'valid': ['12345678911'], 'input': self.get_company_phone_input(), 'error': self.get_company_phone_error()},
+                'other_phone_no': {'invalid': ['12345','abcd','12345678900acs','123456789098'], 'valid': ['12312345645',''], 'input': self.get_company_other_phone_input(), 'error': self.get_company_other_phone_error()},
+                'email': {'invalid': ['abc','abc@gmail','abc.com','.abc@gmail.com','abc.@gmail.com','abc@.gmail.com','abc@gmail.com.','abc ef@gmail.com',''], 'valid': ['abc@gmail.com'], 'input': self.get_company_email_input(), 'error': self.get_company_email_error()},
                 'domain': {'invalid': ['abc','.com',''], 'valid': ['abc.com'], 'input': self.get_company_website_input(), 'error': self.get_company_website_error()},
             }
        
@@ -278,7 +283,7 @@ class SupplierCustomers(BasePage):
         self.check_invalid_input(companyInfo_testcase_input, self.get_company_save_button(), self.get_edit_company_information())
 
         self.get_company_cancel_button().click()
-        #self.check_pending_customer_company_detail()
+        self.check_pending_customer_company_detail()
         
         for key, value in companyInfo_testcase_input.items():
             for input_value in value['valid']:
@@ -294,9 +299,12 @@ class SupplierCustomers(BasePage):
                 try:
                     self.get_company_save_button().click()
                 except:
+                    '''
                     self.driver.switch_to.frame(self.get_chat())
                     self.driver.find_element(*SupplierPageLocators.close_chat).click()
                     self.driver.switch_to.default_content()
+                    '''
+                    self.close_chat_popup()
                     time.sleep(2)
                     self.get_company_save_button().click()
                 time.sleep(2)
@@ -308,7 +316,7 @@ class SupplierCustomers(BasePage):
                     contactInfo[key] = input_value
                 else:
                     companyInfo[key] = input_value
-        #self.check_pending_customer_company_detail()
+        self.check_pending_customer_company_detail()
                 
 
     def check_pending_customer_contact_detail(self):
@@ -341,7 +349,17 @@ class SupplierCustomers(BasePage):
             for input_value in value['valid']:
                 self.get_edit_contact_information().click()
                 self.clear_put_value(value['input'], input_value)
-                self.get_contact_save_button().click()
+                try:
+                    self.get_contact_save_button().click()
+                except:
+                    '''
+                    self.driver.switch_to.frame(self.get_chat())
+                    self.driver.find_element(*SupplierPageLocators.close_chat).click()
+                    self.driver.switch_to.default_content()
+                    time.sleep(2)
+                    '''
+                    self.close_chat_popup()
+                    self.get_contact_save_button().click()
                 time.sleep(2)
                 assert 'success' in self.get_success_message().get_attribute('class').split()
                 if key == 'email':

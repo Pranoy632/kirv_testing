@@ -80,8 +80,10 @@ class SignUpContact(BasePage):
             print("Success: signup-contact phone-number invalid error found.")
         except:
             print("No result found for invalid phone-number")
-
+        
+        time.sleep(1)
         input_phn.clear()
+        time.sleep(1)
         input_phn.send_keys('12345678900')
         print ('3) Phone no.: %s'%input_phn.get_attribute('value'))
         contactInfo['phone_no'] = input_phn.get_attribute('value')
@@ -92,4 +94,8 @@ class SignUpContact(BasePage):
     def click_contact_signup_button(self):
         element_contact_signup = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_btn)
-        element_contact_signup.click()
+        try:
+            element_contact_signup.click()
+        except:
+            self.close_chat_popup()
+            element_contact_signup.click()

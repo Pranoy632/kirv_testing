@@ -25,3 +25,8 @@ class SignInLocators(object):
 
     signin_login_btn = (
         By.CSS_SELECTOR, 'ng-component > div.container-fluid > div > div:nth-child(1) > div > form > fieldset > button')
+
+    ############ Chat popup locators ###########
+    chat = (By.TAG_NAME, 'iframe')
+
+    close_chat = (By.XPATH, '//*[@id="root"]/div/div[2]/button')
