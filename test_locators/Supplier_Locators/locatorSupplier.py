@@ -74,7 +74,7 @@ class SupplierPageLocators(object):
     success_popup = (By.XPATH, '//toastr/div')
     error_popup = (By.XPATH, '//toastr/div')
     
-    #--------------Customer page Contract Information locators--------------#
+    #--------------Customer page Contact Information locators--------------#
     edit_contact_information = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div/div[2]/span')
     contact_name_input = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div//input')
     contact_phone_input = (By.XPATH, '//span[text()="Contact Information"]//ancestor::fieldset/div[2]/div/div[2]//input')

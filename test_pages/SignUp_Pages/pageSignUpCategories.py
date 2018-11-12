@@ -181,6 +181,7 @@ class SignUpCategories(BasePage):
             "window.scrollTo(document.body.scrollHeight, 0);")
         time.sleep(1)
 
+        '''
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_stove).click()
         time.sleep(1)
@@ -190,6 +191,7 @@ class SignUpCategories(BasePage):
         action.perform()
         print ('9) stove: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value'))
         categoriesInfo['stove'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value')
+        '''
 
         time.sleep(1)
         self.driver.execute_script(
