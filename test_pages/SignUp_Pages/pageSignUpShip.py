@@ -8,8 +8,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common import action_chains
 from Basepage import BasePage, fake
 from SignUp_Locators.locatorSignup import SigninPageLocators
-
-shippingInfo = {}
+from .pageSignUpLocation import shippingInfo
 
 class SignUpShipTo(BasePage):
 

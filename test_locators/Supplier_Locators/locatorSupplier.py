@@ -105,8 +105,24 @@ class SupplierPageLocators(object):
     location_cancel_button = (By.XPATH, '//div/div[3]/form//button[text()="Cancel"]')
     location_save_button = (By.XPATH, '//div/div[3]/form//button[text()="Save"]')
 
+    location_name1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div/field/div')
+    location_address1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]/field/div')
+    location_city1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[3]/field/div')
+    location_state1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[4]/field/div')
+    location_post_code1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[5]/field/div')
+    location_email1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[7]/field/div')
+    location_phone1_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[2]/div[8]/field/div')
+    location_name2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div/field/div')
+    location_address2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[2]/field/div')
+    location_city2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[3]/field/div')
+    location_state2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[4]/field/div')
+    location_post_code2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[5]/field/div')
+    location_email2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[7]/field/div')
+    location_phone2_error = (By.XPATH, '//span[text()="Store Locations"]//ancestor::fieldset/div[2]/div[4]/div[8]/field/div')
+
 
     #--------------Customer page Shipping Information locators--------------#
+    shipping_div = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::form//parent::div')
     edit_ship_information = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div/div[2]/span')
     ship_name1_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div//input')
     ship_address1_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
@@ -128,6 +144,25 @@ class SupplierPageLocators(object):
     ship_end_time2_input = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[10]//input')
     ship_cancel_button = (By.XPATH, '//div/div[4]/form//button[text()="Cancel"]')
     ship_save_button = (By.XPATH, '//div/div[4]/form//button[text()="Save"]')
+
+    ship_name1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div/field/div')
+    ship_address1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[2]/field/div')
+    ship_city1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[3]/field/div')
+    ship_state1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[4]/field/div')
+    ship_post_code1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[5]/field/div')
+    ship_email1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[7]/field/div')
+    ship_phone1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[8]/field/div')
+    ship_start_time1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[9]/field/div')
+    ship_end_time1_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[2]/div[10]/field/div')
+    ship_name2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div/field/div')
+    ship_address2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[2]/field/div')
+    ship_city2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[3]/field/div')
+    ship_state2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[4]/field/div')
+    ship_post_code2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[5]/field/div')
+    ship_email2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[7]/field/div')
+    ship_phone2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[8]/field/div')
+    ship_start_time2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[9]/field/div')
+    ship_end_time2_error = (By.XPATH, '//span[text()="Warehouse/Ship To Locations"]//ancestor::fieldset/div[2]/div[4]/div[10]/field/div')
 
 
     #--------------Customer page Categories Information locators--------------#

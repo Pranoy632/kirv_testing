@@ -240,7 +240,10 @@ class Supplier_Test(unittest.TestCase):
         #supplier_customer.check_edited_pending_customer_company_detail()
         #supplier_customer.check_pending_customer_contact_detail()
         #supplier_customer.check_edited_pending_customer_contact_detail()
-        supplier_customer.check_pending_customer_location_detail()
+        #supplier_customer.check_pending_customer_location_detail()
+        #supplier_customer.check_edited_pending_customer_location_detail()
+        #supplier_customer.check_pending_customer_shipping_detail()
+        supplier_customer.check_edited_pending_customer_shipping_detail()
 
         #self.logout()
         #print (contactInfo)

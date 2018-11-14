@@ -10,6 +10,7 @@ from Basepage import BasePage, fake
 from SignUp_Locators.locatorSignup import SigninPageLocators
 
 locationInfo = {}
+shippingInfo = {}
 
 class SignUpLocation(BasePage):
 
@@ -88,6 +89,8 @@ class SignUpLocation(BasePage):
         loc_name2.send_keys(fake.street_name())
         print ('4) name2: %s'%loc_name2.get_attribute('value'))
         locationInfo['name2'] = loc_name2.get_attribute('value')
+        shippingInfo['name1'] = loc_name2.get_attribute('value')
+
 
         loc_street2 = self.driver.find_element(
             *SigninPageLocators.location_signUp_street_add2)
@@ -95,12 +98,14 @@ class SignUpLocation(BasePage):
                               " " + fake.street_name())
         print ('5) street2: %s'%loc_street2.get_attribute('value'))
         locationInfo['street2'] = loc_street2.get_attribute('value')
+        shippingInfo['street1'] = loc_street2.get_attribute('value')
 
         loc_city2 = self.driver.find_element(
             *SigninPageLocators.location_signUp_city2)
         loc_city2.send_keys(fake.city())
         print ('6) city2: %s'%loc_city2.get_attribute('value'))
         locationInfo['city2'] = loc_city2.get_attribute('value')
+        shippingInfo['city1'] = loc_city2.get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.location_signUp_state2).click()
@@ -187,6 +192,7 @@ class SignUpLocation(BasePage):
         action.perform()
         print ('10) state2:%s '%self.driver.find_element(*SigninPageLocators.location_signUp_state1).get_attribute('value'))
         locationInfo['state2'] = self.driver.find_element(*SigninPageLocators.location_signUp_state1).get_attribute('value')
+        shippingInfo['state1'] = self.driver.find_element(*SigninPageLocators.location_signUp_state1).get_attribute('value')
 
         loc_post_code1 = self.driver.find_element(
             *SigninPageLocators.location_signUp_post_code1)
@@ -270,16 +276,19 @@ class SignUpLocation(BasePage):
         loc_post_code2.send_keys(fake.postcode())
         print ('13)post_code2: %s'%loc_post_code2.get_attribute('value'))
         locationInfo['post_code2'] = loc_post_code2.get_attribute('value')
+        shippingInfo['post_code1'] = loc_post_code2.get_attribute('value')
 
         loc_email2.clear()
         loc_email2.send_keys(fake.email())
         print ('14) email2: %s'%loc_email2.get_attribute('value'))
         locationInfo['email2'] = loc_email2.get_attribute('value')
+        shippingInfo['email1'] = loc_email2.get_attribute('value')
 
         loc_phn2.clear()
         loc_phn2.send_keys("12345678906")
         print ('15) phone_no2: %s'%loc_phn2.get_attribute('value'))
         locationInfo['phone_no2'] = loc_phn2.get_attribute('value')
+        shippingInfo['phone_no1'] = loc_phn2.get_attribute('value')
         print (locationInfo)
         # Modal
 

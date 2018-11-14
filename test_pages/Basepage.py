@@ -37,3 +37,17 @@ class BasePage(object):
         self.driver.find_element(*SignInLocators.close_chat).click()
         self.driver.switch_to.default_content()
         time.sleep(2)
+
+    def close_chat_popup_while_button_click(self, button):
+        try:
+            button.click()
+        except:
+            self.close_chat_popup()
+            button.click()
+            '''
+            try:
+                button.click()
+            except:
+                self.close_chat_popup()
+                button.click()
+            '''
