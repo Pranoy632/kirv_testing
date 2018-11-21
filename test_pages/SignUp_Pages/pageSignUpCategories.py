@@ -58,7 +58,7 @@ class SignUpCategories(BasePage):
         print ('1) microwave: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value'))
         categoriesInfo['microwave'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value')
 
-        self.driver.find_element(
+        '''self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_oven).click()
         time.sleep(1)
         action = action_chains.ActionChains(self.driver)
@@ -68,7 +68,7 @@ class SignUpCategories(BasePage):
         action.perform()
         print ('2) oven: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_oven).get_attribute('value'))
         categoriesInfo['oven'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_oven).get_attribute('value')
-
+        '''
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_hood).click()
@@ -181,7 +181,6 @@ class SignUpCategories(BasePage):
             "window.scrollTo(document.body.scrollHeight, 0);")
         time.sleep(1)
 
-        '''
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_stove).click()
         time.sleep(1)
@@ -191,7 +190,6 @@ class SignUpCategories(BasePage):
         action.perform()
         print ('9) stove: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value'))
         categoriesInfo['stove'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value')
-        '''
 
         time.sleep(1)
         self.driver.execute_script(

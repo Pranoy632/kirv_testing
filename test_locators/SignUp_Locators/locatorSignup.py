@@ -214,13 +214,13 @@ class SigninPageLocators(object):
     # categories
 
     categories_signUp_cook_microwave = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
-    categories_signUp_cook_oven = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
-    categories_signUp_cook_hood = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(3) > field > div > label > div > input')
+    #categories_signUp_cook_oven = (
+    #    By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
+    categories_signUp_cook_hood = (
+        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
     categories_signUp_cook_stove = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(4) > field > div > label > div > input')
+        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
     categories_signUp_dish_dishwasher = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(2) > div > div > field > div > label > div > input')
     categories_signUp_laundry_washer = (
@@ -303,3 +303,4 @@ class SigninPageLocators(object):
     # sign-up
 
     signup = (By.CLASS_NAME, 'btn-green')
+    signupLink = (By.XPATH, '//a[text()="Sign up here"]')

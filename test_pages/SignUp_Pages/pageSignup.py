@@ -10,5 +10,5 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 class MainPage(BasePage):
 
     def click_signup_button(self):
-        element = self.driver.find_element(*SigninPageLocators.signup)
+        element = self.driver.find_element(*SigninPageLocators.signupLink)
         element.click()

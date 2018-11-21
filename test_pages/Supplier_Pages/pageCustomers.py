@@ -381,16 +381,17 @@ class SupplierCustomers(BasePage):
         self.check_invalid_input(shippingInfo_testcase_input, SupplierPageLocators.ship_save_button, SupplierPageLocators.edit_ship_information)
         self.close_chat_popup_while_button_click(self.get_element(SupplierPageLocators.ship_cancel_button))
         self.driver.execute_script("window.scrollTo(document.body.scrollHeight, 0);")
-        #self.check_pending_customer_shipping_detail()
+        self.check_pending_customer_shipping_detail()
 
         for key, value in shippingInfo_testcase_input.items():
             for input_value in value['valid']:
                 self.driver.execute_script('arguments[0].scrollIntoView(true);', self.driver.find_element(*SupplierPageLocators.shipping_div))
-                self.close_chat_popup_while_button_click(self.get_element(SupplierPageLocators.edit_location_information))
+                #time.sleep(2)
+                self.close_chat_popup_while_button_click(self.get_element(SupplierPageLocators.edit_ship_information))
                 self.check_valid_input(key, value['input'], input_value, SupplierPageLocators.ship_save_button)
                 shippingInfo[key] = input_value
                 self.driver.execute_script("window.scrollTo(document.body.scrollHeight, 0);")
-        self.check_pending_customer_ship_detail()
+        self.check_pending_customer_shipping_detail()
         self.driver.execute_script("window.scrollTo(document.body.scrollHeight, 0);")
 
 

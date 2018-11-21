@@ -12,7 +12,7 @@ class SignInLocators(object):
         By.CSS_SELECTOR, 'ng-component > div.container-fluid > div > div:nth-child(1) > div > h1')
 
     #email_login = ( By.CSS_SELECTOR, 'div > div:nth-child(1) > div > form > input:nth-child(3)')
-    email_login = (By.XPATH, '//label[text()="Email"]/following-sibling::input')
+    email_login = (By.XPATH, '//label[text()="Email address"]/following-sibling::input')
 
     #pwd_login = (By.CSS_SELECTOR, 'ng-component > div.container-fluid > div > div:nth-child(1) > div > form > fieldset > field:nth-child(2) > div > label > input')
     pwd_login = (By.XPATH, '//label[text()="Password"]/following-sibling::input')
