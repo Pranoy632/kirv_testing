@@ -28,6 +28,7 @@ class kirvSignupTest(unittest.TestCase):
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
+        # self.driver.get("http://app.kirv.co")
 
     def test_signUp(self):
         main_page = MainPage(self.driver)
