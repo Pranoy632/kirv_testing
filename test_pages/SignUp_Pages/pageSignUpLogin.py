@@ -11,9 +11,22 @@ time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
 signupLogin = {}
 
+
 class SignUpLogin(BasePage):
-    
-        
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.title_login_signup)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.title_login_signup)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: signup-login title found.")
+        except:
+            print("No result found for signup-login title ")
+
     def login_email_error_displayed(self):
         emailElement = self.driver.find_element(
             *SigninPageLocators.email_login_signup_error)
@@ -67,15 +80,16 @@ class SignUpLogin(BasePage):
         input_email.send_keys("amztest18" + "+" + time_now + "@gmail.com")
         #input_email.send_keys("aaditi.d" + "+" + time_now + "@amazatic.com")
         #input_email.send_keys("priyanka.c" + "+" + time_now + "@amazatic.com")
+        #input_email.send_keys("shashank.n" + "+" + time_now + "@amazatic.com")
         print("email", input_email.get_attribute('value'))
-        print ('1) email: %s'%input_email.get_attribute('value'))
+        print ('1) email: %s' % input_email.get_attribute('value'))
         signupLogin['email'] = input_email.get_attribute('value')
 
         input_pwd = self.driver.find_element(
             *SigninPageLocators.pwd_login_signup)
         input_pwd.send_keys("amazatic")
         print("password", input_pwd.get_attribute('value'))
-        print ('2) password: %s'%input_pwd.get_attribute('value'))
+        print ('2) password: %s' % input_pwd.get_attribute('value'))
         signupLogin['password'] = input_pwd.get_attribute('value')
         print (signupLogin)
 

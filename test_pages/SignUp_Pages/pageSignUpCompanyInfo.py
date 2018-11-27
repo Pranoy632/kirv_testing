@@ -11,8 +11,38 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 companyInfo = {}
 
+
 class SignUpCompanyInfo(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_1 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_1 = item.text
+        if step_1 == str(1):
+            print("Success: Step %s is active." % (step_1))
+        else:
+            print("No result found for step %s active." % (step_1))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.companyinfo_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.companyinfo_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: comapanyInfo title found.")
+        except:
+            print("No result found for companyInfo title.")
 
     def street_add_error(self):
         street_er = self.driver.find_element(
@@ -60,7 +90,7 @@ class SignUpCompanyInfo(BasePage):
         reseller_id = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_reseller_id)
         reseller_id.send_keys(fake.random_int(min=0, max=9999))
-        print ('1) reseller_id: %s'%reseller_id.get_attribute('value'))
+        print ('1) reseller_id: %s' % reseller_id.get_attribute('value'))
         companyInfo['reseller_id'] = reseller_id.get_attribute('value')
 
         self.click_companyInfo_signup_button()
@@ -105,13 +135,13 @@ class SignUpCompanyInfo(BasePage):
         street_add = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_street_add)
         street_add.send_keys(fake.building_number() + " " + fake.street_name())
-        print ('2) Street address: %s'%street_add.get_attribute('value'))
+        print ('2) Street address: %s' % street_add.get_attribute('value'))
         companyInfo['street_address'] = street_add.get_attribute('value')
 
         city = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_city)
         city.send_keys(fake.city())
-        print ('3) City: %s'%city.get_attribute('value'))
+        print ('3) City: %s' % city.get_attribute('value'))
         companyInfo['city'] = city.get_attribute('value')
 
         self.driver.find_element(
@@ -121,8 +151,10 @@ class SignUpCompanyInfo(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('4) State: %s'%self.driver.find_element(*SigninPageLocators.compyinfo_signUp_state).get_attribute('value'))
-        companyInfo['state'] = self.driver.find_element(*SigninPageLocators.compyinfo_signUp_state).get_attribute('value')
+        print ('4) State: %s' % self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_state).get_attribute('value'))
+        companyInfo['state'] = self.driver.find_element(
+            *SigninPageLocators.compyinfo_signUp_state).get_attribute('value')
 
         post_code = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_post_code)
@@ -139,7 +171,6 @@ class SignUpCompanyInfo(BasePage):
         phn_num = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_phn)
         phn_num.send_keys("11111")
-
 
         otr_phn = self.driver.find_element(
             *SigninPageLocators.compyinfo_signUp_otherphn)
@@ -176,27 +207,27 @@ class SignUpCompanyInfo(BasePage):
 
         post_code.clear()
         post_code.send_keys(fake.postcode())
-        print ('5) PostCode: %s'%post_code.get_attribute('value'))
+        print ('5) PostCode: %s' % post_code.get_attribute('value'))
         companyInfo['post_code'] = post_code.get_attribute('value')
 
         domain.clear()
         domain.send_keys(fake.domain_name())
-        print ('6) Domain: %s'%domain.get_attribute('value'))
+        print ('6) Domain: %s' % domain.get_attribute('value'))
         companyInfo['domain'] = domain.get_attribute('value')
 
         email.clear()
         email.send_keys(fake.company_email())
-        print ('7) Email: %s'%email.get_attribute('value'))
+        print ('7) Email: %s' % email.get_attribute('value'))
         companyInfo['email'] = email.get_attribute('value')
 
         phn_num.clear()
         phn_num.send_keys("12345678901")
-        print ('8) Phone No: %s'%phn_num.get_attribute('value'))
+        print ('8) Phone No: %s' % phn_num.get_attribute('value'))
         companyInfo['phone_no'] = phn_num.get_attribute('value')
 
         otr_phn.clear()
         otr_phn.send_keys("12345678902")
-        print ('9) Other Phone no: %s'%otr_phn.get_attribute('value'))
+        print ('9) Other Phone no: %s' % otr_phn.get_attribute('value'))
         companyInfo['other_phone_no'] = otr_phn.get_attribute('value')
         print (companyInfo)
 

@@ -36,7 +36,7 @@ class kirvSignupTest(unittest.TestCase):
         # SignUp-login
 
         signUp_login = SignUpLogin(self.driver)
-
+        signUp_login.title_check()
         signUp_login.login_with_blank_pwd()
         signUp_login.click_login_signup_button()
         try:
@@ -70,42 +70,55 @@ class kirvSignupTest(unittest.TestCase):
         # contactInfo
 
         signUp_contactInfo = SignUpContact(self.driver)
+        signUp_contactInfo.title_check()
         signUp_contactInfo.fill_fields()
 
         # Brand
 
         signUp_brand = SignUpBrand(self.driver)
+        signUp_brand.title_check()
         signUp_brand.select_checkbox()
         signUp_brand.click_brand_signup_button()
 
         # companyInfo
 
         signUp_companyInfo = SignUpCompanyInfo(self.driver)
+        signUp_companyInfo.step_check()
+        signUp_companyInfo.title_check()
         signUp_companyInfo.fill_fields()
 
         # location
 
         signUp_location = SignUpLocation(self.driver)
+        signUp_location.step_check()
+        signUp_location.title_check()
         signUp_location.fill_fields()
 
         # warehouse/ship
 
         signUp_ship = SignUpShipTo(self.driver)
+        signUp_ship.step_check()
+        signUp_ship.title_check()
         signUp_ship.fill_fields()
 
         # categories
 
         signUp_categories = SignUpCategories(self.driver)
+        signUp_categories.step_check()
+        signUp_categories.title_check()
         signUp_categories.fill_fields()
 
         # volumes
 
         signUp_volumes = SignUpVolumes(self.driver)
+        signUp_volumes.step_check()
+        signUp_volumes.title_check()
         signUp_volumes.fill_fields()
 
         # congratulation
 
         signUp_congratulation = SignUpCongratulations(self.driver)
+        signUp_congratulation.check_img_title()
         signUp_congratulation.click_modal_close_btn()
 
         # email check
@@ -121,6 +134,7 @@ class kirvSignupTest(unittest.TestCase):
             print("No email found")
         '''
         self.driver.close()
+
 
 if __name__ == "__main__":
     unittest.main()

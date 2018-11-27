@@ -5,6 +5,9 @@ class SigninPageLocators(object):
 
     # SignUp
 
+    title_login_signup = (
+        By.CSS_SELECTOR, 'ng-component > div > div > div > div > div > div > h1')
+
     email_login_signup = (
         By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > label > input')
     pwd_login_signup = (
@@ -18,6 +21,9 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
 
     # contactInfo
+
+    contactInfo_title = (
+        By.CSS_SELECTOR, 'app-contact > div > div > div.media > div > div > div > h1')
 
     contactInfo_signUp_companyName = (
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > label > input')
@@ -35,12 +41,16 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
 
     # brand
-
+    brand_title = (By.CSS_SELECTOR,
+                   'app-brands > div > div > div.media > div > div > div > h1')
     brand_signUp = (By.CLASS_NAME, 'select-check')
     brand_start_app_btn = (
         By.CSS_SELECTOR, 'app-brands > div > div > app-brands-form > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
 
     # companyInfo
+
+    companyinfo_title = (
+        By.CSS_SELECTOR, 'app-company-information > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
 
     compyinfo_signUp_reseller_id = (
         By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(1) > field > div > label > input')
@@ -89,6 +99,9 @@ class SigninPageLocators(object):
         By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
 
     # location
+
+    location_title = (
+        By.CSS_SELECTOR, 'app-locations > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
 
     location_signUp_name1 = (
         By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > input')
@@ -157,6 +170,9 @@ class SigninPageLocators(object):
 
     # warehouse/ship
 
+    ship_title = (
+        By.CSS_SELECTOR, 'app-warehouses > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
+
     ship_signUp_start_time = (
         By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(9) > field > div > label > input')
     ship_signUp_end_time = (
@@ -213,10 +229,15 @@ class SigninPageLocators(object):
 
     # categories
 
+    categories_title = (
+        By.CSS_SELECTOR, 'app-categories > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
+
     categories_signUp_cook_microwave = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(3) > field > div > label > div > input')
-    #categories_signUp_cook_oven = (
-    #    By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
+    # categories_signUp_cook_oven = (
+    # By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div
+    # > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div >
+    # div:nth-child(2) > field > div > label > div > input')
     categories_signUp_cook_hood = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
     categories_signUp_cook_stove = (
@@ -262,6 +283,9 @@ class SigninPageLocators(object):
 
     # volumes
 
+    volumes_title = (
+        By.CSS_SELECTOR, 'ng-component > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
+
     volumes_signUp_quarter_truck_q1 = (
         By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
     volumes_signUp_half_truck_q1 = (
@@ -298,9 +322,23 @@ class SigninPageLocators(object):
 
     # congratulations
 
-    congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > button')
+    # congrats_kirv_image = (
+    #     By.XPATH, '//*[@class="logo"]')
+    # congrats_title = (
+    #     By.XPATH, '//*[contains(text(),"Congratulations!")]')
+    # congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > div > a')
+
+    congrats_kirv_image = (
+        By.CSS_SELECTOR, '#congrats > header > img')
+    congrats_title = (
+        By.CSS_SELECTOR, '#congrats > div > h1')
+    congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > div > a')
 
     # sign-up
 
     signup = (By.CLASS_NAME, 'btn-green')
     signupLink = (By.XPATH, '//a[text()="Sign up here"]')
+
+    # sign-up steps
+
+    steps = (By.XPATH, '//ul[@class="steps-ul"]')

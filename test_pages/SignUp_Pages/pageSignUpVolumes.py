@@ -11,8 +11,38 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 volumeInfo = {}
 
+
 class SignUpVolumes(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_5 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_5 = item.text
+        if step_5 == str(5):
+            print("Success: Step %s is active." % (step_5))
+        else:
+            print("No result found for step %s active." % (step_5))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.volumes_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.volumes_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: volumes title found.")
+        except:
+            print("No result found for volumes title.")
 
     def full_truck_q1_err(self):
         full_q1_er = self.driver.find_element(
@@ -67,8 +97,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('1) q1_quarterTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value'))
-        volumeInfo['q1_quarterTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value')
+        print ('1) q1_quarterTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value'))
+        volumeInfo['q1_quarterTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_quarter_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_half_truck_q1).click()
@@ -79,8 +111,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('2) q1_halfTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value'))
-        volumeInfo['q1_halfTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value')
+        print ('2) q1_halfTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value'))
+        volumeInfo['q1_halfTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_half_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_check_q2).click()
@@ -93,8 +127,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('3) q2_quarterTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value'))
-        volumeInfo['q2_quarterTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value')
+        print ('3) q2_quarterTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value'))
+        volumeInfo['q2_quarterTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_quarter_truck_q2).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_acknowledge_check).click()
@@ -130,8 +166,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('4) q1_fullTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value'))
-        volumeInfo['q1_fullTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value')
+        print ('4) q1_fullTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value'))
+        volumeInfo['q1_fullTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_full_truck_q1).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_half_truck_q2).click()
@@ -141,8 +179,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('5) q2_halfTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value'))
-        volumeInfo['q2_halfTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value')
+        print ('5) q2_halfTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value'))
+        volumeInfo['q2_halfTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_half_truck_q2).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.volumes_signUp_full_truck_q2).click()
@@ -153,8 +193,10 @@ class SignUpVolumes(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('6) q2_fullTruck: %s'%self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value'))
-        volumeInfo['q2_fullTruck'] = self.driver.find_element(*SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value')
+        print ('6) q2_fullTruck: %s' % self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value'))
+        volumeInfo['q2_fullTruck'] = self.driver.find_element(
+            *SigninPageLocators.volumes_signUp_full_truck_q2).get_attribute('value')
         print (volumeInfo)
 
         self.click_volumes_signup_button()

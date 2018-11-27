@@ -11,8 +11,38 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 categoriesInfo = {}
 
+
 class SignUpCategories(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_4 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_4 = item.text
+        if step_4 == str(4):
+            print("Success: Step %s is active." % (step_4))
+        else:
+            print("No result found for step %s active." % (step_4))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.categories_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.categories_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: categories title found.")
+        except:
+            print("No result found for categories title.")
 
     def categories_stove_err(self):
         stove_er = self.driver.find_element(
@@ -55,8 +85,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('1) microwave: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value'))
-        categoriesInfo['microwave'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value')
+        print ('1) microwave: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value'))
+        categoriesInfo['microwave'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value')
 
         '''self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_oven).click()
@@ -78,8 +110,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('3) hood: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_hood).get_attribute('value'))
-        categoriesInfo['hood'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_hood).get_attribute('value')
+        print ('3) hood: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_hood).get_attribute('value'))
+        categoriesInfo['hood'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_hood).get_attribute('value')
 
         time.sleep(1)
         self.driver.execute_script(
@@ -93,8 +127,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('4) dishwasher: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_dish_dishwasher).get_attribute('value'))
-        categoriesInfo['dishwasher'] = self.driver.find_element(*SigninPageLocators.categories_signUp_dish_dishwasher).get_attribute('value') 
+        print ('4) dishwasher: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_dish_dishwasher).get_attribute('value'))
+        categoriesInfo['dishwasher'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_dish_dishwasher).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_laundry_washer).click()
@@ -103,8 +139,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('5) laundry_washer: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_washer).get_attribute('value'))
-        categoriesInfo['laundry_washer'] = self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_washer).get_attribute('value')
+        print ('5) laundry_washer: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_washer).get_attribute('value'))
+        categoriesInfo['laundry_washer'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_washer).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_laundry_pedestal).click()
@@ -113,8 +151,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('6) laundry_pedestal: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_pedestal).get_attribute('value'))
-        categoriesInfo['laundry_pedestal'] = self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_pedestal).get_attribute('value')
+        print ('6) laundry_pedestal: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_pedestal).get_attribute('value'))
+        categoriesInfo['laundry_pedestal'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_pedestal).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_other_garbage).click()
@@ -123,8 +163,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('7) garbage_cabinet: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_other_garbage).get_attribute('value'))
-        categoriesInfo['garbage_cabinet'] = self.driver.find_element(*SigninPageLocators.categories_signUp_other_garbage).get_attribute('value')
+        print ('7) garbage_cabinet: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_other_garbage).get_attribute('value'))
+        categoriesInfo['garbage_cabinet'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_other_garbage).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_refrigeration_refrigerator).click()
@@ -134,8 +176,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('8) refrigeration: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_refrigerator).get_attribute('value'))
-        categoriesInfo['refrigerator'] = self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_refrigerator).get_attribute('value')
+        print ('8) refrigeration: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_refrigerator).get_attribute('value'))
+        categoriesInfo['refrigerator'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_refrigerator).get_attribute('value')
 
         self.click_categories_signup_button()
         time.sleep(1)
@@ -188,8 +232,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('9) stove: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value'))
-        categoriesInfo['stove'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_stove).get_attribute('value')
+        print ('9) stove: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_stove).get_attribute('value'))
+        categoriesInfo['stove'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_stove).get_attribute('value')
 
         time.sleep(1)
         self.driver.execute_script(
@@ -203,8 +249,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('10) laundry_combo: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_combo).get_attribute('value'))
-        categoriesInfo['laundry_combo'] = self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_combo).get_attribute('value')
+        print ('10) laundry_combo: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_combo).get_attribute('value'))
+        categoriesInfo['laundry_combo'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_combo).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_laundry_dryer).click()
@@ -213,8 +261,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('11) laundry_dryer: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_dryer).get_attribute('value'))
-        categoriesInfo['laundry_dryer'] = self.driver.find_element(*SigninPageLocators.categories_signUp_laundry_dryer).get_attribute('value')
+        print ('11) laundry_dryer: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_dryer).get_attribute('value'))
+        categoriesInfo['laundry_dryer'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_laundry_dryer).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_other_compactor).click()
@@ -223,8 +273,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('12) compactor: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_other_compactor).get_attribute('value'))
-        categoriesInfo['compactor'] = self.driver.find_element(*SigninPageLocators.categories_signUp_other_compactor).get_attribute('value')
+        print ('12) compactor: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_other_compactor).get_attribute('value'))
+        categoriesInfo['compactor'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_other_compactor).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_refrigeration_icemaker).click()
@@ -234,8 +286,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('13) icemaker: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_icemaker).get_attribute('value'))
-        categoriesInfo['icemaker'] = self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_icemaker).get_attribute('value')
+        print ('13) icemaker: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_icemaker).get_attribute('value'))
+        categoriesInfo['icemaker'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_icemaker).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_refrigeration_freezer).click()
@@ -245,8 +299,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('14) freezer: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_freezer).get_attribute('value'))
-        categoriesInfo['freezer'] = self.driver.find_element(*SigninPageLocators.categories_signUp_refrigeration_freezer).get_attribute('value')
+        print ('14) freezer: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_freezer).get_attribute('value'))
+        categoriesInfo['freezer'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_refrigeration_freezer).get_attribute('value')
         print (categoriesInfo)
 
         self.click_categories_signup_button()

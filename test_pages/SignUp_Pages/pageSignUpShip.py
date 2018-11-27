@@ -10,8 +10,38 @@ from Basepage import BasePage, fake
 from SignUp_Locators.locatorSignup import SigninPageLocators
 from .pageSignUpLocation import shippingInfo
 
+
 class SignUpShipTo(BasePage):
 
+    def step_check(self):
+        time.sleep(2)
+        step_3 = None
+        self.wait_for_element(SigninPageLocators.steps)
+        step = self.driver.find_element(
+            *SigninPageLocators.steps)
+        step_li = step.find_elements_by_tag_name("li")
+
+        for item in step_li:
+            is_active = "active" in item.get_attribute("class")
+            if is_active:
+                step_3 = item.text
+        if step_3 == str(3):
+            print("Success: Step %s is active." % (step_3))
+        else:
+            print("No result found for step %s active." % (step_3))
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.ship_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.ship_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: ship/warehouse title found.")
+        except:
+            print("No result found for ship/warehouse title.")
 
     def ship2_street_error(self):
         street_er = self.driver.find_element(
@@ -56,8 +86,10 @@ class SignUpShipTo(BasePage):
 
         self.driver.find_element(
             *SigninPageLocators.ship_ok_btn_start_end).click()
-        print ('1) Start Time1: %s'%self.driver.find_element(*SigninPageLocators.ship_signUp_start_time).get_attribute('value'))
-        shippingInfo['start_time1'] = self.driver.find_element(*SigninPageLocators.ship_signUp_start_time).get_attribute('value')
+        print ('1) Start Time1: %s' % self.driver.find_element(
+            *SigninPageLocators.ship_signUp_start_time).get_attribute('value'))
+        shippingInfo['start_time1'] = self.driver.find_element(
+            *SigninPageLocators.ship_signUp_start_time).get_attribute('value')
 
         time.sleep(1)
 
@@ -71,8 +103,10 @@ class SignUpShipTo(BasePage):
 
         self.driver.find_element(
             *SigninPageLocators.ship_ok_btn_start_end).click()
-        print ('2) End Time1: %s'%self.driver.find_element(*SigninPageLocators.ship_signUp_end_time).get_attribute('value'))
-        shippingInfo['end_time1'] = self.driver.find_element(*SigninPageLocators.ship_signUp_end_time).get_attribute('value')
+        print ('2) End Time1: %s' % self.driver.find_element(
+            *SigninPageLocators.ship_signUp_end_time).get_attribute('value'))
+        shippingInfo['end_time1'] = self.driver.find_element(
+            *SigninPageLocators.ship_signUp_end_time).get_attribute('value')
 
         time.sleep(1)
 
@@ -87,7 +121,7 @@ class SignUpShipTo(BasePage):
         ship_name2 = self.driver.find_element(
             *SigninPageLocators.ship2_name)
         ship_name2.send_keys(fake.street_name())
-        print ('3) name2: %s'%ship_name2.get_attribute('value'))
+        print ('3) name2: %s' % ship_name2.get_attribute('value'))
         shippingInfo['name2'] = ship_name2.get_attribute('value')
 
         self.driver.find_element(
@@ -97,8 +131,10 @@ class SignUpShipTo(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('4) state2: %s'%self.driver.find_element(*SigninPageLocators.ship2_state).get_attribute('value'))
-        shippingInfo['state2'] = self.driver.find_element(*SigninPageLocators.ship2_state).get_attribute('value')
+        print ('4) state2: %s' % self.driver.find_element(
+            *SigninPageLocators.ship2_state).get_attribute('value'))
+        shippingInfo['state2'] = self.driver.find_element(
+            *SigninPageLocators.ship2_state).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.ship2_start).click()
@@ -110,8 +146,10 @@ class SignUpShipTo(BasePage):
 
         self.driver.find_element(
             *SigninPageLocators.ship_ok_btn_start_end).click()
-        print ('5) start time2: %s'%self.driver.find_element(*SigninPageLocators.ship2_start).get_attribute('value'))
-        shippingInfo['start_time2'] = self.driver.find_element(*SigninPageLocators.ship2_start).get_attribute('value')
+        print ('5) start time2: %s' % self.driver.find_element(
+            *SigninPageLocators.ship2_start).get_attribute('value'))
+        shippingInfo['start_time2'] = self.driver.find_element(
+            *SigninPageLocators.ship2_start).get_attribute('value')
 
         time.sleep(1)
 
@@ -125,8 +163,10 @@ class SignUpShipTo(BasePage):
 
         self.driver.find_element(
             *SigninPageLocators.ship_ok_btn_start_end).click()
-        print ('6) end_time2: %s'%self.driver.find_element(*SigninPageLocators.ship2_end).get_attribute('value'))
-        shippingInfo['end_time2'] = self.driver.find_element(*SigninPageLocators.ship2_end).get_attribute('value')
+        print ('6) end_time2: %s' % self.driver.find_element(
+            *SigninPageLocators.ship2_end).get_attribute('value'))
+        shippingInfo['end_time2'] = self.driver.find_element(
+            *SigninPageLocators.ship2_end).get_attribute('value')
 
         self.click_ship_signup_button()
         time.sleep(1)
@@ -165,13 +205,13 @@ class SignUpShipTo(BasePage):
             *SigninPageLocators.ship2_street_add)
         ship_street2.send_keys(fake.building_number() +
                                " " + fake.street_name())
-        print ('7) street2: %s'%ship_street2.get_attribute('value'))
+        print ('7) street2: %s' % ship_street2.get_attribute('value'))
         shippingInfo['street2'] = ship_street2.get_attribute('value')
 
         ship_city2 = self.driver.find_element(
             *SigninPageLocators.ship2_city)
         ship_city2.send_keys(fake.city())
-        print ('8) city2: %s'%ship_city2.get_attribute('value'))
+        print ('8) city2: %s' % ship_city2.get_attribute('value'))
         shippingInfo['city2'] = ship_city2.get_attribute('value')
 
         ship_post2 = self.driver.find_element(
@@ -219,22 +259,23 @@ class SignUpShipTo(BasePage):
 
         ship_post2.clear()
         ship_post2.send_keys(fake.postcode())
-        print ('9) post_code: %s'%ship_post2.get_attribute('value'))
+        print ('9) post_code: %s' % ship_post2.get_attribute('value'))
         shippingInfo['post_code2'] = ship_post2.get_attribute('value')
 
         ship_email2.clear()
         ship_email2.send_keys(fake.email())
-        print ('10) email2: %s'%ship_email2.get_attribute('value'))
+        print ('10) email2: %s' % ship_email2.get_attribute('value'))
         shippingInfo['email2'] = ship_email2.get_attribute('value')
 
         ship_phn2.clear()
         ship_phn2.send_keys('12345678907')
-        print ('11) phone_no2: %s'%ship_phn2.get_attribute('value'))
+        print ('11) phone_no2: %s' % ship_phn2.get_attribute('value'))
         shippingInfo['phone_no2'] = ship_phn2.get_attribute('value')
 
         ship_othr_phn2.clear()
         ship_othr_phn2.send_keys('12345678908')
-        print ('12) other_phone no: %s'%ship_othr_phn2.get_attribute('value'))
+        print ('12) other_phone no: %s' %
+               ship_othr_phn2.get_attribute('value'))
         shippingInfo['other_phone_no2'] = ship_othr_phn2.get_attribute('value')
         print (shippingInfo)
 

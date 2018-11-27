@@ -7,7 +7,21 @@ from SignUp_Locators.locatorSignup import SigninPageLocators
 
 contactInfo = {}
 
+
 class SignUpContact(BasePage):
+
+    def title_check(self):
+        self.wait_for_element(
+            SigninPageLocators.contactInfo_title)
+
+        title = self.driver.find_element(
+            *SigninPageLocators.contactInfo_title)
+
+        try:
+            assert title.is_displayed() == True
+            print("Success: contactInfo title found.")
+        except:
+            print("No result found for contactInfo title.")
 
     def company_name_error(self):
         companyName = self.driver.find_element(
@@ -41,7 +55,7 @@ class SignUpContact(BasePage):
         input_companyName = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_companyName)
         input_companyName.send_keys(fake.company())
-        print ('1) companyName: %s'%input_companyName.get_attribute('value'))
+        print ('1) companyName: %s' % input_companyName.get_attribute('value'))
         contactInfo['company_name'] = input_companyName.get_attribute('value')
 
         self.click_contact_signup_button()
@@ -65,7 +79,7 @@ class SignUpContact(BasePage):
         input_contactName = self.driver.find_element(
             *SigninPageLocators.contactInfo_signUp_contactName)
         input_contactName.send_keys(fake.name())
-        print ('2) contactName: %s'%input_contactName.get_attribute('value'))
+        print ('2) contactName: %s' % input_contactName.get_attribute('value'))
         contactInfo['contact_name'] = input_contactName.get_attribute('value')
 
         input_phn = self.driver.find_element(
@@ -80,12 +94,12 @@ class SignUpContact(BasePage):
             print("Success: signup-contact phone-number invalid error found.")
         except:
             print("No result found for invalid phone-number")
-        
+
         time.sleep(1)
         input_phn.clear()
         time.sleep(1)
         input_phn.send_keys('12345678900')
-        print ('3) Phone no.: %s'%input_phn.get_attribute('value'))
+        print ('3) Phone no.: %s' % input_phn.get_attribute('value'))
         contactInfo['phone_no'] = input_phn.get_attribute('value')
         print (contactInfo)
 
