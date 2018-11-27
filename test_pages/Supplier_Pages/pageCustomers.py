@@ -173,6 +173,7 @@ class SupplierCustomers(BasePage):
         self.close_chat_popup_while_button_click(
             self.get_element(SupplierPageLocators.company_cancel_button))
 
+
     def check_edited_pending_customer_company_detail(self):
         """
             edit and checks pending customers company details
@@ -213,6 +214,7 @@ class SupplierCustomers(BasePage):
                     companyInfo[key] = input_value
         self.check_pending_customer_company_detail()
 
+
     def check_pending_customer_contact_detail(self):
         """
             checks pending customers contact details
@@ -231,6 +233,7 @@ class SupplierCustomers(BasePage):
                 "AssertionError --------> check_pending_customer_contact_detail error")
         self.close_chat_popup_while_button_click(
             self.get_element(SupplierPageLocators.contact_cancel_button))
+
 
     def check_edited_pending_customer_contact_detail(self):
         """
@@ -269,6 +272,7 @@ class SupplierCustomers(BasePage):
                 else:
                     contactInfo[key] = input_value
         self.check_pending_customer_contact_detail()
+
 
     def check_pending_customer_location_detail(self):
         """
@@ -314,6 +318,7 @@ class SupplierCustomers(BasePage):
         self.close_chat_popup_while_button_click(
             self.get_element(SupplierPageLocators.location_cancel_button))
         self.page_up()
+
 
     def check_edited_pending_customer_location_detail(self):
         """
@@ -363,7 +368,11 @@ class SupplierCustomers(BasePage):
         self.driver.execute_script(
             "window.scrollTo(document.body.scrollHeight, 0);")
 
+
     def check_pending_customer_shipping_detail1(self):
+        """
+            Checks Pending Customers Shipping Detail
+        """
         print ("--before")
         #self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight;" ,self.get_element(SupplierPageLocators.edit_ship_information))
         # self.page_down()
@@ -377,6 +386,7 @@ class SupplierCustomers(BasePage):
             self.get_element(SupplierPageLocators.ship_cancel_button))
         print ("--after")
 
+
     def check_pending_customer_shipping_detail(self):
         """
             Checks pending customer shipping detail
@@ -386,13 +396,20 @@ class SupplierCustomers(BasePage):
         self.close_chat_popup_while_button_click(
             self.get_element(SupplierPageLocators.edit_ship_information))
         # try:
-        #assert self.get_element(SupplierPageLocators.ship_name1_input).get_attribute('value') == locationInfo['name1']
-        #assert self.get_element(SupplierPageLocators.ship_address1_input).get_attribute('value') == locationInfo['street1']
-        #assert self.get_element(SupplierPageLocators.ship_city1_input).get_attribute('value') == locationInfo['city1']
-        #assert self.get_element(SupplierPageLocators.ship_state1_input).get_attribute('value').lower() == locationInfo['state1'].lower()
-        #assert self.get_element(SupplierPageLocators.ship_post_code1_input).get_attribute('value') == locationInfo['post_code1']
-        #assert self.get_element(SupplierPageLocators.ship_email1_input).get_attribute('value') == locationInfo['email1']
-        #assert self.get_element(SupplierPageLocators.ship_phone1_input).get_attribute('value') == locationInfo['phone_no1'] if locationInfo['phone_no1'][0] == '+' else '+' + locationInfo['phone_no1']
+        assert self.get_element(SupplierPageLocators.ship_name1_input).get_attribute(
+            'value') == shippingInfo['name1']
+        assert self.get_element(SupplierPageLocators.ship_address1_input).get_attribute(
+            'value') == shippingInfo['street1']
+        assert self.get_element(SupplierPageLocators.ship_city1_input).get_attribute(
+            'value') == shippingInfo['city1']
+        assert self.get_element(SupplierPageLocators.ship_state1_input).get_attribute(
+            'value').lower() == shippingInfo['state1'].lower()
+        assert self.get_element(SupplierPageLocators.ship_post_code1_input).get_attribute(
+            'value') == shippingInfo['post_code1']
+        assert self.get_element(SupplierPageLocators.ship_email1_input).get_attribute(
+            'value') == shippingInfo['email1']
+        assert self.get_element(SupplierPageLocators.ship_phone1_input).get_attribute(
+            'value') == shippingInfo['phone_no1'] if shippingInfo['phone_no1'][0] == '+' else '+' + shippingInfo['phone_no1']
         assert self.get_element(SupplierPageLocators.ship_start_time1_input).get_attribute(
             'value') == shippingInfo['start_time1']
         assert self.get_element(SupplierPageLocators.ship_end_time1_input).get_attribute(
@@ -422,6 +439,7 @@ class SupplierCustomers(BasePage):
             self.get_element(SupplierPageLocators.ship_cancel_button))
         self.driver.execute_script(
             "window.scrollTo(document.body.scrollHeight, 0);")
+
 
     def check_edited_pending_customer_shipping_detail(self):
         """
