@@ -4,6 +4,7 @@ from selenium.webdriver import ChromeOptions
 import logging
 import time
 import pickle
+#from selenium.remote import connect
 
 import sys
 sys.path.append('../test_pages')
@@ -23,7 +24,9 @@ class Supplier_Test(unittest.TestCase):
     def setUp(self):
         options = ChromeOptions()
         options.add_argument("--start-maximized")
-        options.add_experimental_option("detach", True)
+        #options.add_argument("--headless")
+        #options.binary_location = '/Applications/Google Chrome   Canary.app/Contents/MacOS/Google Chrome Canary'     
+        #options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
         self.driver.implicitly_wait(10)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
@@ -240,21 +243,23 @@ class Supplier_Test(unittest.TestCase):
 
         supplier_homepage = SupplierHomepage(self.driver)
         supplier_customer = SupplierCustomers(self.driver)
-        # self.check_home_page()
+        self.check_home_page()
 
         status_tab = ["all_customers", "Pending", "Active", "Inactive"]
-        # self.check_all_status_tab(status_tab)
+        self.check_all_status_tab(status_tab)
 
-        # supplier_customer.check_pending_customer_first_record()
+        supplier_customer.check_pending_customer_first_record()
         supplier_customer.get_first_view_tab().click()
-        # supplier_customer.check_pending_customer_company_detail()
-        # supplier_customer.check_edited_pending_customer_company_detail()
-        # supplier_customer.check_pending_customer_contact_detail()
-        # supplier_customer.check_edited_pending_customer_contact_detail()
-        # supplier_customer.check_pending_customer_location_detail()
-        # supplier_customer.check_edited_pending_customer_location_detail()
-        # supplier_customer.check_pending_customer_shipping_detail()
+        supplier_customer.check_pending_customer_company_detail()
+        supplier_customer.check_edited_pending_customer_company_detail()
+        supplier_customer.check_pending_customer_contact_detail()
+        supplier_customer.check_edited_pending_customer_contact_detail()
+        supplier_customer.check_pending_customer_location_detail()
+        supplier_customer.check_edited_pending_customer_location_detail()
+        supplier_customer.check_pending_customer_shipping_detail()
         supplier_customer.check_edited_pending_customer_shipping_detail()
+        supplier_customer.check_pending_customer_categories_detail()
+        supplier_customer.check_pending_customer_volume_detail()
 
         # self.logout()
         #print (contactInfo)

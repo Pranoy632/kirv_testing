@@ -36,7 +36,7 @@ class SupplierPageLocators(object):
     first_record_main_contact = (By.XPATH, '//table/tbody/tr/td[4]')
     first_record_phone_number = (By.XPATH, '//table/tbody/tr/td[5]')
     first_record_account_status = (By.XPATH, '//table/tbody/tr/td[6]')
-    view = (By.XPATH, '//table/tbody/tr/td[7]')
+    view = (By.XPATH, '//table/tbody/tr/td[8]')
     body = (By.XPATH, '/html/body')
     #chat = (By.XPATH, '//iframe[@id="drift-widget"]')
     chat = (By.TAG_NAME, 'iframe')
@@ -166,11 +166,12 @@ class SupplierPageLocators(object):
 
 
     #--------------Customer page Categories Information locators--------------#
+    categories_div = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::form//parent::div')
     edit_categories_information = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div/div[2]/span')
     categories_microwave = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div//input')
-    categories_oven = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
-    categories_hood = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[3]//input')
-    categories_stove = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[4]//input')
+    #categories_oven = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
+    categories_hood = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[2]//input')
+    categories_stove = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[2]/div[3]//input')
     categories_dishwasher = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[4]/div//input')
     categories_washer = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[6]/div//input')
     categories_pedestal = (By.XPATH, '//span[text()=" Buying Categories"]//ancestor::fieldset/div[2]/div[6]/div[2]//input')
@@ -186,6 +187,7 @@ class SupplierPageLocators(object):
 
 
     #--------------Customer page Volume Information locators--------------#
+    volume_div = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::form//parent::div')
     edit_volume_information = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div/div[2]/span')
     volume_q1_quarter_trucks = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div[2]/div/div/div//input')
     volume_q1_half_trucks = (By.XPATH, '//span[text()="Buying Volumes"]//ancestor::fieldset/div[2]/div/div/div[2]//input')
