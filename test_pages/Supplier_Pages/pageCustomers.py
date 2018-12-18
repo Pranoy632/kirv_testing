@@ -23,8 +23,8 @@ from SignUp_Pages.pageSignUpVolumes import volumeInfo
 # shippingInfo = {'name1': 'Haley Prairie', 'state1': 'Alabama', 'start_time1': '01:00', 'end_time1': '06:00', 'street1': '788 Andre Row', 'city1': 'Perkinsbury', 'post_code1': '05542', 'email1': 'scottjoyce@castro.net', 'phone_no1': '12345678906', 'name2': 'Samantha Hollow', 'state2': 'Alabama', 'start_time2': '02:00', 'end_time2': '07:00', 'street2': '015 Calvin Gardens', 'city2': 'Matthewshire', 'post_code2': '91400', 'email2': 'alexandramosley@hernandez-harris.com', 'phone_no2': '12345678907', 'other_phone_no2': '12345678908'}
 # categoriesInfo = {'microwave': 'Often', 'oven': 'All The Time', 'hood': 'All The Time', 'dishwasher': 'Often', 'laundry_washer': 'Often', 'laundry_pedestal': 'Often', 'garbage_cabinet': 'Often', 'refrigerator': 'All The Time', 'laundry_combo': 'Often', 'laundry_dryer': 'Often', 'compactor': 'Often', 'icemaker': 'All The Time', 'freezer': 'All The Time'}
 # volumeInfo = {'q1_quarterTruck': '2', 'q1_halfTruck': '3', 'q2_quarterTruck': '2', 'q1_fullTruck': '4', 'q2_halfTruck': '2', 'q2_fullTruck': '3'}
-categoriesInfo = {'microwave': 'Often', 'hood': 'All The Time', 'dishwasher': 'Often', 'laundry_washer': 'Often', 'laundry_pedestal': 'Often', 'garbage_cabinet': 'Often', 'refrigerator': 'All The Time', 'stove': 'Often', 'laundry_combo': 'Often', 'laundry_dryer': 'Often', 'compactor': 'Often', 'icemaker': 'All The Time', 'freezer': 'All The Time'}
-volumeInfo = {'q1_quarterTruck': '2', 'q1_halfTruck': '3', 'q2_quarterTruck': '2', 'q1_fullTruck': '4', 'q2_halfTruck': '2', 'q2_fullTruck': '3'}
+#categoriesInfo = {'microwave': 'Often', 'hood': 'All The Time', 'dishwasher': 'Often', 'laundry_washer': 'Often', 'laundry_pedestal': 'Often', 'garbage_cabinet': 'Often', 'refrigerator': 'All The Time', 'stove': 'Often', 'laundry_combo': 'Often', 'laundry_dryer': 'Often', 'compactor': 'Often', 'icemaker': 'All The Time', 'freezer': 'All The Time'}
+#volumeInfo = {'q1_quarterTruck': '2', 'q1_halfTruck': '3', 'q2_quarterTruck': '2', 'q1_fullTruck': '4', 'q2_halfTruck': '2', 'q2_fullTruck': '3'}
 
 
 class SupplierCustomers(BasePage):

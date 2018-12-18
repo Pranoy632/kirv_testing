@@ -257,7 +257,7 @@ class Supplier_Test(unittest.TestCase):
         supplier_customer.check_pending_customer_location_detail()
         supplier_customer.check_edited_pending_customer_location_detail()
         supplier_customer.check_pending_customer_shipping_detail()
-        supplier_customer.check_edited_pending_customer_shipping_detail()
+        #supplier_customer.check_edited_pending_customer_shipping_detail()
         supplier_customer.check_pending_customer_categories_detail()
         supplier_customer.check_pending_customer_volume_detail()
 
