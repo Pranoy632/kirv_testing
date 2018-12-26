@@ -71,7 +71,7 @@ class SupplierCustomers(BasePage):
         """
             clears and puts input in input box
         """
-        time.sleep(1)
+        time.sleep(2)
         element = self.driver.find_element(*locator)
         element.send_keys(Keys.CONTROL + 'a')
         element.send_keys(Keys.DELETE)
