@@ -234,10 +234,8 @@ class SigninPageLocators(object):
 
     categories_signUp_cook_microwave = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(3) > field > div > label > div > input')
-    # categories_signUp_cook_oven = (
-    # By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div
-    # > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div >
-    # div:nth-child(2) > field > div > label > div > input')
+    categories_signUp_cook_oven = (
+        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(4) > field > div > label > div > input')
     categories_signUp_cook_hood = (
         By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
     categories_signUp_cook_stove = (

@@ -90,7 +90,7 @@ class SignUpCategories(BasePage):
         categoriesInfo['microwave'] = self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_microwave).get_attribute('value')
 
-        '''self.driver.find_element(
+        self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_oven).click()
         time.sleep(1)
         action = action_chains.ActionChains(self.driver)
@@ -98,9 +98,10 @@ class SignUpCategories(BasePage):
         action.send_keys(Keys.DOWN)
         action.send_keys(Keys.ENTER)
         action.perform()
-        print ('2) oven: %s'%self.driver.find_element(*SigninPageLocators.categories_signUp_cook_oven).get_attribute('value'))
-        categoriesInfo['oven'] = self.driver.find_element(*SigninPageLocators.categories_signUp_cook_oven).get_attribute('value')
-        '''
+        print ('2) oven: %s' % self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_oven).get_attribute('value'))
+        categoriesInfo['oven'] = self.driver.find_element(
+            *SigninPageLocators.categories_signUp_cook_oven).get_attribute('value')
 
         self.driver.find_element(
             *SigninPageLocators.categories_signUp_cook_hood).click()
