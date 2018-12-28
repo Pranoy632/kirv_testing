@@ -3,8 +3,7 @@ __pycache__/
 
 
 # Distribution / packaging
-env/
+venv/
 my_allure_results/
 .pytest_cache/
 .idea/
-

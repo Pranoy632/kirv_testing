@@ -1,5 +1,5 @@
-import sys
-sys.path.append('../locators')
+#import sys
+#sys.path.append('../locators')
 import time
 
 

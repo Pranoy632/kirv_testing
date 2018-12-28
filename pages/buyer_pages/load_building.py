@@ -1,7 +1,7 @@
 import random
 
 from pages.basepage import *
-from locators import HomePageLocators, AllProductsLocators
+from locators.buyer_locators.homepage_locators import HomePageLocators, AllProductsLocators
 
 
 class BuildLoad(BasePage):

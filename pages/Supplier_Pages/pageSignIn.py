@@ -1,9 +1,9 @@
-import sys
-sys.path.append('../locators')
+#import sys
+#sys.path.append('../locators')
 
 from pages.basepage import BasePage
 from locators.sign_in_page_locators.signin_buyer_supplier_locator import SignInLocators
-from locators import SupplierPageLocators
+from locators.supplier_locators.locatorSupplier import SupplierPageLocators
 
 
 class SignIn(BasePage):
