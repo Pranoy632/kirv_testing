@@ -1,16 +1,14 @@
 import unittest
+import time
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
+from selenium.webdriver.common.keys import Keys
 
-import sys
-sys.path.append('../test_pages')
-import time
-
-
-from page_buyer_supplier_signin import MainSigninPage
+from common.login_buyer import LoginBuyer
+from pages.buyer_pages.load_building import BuildLoad
 
 
-class kirvBuyerTest(unittest.TestCase):
+class KirvBuyerTest(unittest.TestCase):
 
     def setUp(self):
         options = ChromeOptions()
@@ -20,15 +18,24 @@ class kirvBuyerTest(unittest.TestCase):
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_buyer(self):
-        user = 'amztest18+20181010142126@gmail.com'
-        pwd = 'amazatic'
+        LoginBuyer().sign_in_existing_buyer(self)
+        BuildLoad(self.driver).go_to_categories()
+        main_page_category_info = BuildLoad(self.driver).select_any_category()
+        details_page_catrgory_info = BuildLoad(self.driver).check_panel()
+        print(main_page_category_info,details_page_catrgory_info)
+        BuildLoad(self.driver).check_breadcrumb()
+        #BuildLoad(self.driver).total_of_sub_categories()
+        result = BuildLoad(self.driver).check_lower_sorting()
+        BuildLoad(self.driver).click_on_sort_by_price()
+        BuildLoad(self.driver).sort_by_higher()
+        BuildLoad(self.driver).apply_sorting()
+        result1 = BuildLoad(self.driver).check_higher_sorting()
+        BuildLoad(self.driver).click_on_sort_by_price()
+        BuildLoad(self.driver).sort_by_lower()
+        BuildLoad(self.driver).apply_sorting()
+        result2 = BuildLoad(self.driver).check_lower_sorting()
+        print(result, result1, result2)
 
-        # Sign In
-
-        signin_page = MainSigninPage(self.driver)
-        signin_page.fill_fields(user, pwd)
-        
-        self.driver.close()
 
 if __name__ == "__main__":
     unittest.main()
