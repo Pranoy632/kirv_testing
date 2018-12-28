@@ -1,22 +1,15 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
-import logging
-import time
-import pickle
 #from selenium.remote import connect
 
-import sys
-sys.path.append('../test_pages')
+# import sys
+# sys.path.append('../pages')
 
-from Supplier_Pages.pageSignIn import SignIn
-from Supplier_Pages.pageHomepage import SupplierHomepage
-from Supplier_Pages.pageCustomers import SupplierCustomers
-from page_buyer_supplier_signin import MainSigninPage
+from pages.Supplier_Pages.pageHomepage import SupplierHomepage
+from pages.Supplier_Pages.pageCustomers import SupplierCustomers
+from pages.landing_page.page_buyer_supplier_signin import MainSigninPage
 #from test_signup import kirvSignupTest
-from SignUp_Pages.pageSignUpContact import contactInfo
-from SignUp_Pages.pageSignUpCompanyInfo import companyInfo
-from SignUp_Pages.pageSignUpLocation import locationInfo
 
 
 class Supplier_Test(unittest.TestCase):

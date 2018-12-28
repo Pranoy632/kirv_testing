@@ -2,21 +2,19 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
-import sys
-sys.path.append('../test_pages')
-import time
+# import sys
+# sys.path.append('../pages')
 
-from SignUp_Pages.pageSignup import MainPage
-from SignUp_Pages.pageSignUpLogin import SignUpLogin
-from SignUp_Pages.pageSignUpContact import SignUpContact
-from SignUp_Pages.pageSignUpBrand import SignUpBrand
-from SignUp_Pages.pageSignUpCompanyInfo import SignUpCompanyInfo
-from SignUp_Pages.pageSignUpLocation import SignUpLocation
-from SignUp_Pages.pageSignUpShip import SignUpShipTo
-from SignUp_Pages.pageSignUpCategories import SignUpCategories
-from SignUp_Pages.pageSignUpVolumes import SignUpVolumes
-from SignUp_Pages.pageSignUpCongratulations import SignUpCongratulations
-from email_check import EmailCheck
+from pages.SignUp_Pages.pageSignup import MainPage
+from pages.SignUp_Pages.pageSignUpLogin import SignUpLogin
+from pages.SignUp_Pages.pageSignUpContact import SignUpContact
+from pages.SignUp_Pages.pageSignUpBrand import SignUpBrand
+from pages.SignUp_Pages.pageSignUpCompanyInfo import SignUpCompanyInfo
+from pages.SignUp_Pages.pageSignUpLocation import SignUpLocation
+from pages.SignUp_Pages.pageSignUpShip import SignUpShipTo
+from pages.SignUp_Pages.pageSignUpCategories import SignUpCategories
+from pages.SignUp_Pages.pageSignUpVolumes import SignUpVolumes
+from pages.SignUp_Pages.pageSignUpCongratulations import SignUpCongratulations
 
 
 class kirvSignupTest(unittest.TestCase):
