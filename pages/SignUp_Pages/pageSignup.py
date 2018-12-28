@@ -1,10 +1,10 @@
-import sys
-sys.path.append('../locators')
+#import sys
+#sys.path.append('../locators')
 
 
 from pages.basepage import BasePage
 
-from locators import SigninPageLocators
+from locators.sign_up_locators.locatorSignup import SigninPageLocators
 
 
 class MainPage(BasePage):

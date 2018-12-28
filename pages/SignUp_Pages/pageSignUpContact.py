@@ -1,9 +1,9 @@
-import sys
-sys.path.append('../locators')
+#import sys
+#sys.path.append('../locators')
 import time
 
 from pages.basepage import BasePage, fake
-from locators import SigninPageLocators
+from locators.sign_up_locators.locatorSignup import SigninPageLocators
 
 contactInfo = {}
 
