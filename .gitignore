@@ -4,6 +4,7 @@ __pycache__/
 
 # Distribution / packaging
 venv/
+env/
 my_allure_results/
 .pytest_cache/
 .idea/
