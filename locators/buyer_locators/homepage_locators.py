@@ -13,6 +13,8 @@ class HomePageLocators(object):
     no_of_products_categories_list = (By.CSS_SELECTOR, 'div:nth-child(3)')
     cart = (By.CLASS_NAME, 'cart-outer')
     loader = (By.CLASS_NAME, 'centered')
+    search = (By.NAME, 'search')
+    search_button = (By.CSS_SELECTOR, '.search-box-header > button:nth-child(2)')
 
 
 class AllProductsLocators(object):
@@ -29,10 +31,11 @@ class AllProductsLocators(object):
     product_list = (By.CSS_SELECTOR, 'div.product-list:nth-child(4)')
     single_product = (By.CSS_SELECTOR, 'div.col-lg-4')
     cost = (By.CSS_SELECTOR, 'div:nth-child(3) > span:nth-child(1)')
-    product_column = (By.CSS_SELECTOR, 'div.col-lg-4')
-    product_cell_price = (By.CSS_SELECTOR, 'div:nth-child(3) > span:nth-child(1)')
-    sort_lower = (By.ID, 'customCheck21')
-    sort_higher = (By.ID, 'customCheck22')
+    product_column = (By.CSS_SELECTOR, 'div.product-list:nth-child(4)')
+    product_cell = (By.CSS_SELECTOR, 'div.col-lg-4')
+    sort_lower = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) > div:nth-child(1) > label:nth-child(2)')
+    sort_higher = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) >'
+                                    ' div:nth-child(2) > label:nth-child(2)')
     sort_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(3)')
     loader = (By.CLASS_NAME, 'centered')
-
+    no_products = (By.CLASS_NAME, 'load-not-avd')

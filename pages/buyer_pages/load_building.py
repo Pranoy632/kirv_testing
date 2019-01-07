@@ -19,7 +19,7 @@ class BuildLoad(BasePage):
         selected_category_count = random_category.find_element(*HomePageLocators.no_of_products_categories_list).text
         random_category.click()
         time.sleep(1)
-        self.wait_for_element(HomePageLocators.cart)
+        self.wait_for_element(AllProductsLocators.sorting_by_warehouse)
         return selected_category_name,selected_category_count
 
     def check_panel(self):
@@ -40,11 +40,14 @@ class BuildLoad(BasePage):
         all_menus = self.driver.find_element(*AllProductsLocators.page_menu)
         menu_list = all_menus.find_elements(*AllProductsLocators.all_menus)
         link_total = []
-        for menu in menu_list[1:]:
+        for li in range(1, (len(menu_list)+1)):
+            menu = self.driver.find_element_by_css_selector('.page-title-menu > li:nth-child({0})'.format(li))
             menu.click()
             self.wait_for_element(AllProductsLocators.sorting_by_warehouse)
             time.sleep(1)
-            link_total.append(self.driver.find_element(*AllProductsLocators.panel_no_of_products).text)
+            number_of_products_text = self.driver.find_element(*AllProductsLocators.panel_no_of_products).text
+            number_of_products = int((number_of_products_text.split(' '))[0])
+            link_total.append(number_of_products)
         total = sum(link_total)
         print(total)
         return total
@@ -62,18 +65,26 @@ class BuildLoad(BasePage):
 
     def apply_sorting(self):
         self.driver.find_element(*AllProductsLocators.sort_apply_button).click()
-        self.wait_for_element(*AllProductsLocators.loader)
+        self.wait_for_element(AllProductsLocators.loader)
         self.wait_for_element(AllProductsLocators.product_column)
 
     def get_price(self):
-        product_matrix = self.driver.find_element(*AllProductsLocators.product_column)
-        all_products = product_matrix.find_elements(*AllProductsLocators.product_cell_price)
-        return all_products
+        product_matrix = self.driver.find_elements(*AllProductsLocators.product_cell)
+        price_list = []
+        for product in product_matrix:
+            product_cell_price = product.find_element(*AllProductsLocators.cost).text
+            if ',' in product_cell_price:
+                product_cell_price = product_cell_price.replace(',', '')
+            #product_cell_price_int = float(product_cell_price.replace('$',''))
+            price_list.append(product_cell_price)
+        return price_list
 
-    def check_higher_sorting(self):
-        all_products = self.get_price()
-        return all(all_products[i].text <= all_products[i + 1].text for i in range(len(all_products) - 1))
+    def check_highest_first_sorting(self):
+        product_sorted_high = self.get_price()
+        print(product_sorted_high, '= high')
+        return all(product_sorted_high[i] >= product_sorted_high[i + 1] for i in range(len(product_sorted_high) - 1))
 
-    def check_lower_sorting(self):
-        all_products = self.get_price()
-        return all(all_products[i].text >= all_products[i + 1].text for i in range(len(all_products) - 1))
+    def check_lowest_first_sorting(self):
+        product_sorted_low = self.get_price()
+        print(product_sorted_low, '=low')
+        return all(product_sorted_low[i] <= product_sorted_low[i + 1] for i in range(len(product_sorted_low) - 1))
