@@ -14,7 +14,7 @@ class KirvBuyerTest(unittest.TestCase):
     def setUp(self):
         options = ChromeOptions()
         options.add_argument("--start-maximized")
-        options.add_experimental_option("detach", True)
+        #options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 

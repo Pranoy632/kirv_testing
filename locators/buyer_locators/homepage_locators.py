@@ -33,6 +33,7 @@ class AllProductsLocators(object):
     cost = (By.CSS_SELECTOR, 'div:nth-child(3) > span:nth-child(1)')
     product_column = (By.CSS_SELECTOR, 'div.product-list:nth-child(4)')
     product_cell = (By.CSS_SELECTOR, 'div.col-lg-4')
+    product_cell_price = (By.CSS_SELECTOR, 'div:nth-child(3) > span:nth-child(1)')
     sort_lower = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) > div:nth-child(1) > label:nth-child(2)')
     sort_higher = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) >'
                                     ' div:nth-child(2) > label:nth-child(2)')
