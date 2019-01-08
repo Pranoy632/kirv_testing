@@ -1,3 +1,0 @@
-('Laundry', '132 Products') ('Laundry', '125 Products')
-['All Products', 'Laundry']
-All Products / Laundry
