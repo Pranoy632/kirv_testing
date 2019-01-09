@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from common.login_buyer import LoginBuyer
 from pages.buyer_pages.load_building import BuildLoad
 from pages.buyer_pages.search_page import Search
+from pages.buyer_pages.logout import Logout
 
 
 class KirvBuyerTest(unittest.TestCase):
@@ -14,7 +15,7 @@ class KirvBuyerTest(unittest.TestCase):
     def setUp(self):
         options = ChromeOptions()
         options.add_argument("--start-maximized")
-        #options.add_experimental_option("detach", True)
+        options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
@@ -23,7 +24,7 @@ class KirvBuyerTest(unittest.TestCase):
         BuildLoad(self.driver).go_to_categories()
         main_page_category_info = BuildLoad(self.driver).select_any_category()
         details_page_catrgory_info = BuildLoad(self.driver).check_panel()
-        print(main_page_category_info,details_page_catrgory_info)
+        print(main_page_category_info, details_page_catrgory_info)
         BuildLoad(self.driver).check_breadcrumb()
         BuildLoad(self.driver).total_of_sub_categories()
         result = BuildLoad(self.driver).check_lowest_first_sorting()
@@ -44,6 +45,11 @@ class KirvBuyerTest(unittest.TestCase):
         text_message = Search(self.driver).find_no_results_page()
         self.assertEqual(text_message, 'Products Not Found !!')
         Search(self.driver).search_categories_valid()
+
+    def test_logout(self):
+        LoginBuyer().sign_in_existing_buyer(self)
+        logout = Logout(self.driver)
+        logout.go_to_logout()
 
 
 if __name__ == "__main__":
