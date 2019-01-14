@@ -51,7 +51,7 @@ class SignUpToBuy(BasePage):
             print("No result found Remanufactured products header.")
 
         try:
-            self.check_purchase_remanufactured_para(
+            assert self.check_purchase_remanufactured_para(
             ) == "Select this option if you’re a retailer that wants to purchase remanufactured products directly from Kirv."
             print("Success: Purchase remanufactured para found.")
         except:

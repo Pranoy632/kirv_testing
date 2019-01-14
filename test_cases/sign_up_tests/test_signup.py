@@ -8,6 +8,8 @@ from selenium.webdriver import ChromeOptions
 
 from pages.signup_pages.sign_up_here import SignUpHere
 from pages.signup_pages.sign_up_to_buy import SignUpToBuy
+from pages.signup_pages.create_account import CreateAccount
+from pages.signup_pages.contact_info import ContactInfo
 
 
 class kirvSignupTest(unittest.TestCase):
@@ -30,6 +32,13 @@ class kirvSignupTest(unittest.TestCase):
         signup_to_buy = SignUpToBuy(self.driver)
         signup_to_buy.page_elements()
 
+        # create account
+        create_acct = CreateAccount(self.driver)
+        create_acct.create_account_page_elements()
+
+        # contact_info
+        contact_info = ContactInfo(self.driver)
+        contact_info.contact_info_page_element()
         # email check
         '''
         email_chk = EmailCheck()
@@ -42,7 +51,7 @@ class kirvSignupTest(unittest.TestCase):
         except:
             print("No email found")
         '''
-        # self.driver.close()
+        self.driver.close()
 
 
 if __name__ == "__main__":
