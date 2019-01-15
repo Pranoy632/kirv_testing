@@ -4,10 +4,10 @@ from selenium.webdriver.common.by import By
 class AccountLocators(object):
 
     account_link = (By.XPATH, '//ul[@class="navbar-nav-right"]')
-
-
-class AccountInnerLocators(object):
     my_account_title = (By.XPATH, '//h2[@class="page-title"]')
+
+
+class UserProfileLocators(object):
     sub_navbar_link = (By.XPATH, '//ul[@class="sub-navigation"]')
     customer_profile_title = (By.XPATH, '//h4[@class="section-title"]')
     customer_pro_edit_btn = (By.XPATH, '//span[@class="edit-but"]')

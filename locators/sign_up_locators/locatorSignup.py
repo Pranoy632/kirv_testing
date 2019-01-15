@@ -66,3 +66,7 @@ class ContactInfoLocators(object):
     create_account_button = (By.XPATH, '//button[text()="Create account"]')
 
     quit_sign_up = (By.XPATH, '//div[text()="Quit sign up"]')
+
+
+class CompanyInfoLocators(object):
+    pass
