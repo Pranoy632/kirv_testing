@@ -1,6 +1,19 @@
+from abc import ABC
 from pages.basepage import *
-from locators.buyer_locators.account_locator import AccountLocators, UserProfileLocators
+from locators.buyer_locators.account_locator import AccountLocators, UserProfileLocators, BrandLocators
 from selenium.webdriver.common.keys import Keys
+
+
+class AbstractClass(ABC):
+
+    ''' Abstract Class '''
+
+    def sub_navbar_list(self):
+        self.wait_for_element(UserProfileLocators.sub_navbar_link)
+        navbar_sub = self.driver.find_element(
+            *UserProfileLocators.sub_navbar_link)
+        navbar_sub_li = navbar_sub.find_elements_by_tag_name("li")
+        return navbar_sub_li
 
 
 class Account(BasePage):  # Account class
@@ -38,7 +51,7 @@ class Account(BasePage):  # Account class
             print("No result found for My Account title.")
 
 
-class UserProfile(BasePage):  # user-profile class
+class UserProfile(BasePage, AbstractClass):  # user-profile class
 
     ''' User-profile functionality '''
 
@@ -57,13 +70,6 @@ class UserProfile(BasePage):  # user-profile class
     def other_phone_error(self):
         return self.driver.find_element(
             *UserProfileLocators.other_phn_err).is_displayed()
-
-    def sub_navbar_list(self):
-        self.wait_for_element(UserProfileLocators.sub_navbar_link)
-        navbar_sub = self.driver.find_element(
-            *UserProfileLocators.sub_navbar_link)
-        navbar_sub_li = navbar_sub.find_elements_by_tag_name("li")
-        return navbar_sub_li
 
     def go_to_user_profile(self):
         sub_list_li = self.sub_navbar_list()
@@ -198,3 +204,18 @@ class UserProfile(BasePage):  # user-profile class
         # cancel
         self.customer_profile_edit_btn()
         self.customer_profile_cancel_btn()
+
+
+class Brands(BasePage, AbstractClass):
+
+    def check_brand_active(self):
+        sub_active = self.sub_navbar_list()
+        for active_item in sub_active:
+            is_active = "active" in active_item.get_attribute("class")
+            if is_active:
+                if active_item.text == 'Brands':
+                    print("Success: %s is active." % (active_item.text))
+
+    def click_image(self):
+        time.sleep(3)
+        self.driver.find_element(*BrandLocators.brand_img).click()

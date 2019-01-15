@@ -1,10 +1,10 @@
 import unittest
-import pytest
+
 
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
-from pages.buyer_pages.account import Account, UserProfile
+from pages.buyer_pages.account import Account, UserProfile, Brands
 from common.login_buyer import LoginBuyer
 
 
@@ -13,7 +13,7 @@ class KirvBuyerProfileTest(unittest.TestCase):
     def setUp(self):
         options = ChromeOptions()
         options.add_argument("--start-maximized")
-       # options.add_experimental_option("detach", True)
+        options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
@@ -37,7 +37,11 @@ class KirvBuyerProfileTest(unittest.TestCase):
         user_profile.check_fields()
 
     def test_brands(self):
-        pass
+        ''' Brands section '''
+        self.account()
+        brand = Brands(self.driver)
+        brand.check_brand_active()
+        brand.click_image()
 
 
 if __name__ == "__main__":

@@ -25,3 +25,7 @@ class UserProfileLocators(object):
     other_phone = (By.XPATH, '//input[@placeholder="Enter Other Phone"]')
     other_phn_err = (
         By.XPATH, '//label [input[@placeholder="Enter Other Phone"]]/following-sibling::span[@class="error-detail"]')
+
+
+class BrandLocators(object):
+    brand_img = (By.XPATH, '//div[contains(@class, "brand-logos")]/img')
