@@ -10,6 +10,8 @@ class Location(BasePage):
         self.driver.find_element(
             *LocationLocators.location_num).click()
 
+        self.asserts(self.is_button_enabled(LocationLocators.add_loc_btn), 'true')
+
         self.driver.find_element(
             *LocationLocators.enter_manually).click()
 
@@ -53,3 +55,9 @@ class Location(BasePage):
         time.sleep(1)
         self.driver.find_element(
             *LocationLocators.next_btn).click()
+
+    def is_button_enabled(self, button):
+        return self.driver.find_element(*button).is_enabled()
+
+    def asserts(self, first_arg, second_arg):
+        assert first_arg == second_arg
