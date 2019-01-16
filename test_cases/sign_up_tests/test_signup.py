@@ -10,6 +10,9 @@ from pages.signup_pages.sign_up_here import SignUpHere
 from pages.signup_pages.sign_up_to_buy import SignUpToBuy
 from pages.signup_pages.create_account import CreateAccount
 from pages.signup_pages.contact_info import ContactInfo
+from pages.signup_pages.company_info import CompanyInfo
+from pages.signup_pages.location import Location
+from pages.signup_pages.warehouse import WareHouse
 
 
 class kirvSignupTest(unittest.TestCase):
@@ -39,6 +42,18 @@ class kirvSignupTest(unittest.TestCase):
         # contact_info
         contact_info = ContactInfo(self.driver)
         contact_info.contact_info_page_element()
+
+        # company-info
+        company_info = CompanyInfo(self.driver)
+        company_info.company_info_page_element()
+
+        # location
+        loc = Location(self.driver)
+        loc.element_in_location_page()
+
+        # Warehouse
+        warehouse = WareHouse(self.driver)
+        warehouse.elements_of_warehouse()
         # email check
         '''
         email_chk = EmailCheck()
@@ -51,7 +66,7 @@ class kirvSignupTest(unittest.TestCase):
         except:
             print("No email found")
         '''
-        self.driver.close()
+        # self.driver.close()
 
 
 if __name__ == "__main__":
