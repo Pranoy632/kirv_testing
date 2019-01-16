@@ -69,4 +69,82 @@ class ContactInfoLocators(object):
 
 
 class CompanyInfoLocators(object):
-    pass
+    step_kirv_logo = (
+        By.XPATH, '//div[contains(@class, "text-center")] / img[@class = "logo"]')
+
+    steps = (By.XPATH, '//div[contains(@class, "signup-steps text-center")]')
+
+    welcome_title = (By.XPATH, '//div[@class = "step-title"]')
+
+    company_signup_note_para = (By.XPATH, '//p[@class="signup-note"]')
+
+    address_input = (
+        By.XPATH, '//label/span[text()=" Address line 1*"]//following-sibling::input')
+
+    unit_num_input = (
+        By.XPATH, '//label/span[text()=" Unit Number"]//following-sibling::input')
+
+    city_input = (
+        By.XPATH, '//label/span[text()=" City*"]//following-sibling::input')
+
+    state_input = (
+        By.XPATH, '//label/span[text()=" State*"]//following-sibling::div/input')
+
+    zip_code_input = (
+        By.XPATH, '//label/span[text()=" Zip code*"]//following-sibling::input')
+
+    reseller_id_input = (
+        By.XPATH, '//label/span[text()=" Reseller ID*"]//following-sibling::input')
+
+    company_website_input = (
+        By.XPATH, '//label/span[text()=" Company website*"]//following-sibling::input')
+
+    email_input = (
+        By.XPATH, '//label/span[text()=" Email*"]//following-sibling::input')
+
+    phone_number = (
+        By.XPATH, '//label/span[text()=" Phone number*"]//following-sibling::input')
+
+    continue_btn = (By.XPATH, '//button[contains(text(), "Continue")]')
+
+
+class LocationLocators(object):
+
+    location_num = (By.XPATH, '//label[1]/span[text()="1"]')
+
+    enter_manually = (By.XPATH, '//a[text()="Enter address manually"]')
+
+    loc_name_input = (
+        By.XPATH, '//label/span[text()=" Location name *"]//following-sibling::input')
+
+    address_input = (
+        By.XPATH, '//label/span[text()=" Address line 1*"]//following-sibling::input')
+
+    city_input = (
+        By.XPATH, '//label/span[text()=" City*"]//following-sibling::input')
+
+    state_input = (
+        By.XPATH, '//label/span[text()=" State *"]//following-sibling::div/input')
+
+    zip_code_input = (
+        By.XPATH, '//label/span[text()=" Zip code*"]//following-sibling::input')
+
+    add_loc_btn = (By.XPATH, '//button[text()="Add location"]')
+
+    email_address_input = (
+        By.XPATH, '//label/span[text()=" Location email address*"]//following-sibling::input')
+
+    phone_number_input = (
+        By.XPATH, '//label/span[text()=" Location phone number*"]//following-sibling::input')
+
+    next_btn = (By.XPATH, '//button[text()="Next"]')
+
+
+class WareHouseLocators(object):
+
+    check_retail_locartion = (By.XPATH, '//label[text()="test city"]')
+
+    confirm_btn = (By.XPATH, '//button[text()="Confirm"]')
+
+    no_additional_warehouse_btn = (
+        By.XPATH, '//span[text()="No additional warehouses"]')

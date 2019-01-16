@@ -15,6 +15,14 @@ class AbstractClass(ABC):
         navbar_sub_li = navbar_sub.find_elements_by_tag_name("li")
         return navbar_sub_li
 
+    def check_sub_navbar_active(self, str_active):
+        sub_active = self.sub_navbar_list()
+        for active_item in sub_active:
+            is_active = "active" in active_item.get_attribute("class")
+            if is_active:
+                if active_item.text == str_active:
+                    print("Success: %s is active." % (active_item.text))
+
 
 class Account(BasePage):  # Account class
 
@@ -78,14 +86,6 @@ class UserProfile(BasePage, AbstractClass):  # user-profile class
                 '.sub-navigation > li:nth-child({0})'.format(sub_item))
             if menus.text == 'User Profile':
                 menus.click()
-
-    def check_user_profile_active(self):
-        sub_active = self.sub_navbar_list()
-        for active_item in sub_active:
-            is_active = "active" in active_item.get_attribute("class")
-            if is_active:
-                if active_item.text == 'User Profile':
-                    print("Success: %s is active." % (active_item.text))
 
     def check_title_on_user_profile(self):
         self.wait_for_element(UserProfileLocators.customer_profile_title)
@@ -208,14 +208,9 @@ class UserProfile(BasePage, AbstractClass):  # user-profile class
 
 class Brands(BasePage, AbstractClass):
 
-    def check_brand_active(self):
-        sub_active = self.sub_navbar_list()
-        for active_item in sub_active:
-            is_active = "active" in active_item.get_attribute("class")
-            if is_active:
-                if active_item.text == 'Brands':
-                    print("Success: %s is active." % (active_item.text))
-
     def click_image(self):
         time.sleep(3)
         self.driver.find_element(*BrandLocators.brand_img).click()
+
+    def elements_in_buying_profile(self):
+        pass

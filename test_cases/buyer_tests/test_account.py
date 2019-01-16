@@ -32,16 +32,19 @@ class KirvBuyerProfileTest(unittest.TestCase):
         self.account()
         user_profile = UserProfile(self.driver)
         user_profile.go_to_user_profile()
-        user_profile.check_user_profile_active()
+        user_profile.check_sub_navbar_active('User Profile')
         user_profile.check_title_on_user_profile()
         user_profile.check_fields()
 
     def test_brands(self):
         ''' Brands section '''
+
         self.account()
         brand = Brands(self.driver)
-        brand.check_brand_active()
+        brand.check_sub_navbar_active('Brands')
         brand.click_image()
+        brand.check_sub_navbar_active('Buying Profile')
+        brand.elements_in_buying_profile()
 
 
 if __name__ == "__main__":
