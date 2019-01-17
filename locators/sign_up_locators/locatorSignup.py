@@ -110,34 +110,63 @@ class CompanyInfoLocators(object):
 
 class LocationLocators(object):
 
-    location_num = (By.XPATH, '//label[1]/span[text()="1"]')
+    location_num1 = (By.XPATH, '//label[1]/span[text()="1"]')
+
+    location_num2 = (By.XPATH, '//label[2]/span[text()="2"]')
 
     enter_manually = (By.XPATH, '//a[text()="Enter address manually"]')
 
     loc_name_input = (
-        By.XPATH, '//label/span[text()=" Location name *"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"Location name")]//following-sibling::input')
 
     address_input = (
-        By.XPATH, '//label/span[text()=" Address line 1*"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"Address line 1")]//following-sibling::input')
 
     city_input = (
-        By.XPATH, '//label/span[text()=" City*"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"City")]//following-sibling::input')
 
     state_input = (
-        By.XPATH, '//label/span[text()=" State *"]//following-sibling::div/input')
+        By.XPATH, '//span[contains(text(),"State")]//following-sibling::div/input')
 
     zip_code_input = (
-        By.XPATH, '//label/span[text()=" Zip code*"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"Zip code")]//following-sibling::input')
 
     add_loc_btn = (By.XPATH, '//button[text()="Add location"]')
 
     email_address_input = (
-        By.XPATH, '//label/span[text()=" Location email address*"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"Location email address")]//following-sibling::input')
 
     phone_number_input = (
-        By.XPATH, '//label/span[text()=" Location phone number*"]//following-sibling::input')
+        By.XPATH, '//span[contains(text(),"Location phone number")]//following-sibling::input')
 
-    next_btn = (By.XPATH, '//button[text()="Next"]')
+    alt_phone_number_input = (
+        By.XPATH, '//span[contains(text(),"Location alt. phone number")]//following-sibling::input')
+
+    loc_name_error = (
+        By.XPATH, '//span[contains(text(),"Location name")]//ancestor::div[1]')
+
+    address_error = (
+        By.XPATH, '//span[contains(text(),"Address line 1")]//ancestor::div[1]')
+
+    city_error = (
+        By.XPATH, '//span[contains(text(),"City")]//ancestor::div[1]')
+
+    state_error = (
+        By.XPATH, '//span[contains(text(),"State")]//ancestor::div[1]')
+
+    zip_code_error = (
+        By.XPATH, '//span[contains(text(),"Zip code")]//ancestor::div[1]')
+
+    email_address_error = (
+        By.XPATH, '//span[contains(text(),"Location email address")]//ancestor::div[1]')
+
+    phone_number_error = (
+        By.XPATH, '//span[contains(text(),"Location phone number")]//ancestor::div[1]')
+
+    alt_phone_number_error = (
+            By.XPATH, '//span[contains(text(),"Location alt. phone number")]//ancestor::div[1]')
+
+    next_btn = (By.XPATH, '//button[contains(text(),"Next")]')
 
 
 class WareHouseLocators(object):
