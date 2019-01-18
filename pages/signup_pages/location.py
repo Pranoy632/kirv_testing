@@ -116,6 +116,22 @@ class Location(BasePage):
         self.driver.find_element(
             *LocationLocators.add_loc_btn).click()
 
+    def edit_address(self):
+        """
+            Edits address of retail location.
+        """
+        self.equality_assert(self.driver.find_element(*LocationLocators.edit_address_btn).is_displayed(), True)
+        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        time.sleep(2)
+      
+        self.clear_input(LocationLocators.city_input)
+        self.driver.find_element(
+            *LocationLocators.city_input).send_keys(fake.city())
+
+        time.sleep(1)
+        self.driver.find_element(
+            *LocationLocators.add_loc_btn).click()
+
     def negative_confirmation_location(self):
         """
             negative testing of confirm location form
@@ -147,6 +163,7 @@ class Location(BasePage):
         self.clear_input(LocationLocators.phone_number_input)
         self.clear_input(LocationLocators.alt_phone_number_input)
 
+
     def positive_confirmation_location(self):
         """
             positive testing of confirm location form
@@ -171,5 +188,6 @@ class Location(BasePage):
         for current in range(no_of_locations):
             self.negative_retail_location_test()
             self.positive_retail_location_test()
+            self.edit_address()
             self.negative_confirmation_location()
             self.positive_confirmation_location()

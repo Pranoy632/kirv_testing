@@ -168,6 +168,8 @@ class LocationLocators(object):
 
     next_btn = (By.XPATH, '//button[contains(text(),"Next")]')
 
+    edit_address_btn = (By.XPATH, '//a[text()="Edit address"]')
+
 
 class WareHouseLocators(object):
 
