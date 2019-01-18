@@ -148,3 +148,31 @@ class WareHouseLocators(object):
 
     no_additional_warehouse_btn = (
         By.XPATH, '//span[text()="No additional warehouses"]')
+
+
+class CategoriesLocators(object):
+
+    often_purchase_title = (By.XPATH, '//div[contains(@class, "step-title")]')
+
+    categories_step = (
+        By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
+
+    categories_title = (By.XPATH, '//ul[@class="categories-title"]')
+
+    categories_ul = (By.XPATH, '//ul[@class="categories-ul"]')
+
+
+class VolumesLocators(object):
+
+    volume_step = (
+        By.XPATH, '//div[contains(text(), "Step 5 of 5 - Purchasing volumes")]')
+
+    volumes_title = (By.XPATH, '//div[contains(@class, "step-title")]')
+
+    headers = (By.XPATH, '//h3')
+
+    trucks_list = (
+        By.XPATH, '//h3/following-sibling::div/div[contains(@class, "row")]')
+
+    plus_btn = (
+        By.XPATH, '//h3/following-sibling::div/div/div[2]/div/button[2]')

@@ -13,6 +13,8 @@ from pages.signup_pages.contact_info import ContactInfo
 from pages.signup_pages.company_info import CompanyInfo
 from pages.signup_pages.location import Location
 from pages.signup_pages.warehouse import WareHouse
+from pages.signup_pages.categories import Categories
+from pages.signup_pages.volumes import Volumes
 
 
 class kirvSignupTest(unittest.TestCase):
@@ -51,9 +53,19 @@ class kirvSignupTest(unittest.TestCase):
         loc = Location(self.driver)
         loc.element_in_location_page()
 
-        # Warehouse
+        # warehouse
         warehouse = WareHouse(self.driver)
         warehouse.elements_of_warehouse()
+
+        # categories
+        categories = Categories(self.driver)
+        categories.elements_of_categories()
+        categories.fill_fields()
+
+        # volumes
+        volume = Volumes(self.driver)
+        volume.check_element_in_volumes_page()
+        volume.fill_fields()
         # email check
         '''
         email_chk = EmailCheck()
