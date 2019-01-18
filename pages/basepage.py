@@ -63,3 +63,16 @@ class BasePage(object):
                 self.close_chat_popup()
                 button.click()
             '''
+
+    def equality_assert(self, first_arg, second_arg):
+        """
+            assertion for equality of two arguments
+        """
+        assert first_arg == second_arg
+
+    def subset_assert(self, first_arg, second_arg):
+        """
+            assertion for subset of object
+        """
+        assert first_arg in second_arg
+

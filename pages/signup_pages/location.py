@@ -53,9 +53,6 @@ class Location(BasePage):
         """
             negative testing of retail location form
         """
-        self.driver.find_element(
-            *LocationLocators.enter_manually).click()
-
         time.sleep(1)
         self.driver.execute_script('arguments[0].scrollIntoView(true);', self.driver.find_element(
             *LocationLocators.add_loc_btn))
@@ -186,8 +183,10 @@ class Location(BasePage):
 
     def add_retail_location(self, no_of_locations):
         for current in range(no_of_locations):
-            self.negative_retail_location_test()
+            self.driver.find_element(
+                *LocationLocators.enter_manually).click()
+            #self.negative_retail_location_test()
             self.positive_retail_location_test()
-            self.edit_address()
-            self.negative_confirmation_location()
+            #self.edit_address()
+            #self.negative_confirmation_location()
             self.positive_confirmation_location()

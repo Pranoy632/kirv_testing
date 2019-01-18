@@ -175,6 +175,18 @@ class WareHouseLocators(object):
 
     check_retail_locartion = (By.XPATH, '//label[text()="test city"]')
 
+    check_first_retail_location = (By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[1]/label')
+
+    check_second_retail_location = (By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[2]/label')
+
+    check_none_retail_location = (By.XPATH, '//label[text()="None of these"]')
+
+    check_first_retail_location_id = (By.ID, 'customCheck0')
+
+    check_second_retail_location_id = (By.ID, 'customCheck1')
+
+    check_none_retail_location_id = (By.ID, 'customCheck_cancel')
+
     confirm_btn = (By.XPATH, '//button[text()="Confirm"]')
 
     no_additional_warehouse_btn = (
