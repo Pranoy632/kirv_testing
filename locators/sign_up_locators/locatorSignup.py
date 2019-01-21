@@ -122,6 +122,9 @@ class LocationLocators(object):
     address_input = (
         By.XPATH, '//span[contains(text(),"Address line 1")]//following-sibling::input')
 
+    unit_no_input = (
+        By.XPATH, '//span[contains(text(), "Unit number")]//following-sibling:: input')
+
     city_input = (
         By.XPATH, '//span[contains(text(),"City")]//following-sibling::input')
 
@@ -131,7 +134,7 @@ class LocationLocators(object):
     zip_code_input = (
         By.XPATH, '//span[contains(text(),"Zip code")]//following-sibling::input')
 
-    add_loc_btn = (By.XPATH, '//button[text()="Add location"]')
+    add_loc_btn = (By.XPATH, '//button[contains(text(),"Add location")]')
 
     email_address_input = (
         By.XPATH, '//span[contains(text(),"Location email address")]//following-sibling::input')
@@ -164,30 +167,49 @@ class LocationLocators(object):
         By.XPATH, '//span[contains(text(),"Location phone number")]//ancestor::div[1]')
 
     alt_phone_number_error = (
-            By.XPATH, '//span[contains(text(),"Location alt. phone number")]//ancestor::div[1]')
+        By.XPATH, '//span[contains(text(),"Location alt. phone number")]//ancestor::div[1]')
 
-    next_btn = (By.XPATH, '//button[contains(text(),"Next")]')
+    next_btn = (
+        By.XPATH, '//button[contains(text(),"Next")]')
 
-    edit_address_btn = (By.XPATH, '//a[text()="Edit address"]')
+    edit_address_btn = (
+        By.XPATH, '//a[text()="Edit address"]')
+
+    update_loc_btn = (
+        By.XPATH, '//button[contains(text(),"Update location")]')
 
 
 class WareHouseLocators(object):
 
-    check_retail_locartion = (By.XPATH, '//label[text()="test city"]')
+    check_retail_locartion = (
+        By.XPATH, '//label[text()="test city"]')
 
-    check_first_retail_location = (By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[1]/label')
+    check_first_retail_location = (
+        By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[1]/label')
 
-    check_second_retail_location = (By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[2]/label')
+    check_second_retail_location = (
+        By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[2]/label')
 
-    check_none_retail_location = (By.XPATH, '//label[text()="None of these"]')
+    check_none_retail_location = (
+        By.XPATH, '//label[text()="None of these"]')
 
-    check_first_retail_location_id = (By.ID, 'customCheck0')
+    check_first_retail_location_id = (
+        By.ID, 'customCheck0')
 
-    check_second_retail_location_id = (By.ID, 'customCheck1')
+    check_second_retail_location_id = (
+        By.ID, 'customCheck1')
 
-    check_none_retail_location_id = (By.ID, 'customCheck_cancel')
+    check_none_retail_location_id = (
+        By.ID, 'customCheck_cancel')
 
-    confirm_btn = (By.XPATH, '//button[text()="Confirm"]')
+    confirm_btn = (
+        By.XPATH, '//button[text()="Confirm"]')
 
     no_additional_warehouse_btn = (
         By.XPATH, '//span[text()="No additional warehouses"]')
+
+    back_a_step = (
+        By.XPATH, '//div[contains(text(),"Back a step")]')
+
+    purchasing_preferences = (
+        By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
