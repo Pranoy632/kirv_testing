@@ -4,55 +4,114 @@ from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import LocationLocators
 
 cities = []
+retail_address_lookup = ''
 
 class Location(BasePage):
 
     def element_in_location_page(self):
         self.driver.find_element(
-            *LocationLocators.location_num2).click()
+            *LocationLocators.location_num3).click()
 
         time.sleep(2)
-        self.equality_assert(self.is_button_enabled(LocationLocators.add_loc_btn), False)
+        self.equality_assert(self.driver.find_element(*LocationLocators.add_loc_btn).is_enabled(), False)
 
         self.add_retail_location(2)
 
-    def is_button_enabled(self, button):
+    def add_retail_location(self, no_of_locations):
         """
-            checks if givenn button is enabled or not
+            adds given number of locations
         """
-        return self.driver.find_element(*button).is_enabled()
+        self.negative_retail_location_by_lookup()
+        self.positive_retail_location_by_lookup()
+        self.equality_assert(self.driver.find_element(*LocationLocators.google_map).is_displayed(), True)
+        self.edit_address_lookup()
+        self.negative_confirmation_location()
+        self.positive_confirmation_location()
+        cities = []
+        for current in range(no_of_locations):
+            self.driver.find_element(
+                *LocationLocators.enter_manually).click()
+            self.negative_retail_location_test()
+            self.positive_retail_location_test()
+            self.edit_address()
+            #self.negative_confirmation_location()
+            self.positive_confirmation_location()
 
-    def equality_assert(self, first_arg, second_arg):
+    def negative_retail_location_by_lookup(self):
         """
-            assertion for equality of two arguments
+            negative test for retail location form using lookup
         """
-        assert first_arg == second_arg
+        self.put_input(LocationLocators.loc_name_input, fake.street_name())
 
-    def subset_assert(self, first_arg, second_arg):
-        """
-            assertion for subset of object
-        """
-        assert first_arg in second_arg
-
-    def clear_put_input_value(self, locator, input_value):
-        """
-            clears and puts input in input box
-        """
-        time.sleep(2)
-        element = self.driver.find_element(*locator)
-        element.send_keys(Keys.CONTROL + 'a')
-        element.send_keys(Keys.DELETE)
-        element.send_keys(input_value)
-
-    def clear_input(self, locator):
-        element = self.driver.find_element(*locator)
-        element.send_keys(Keys.CONTROL + 'a')
-        element.send_keys(Keys.DELETE)
-
-    def put_input(self, locator, value):
+        self.put_input(LocationLocators.loc_address_input, 98)
         time.sleep(1)
-        element = self.driver.find_element(*locator)
-        element.send_keys(value)
+        action = action_chains.ActionChains(self.driver)
+        action.send_keys(Keys.DOWN)
+        action.send_keys(Keys.ENTER)
+        action.perform()
+        time.sleep(1)
+
+        self.clear_input(LocationLocators.loc_name_input)
+        self.clear_input(LocationLocators.loc_address_input)
+
+        time.sleep(1)
+        self.driver.find_element(*LocationLocators.add_loc_btn).click()
+        time.sleep(1)
+        self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_name_error).get_attribute('class').split())
+        #self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_address_error).get_attribute('class').split())
+
+    def positive_retail_location_by_lookup(self):
+        """
+            positive test for retail location form using lookup
+        """
+        global retail_loc_name
+        global retail_address
+
+        retail_loc_name = fake.street_name()
+        self.put_input(LocationLocators.loc_name_input, retail_loc_name)
+
+        self.put_input(LocationLocators.loc_address_input, 23)
+        time.sleep(1)
+        action = action_chains.ActionChains(self.driver)
+        action.send_keys(Keys.DOWN)
+        action.send_keys(Keys.ENTER)
+        action.perform()
+        time.sleep(1)
+        retail_address = self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value')
+
+        self.driver.find_element(*LocationLocators.add_loc_btn).click()
+
+    def edit_address_lookup(self):
+        """
+            Edit Retail location form
+        """
+        global retail_address
+
+        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        self.equality_assert(self.driver.find_element(*LocationLocators.loc_name_input).get_attribute('value'), retail_loc_name)
+        self.equality_assert(self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value'), retail_address)
+
+        self.clear_input(LocationLocators.loc_address_input)
+
+        self.put_input(LocationLocators.loc_address_input, 98)
+        time.sleep(1)
+        action = action_chains.ActionChains(self.driver)
+        action.send_keys(Keys.DOWN)
+        action.send_keys(Keys.ENTER)
+        action.perform()
+        time.sleep(1)
+        #retail_address_lookup = self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value')
+
+        self.driver.find_element(*LocationLocators.update_loc_btn).click()
+        time.sleep(1)
+        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        time.sleep(1)
+        self.driver.find_element(*LocationLocators.enter_manually).click()
+        time.sleep(1)
+        
+        retail_address_lookup = self.driver.find_element(*LocationLocators.city_input).get_attribute('value')
+        self.driver.find_element(*LocationLocators.update_loc_btn).click()
+
 
     def negative_retail_location_test(self):
         """
@@ -196,16 +255,3 @@ class Location(BasePage):
         self.driver.find_element(
             *LocationLocators.next_btn).click()
 
-    def add_retail_location(self, no_of_locations):
-        """
-            adds given number of locations
-        """
-        cities = []
-        for current in range(no_of_locations):
-            self.driver.find_element(
-                *LocationLocators.enter_manually).click()
-            #self.negative_retail_location_test()
-            self.positive_retail_location_test()
-            self.edit_address()
-            #self.negative_confirmation_location()
-            self.positive_confirmation_location()

@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from faker import Factory
 from locators.sign_in_page_locators.signin_buyer_supplier_locator import SignInLocators
+from selenium.webdriver.common.keys import Keys
 
 
 fake = Factory.create()
@@ -76,3 +77,28 @@ class BasePage(object):
         """
         assert first_arg in second_arg
 
+    def clear_put_input_value(self, locator, input_value):
+        """
+            clears and puts input in input box
+        """
+        time.sleep(1)
+        element = self.driver.find_element(*locator)
+        element.send_keys(Keys.CONTROL + 'a')
+        element.send_keys(Keys.DELETE)
+        element.send_keys(input_value)
+
+    def clear_input(self, locator):
+        """
+            clears input box
+        """
+        element = self.driver.find_element(*locator)
+        element.send_keys(Keys.CONTROL + 'a')
+        element.send_keys(Keys.DELETE)
+
+    def put_input(self, locator, value):
+        """
+            puts input in input box
+        """
+        time.sleep(1)
+        element = self.driver.find_element(*locator)
+        element.send_keys(value) 
