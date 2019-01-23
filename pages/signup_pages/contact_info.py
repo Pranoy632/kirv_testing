@@ -83,16 +83,16 @@ class ContactInfo(BasePage):
         time.sleep(3)
 
         try:
-            assert self.contact_name_error() == "This field is required."
-            print("Success: contact info contact name feild is required error found.")
+            assert self.contact_name_error() == "This field may not be blank."
+            print("Success: contact info contact name feild is blank error found.")
         except:
-            print("No result found for contact info contact name feild is required.")
+            print("No result found for contact info contact name feild is blank.")
 
         try:
-            assert self.phone_error() == "This field is required."
-            print("Success: contact info phone number feild is required error found.")
+            assert self.phone_error() == "This field may not be blank."
+            print("Success: contact info phone number feild is blank error found.")
         except:
-            print("No result found for contact info phone number feild is required.")
+            print("No result found for contact info phone number feild is blank.")
 
         contact_name_feild = self.driver.find_element(
             *ContactInfoLocators.contact_name_input)

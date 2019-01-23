@@ -15,6 +15,8 @@ from pages.signup_pages.location import Location
 from pages.signup_pages.warehouse import WareHouse
 from pages.signup_pages.categories import Categories
 from pages.signup_pages.volumes import Volumes
+from pages.signup_pages.acknowledgement import Acknowledgement
+from pages.signup_pages.congratulations import Cogratulations
 
 
 class kirvSignupTest(unittest.TestCase):
@@ -66,6 +68,14 @@ class kirvSignupTest(unittest.TestCase):
         volume = Volumes(self.driver)
         volume.check_element_in_volumes_page()
         volume.fill_fields()
+
+        # acknowledgement
+        acknowledge = Acknowledgement(self.driver)
+        acknowledge.check_elements_in_acknowledgement()
+
+        # congrats = Cogratulations(self.driver)
+        # congrats.check_elements_in_congratulation_page()
+
         # email check
         '''
         email_chk = EmailCheck()

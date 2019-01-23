@@ -79,31 +79,56 @@ class CompanyInfoLocators(object):
     company_signup_note_para = (By.XPATH, '//p[@class="signup-note"]')
 
     address_input = (
-        By.XPATH, '//label/span[text()=" Address line 1*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(), "Address line 1*")]]//following-sibling::input')
+
+    address_err = (
+        By.XPATH, '//label [span[contains(text(), "Address line 1*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     unit_num_input = (
-        By.XPATH, '//label/span[text()=" Unit Number"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(), "Unit Number")]]//following-sibling::input')
 
     city_input = (
-        By.XPATH, '//label/span[text()=" City*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"City*")]]//following-sibling::input')
+    city_error = (
+        By.XPATH, '// label [span[contains(text(), "City*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     state_input = (
-        By.XPATH, '//label/span[text()=" State*"]//following-sibling::div/input')
+        By.XPATH, '//label [span[contains(text(),"State*")]]//following-sibling::div/input')
+    state_error = (
+        By.XPATH, '// label [span[contains(text(), "State*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     zip_code_input = (
-        By.XPATH, '//label/span[text()=" Zip code*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"Zip code*")]]//following-sibling::input')
+    zip_code_error = (
+        By.XPATH, '//label [span[contains(text(),"Zip code*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     reseller_id_input = (
-        By.XPATH, '//label/span[text()=" Reseller ID*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"Reseller ID*")]]//following-sibling::input')
+
+    reseller_id_error = (
+        By.XPATH, '//label [span[contains(text(),"Reseller ID*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     company_website_input = (
-        By.XPATH, '//label/span[text()=" Company website*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"Company website*")]]//following-sibling::input')
+
+    company_website_error = (
+        By.XPATH, '//label [span[contains(text(),"Company website*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     email_input = (
-        By.XPATH, '//label/span[text()=" Email*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"Email*")]]//following-sibling::input')
+
+    email_input_error = (
+        By.XPATH, '//label [span[contains(text(),"Email*")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     phone_number = (
-        By.XPATH, '//label/span[text()=" Phone number*"]//following-sibling::input')
+        By.XPATH, '//label [span[contains(text(),"Phone number*")]]//following-sibling::input')
+    phone_number_error = (
+        By.XPATH, '//label [span[contains(text(),"Phone number*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    alter_phone_number = (
+        By.XPATH, '//label [span[contains(text(), "Alternate Phone number")]]//following-sibling::input')
+    alter_phon_error = (
+        By.XPATH, '//label [span[contains(text(), "Alternate Phone number")]]//following-sibling::span[contains(@class, "error-detail")]')
 
     continue_btn = (By.XPATH, '//button[contains(text(), "Continue")]')
 
@@ -129,7 +154,7 @@ class LocationLocators(object):
     zip_code_input = (
         By.XPATH, '//label/span[text()=" Zip code*"]//following-sibling::input')
 
-    add_loc_btn = (By.XPATH, '//button[text()="Add location"]')
+    add_loc_btn = (By.XPATH, '//button[contains(text(),"Add location")]')
 
     email_address_input = (
         By.XPATH, '//label/span[text()=" Location email address*"]//following-sibling::input')
@@ -176,3 +201,34 @@ class VolumesLocators(object):
 
     plus_btn = (
         By.XPATH, '//h3/following-sibling::div/div/div[2]/div/button[2]')
+
+
+class AcknowledgementLocator(object):
+
+    Great_everything_title = (
+        By.XPATH, '//div[contains(text(), "Great, that’s everything we need!")]')
+
+    submit_application_title = (
+        By.XPATH, '//div[contains(text(), "Please read and accept the disclaimer below to submit your application.")]')
+
+    disclaimer_header = (By.XPATH, '//h3[contains(text(),"Disclaimer")]')
+
+    disclaimer_label = (By.XPATH, '//label[contains(@class,"disclaimer")]')
+
+    disclaimer_check_box = (
+        By.XPATH, '//div[contains(@class, "custom-checkbox")]/label')
+
+    submit_app_button = (
+        By.XPATH, '//button[contains(text(), "Submit application")]')
+
+
+class CongratulationLocators(object):
+
+    congratulations_title = (
+        By.XPATH, '//h1[contains(text(), "Congratulations!")]')
+
+    application_successfully_sub_head = (
+        By.XPATH, '//p[contains(@class,"sub-head")]')
+
+    back_to_wesite_button = (
+        By.XPATH, '//a[contains(text(), "Back to Website")]')

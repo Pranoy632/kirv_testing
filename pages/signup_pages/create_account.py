@@ -99,11 +99,33 @@ class CreateAccount(BasePage):
         except:
             print("No result found for enter a valid email. ")
 
+        self.clear_put_value(CreateAccountLocators.email_input)
+        email_feild.send_keys("amztest18" + "+" + time_now + "@gmail.com")
+
+        self.confirm_button()
+        time.sleep(2)
+
         try:
-            assert self.password_error() == "password must be 8 characters or more."
-            print("Success: create account password field is required error found.")
+            assert self.password_error(
+            ) == "This password is too short. It must contain at least 8 characters."
+            print(
+                "Success: create account password field is required 8 characters error found.")
         except:
             print("No result found for 8 character password error. ")
+
+        self.clear_put_value(CreateAccountLocators.password_input)
+        password_feild.send_keys('qwerty123')
+
+        self.confirm_button()
+        time.sleep(2)
+
+        try:
+            assert self.password_error(
+            ) == "This password is too common."
+            print(
+                "Success: create account password is too common error found.")
+        except:
+            print("No result found for password is too common error. ")
 
         self.clear_put_value(CreateAccountLocators.email_input)
 
@@ -125,7 +147,7 @@ class CreateAccount(BasePage):
         time.sleep(2)
 
         try:
-            assert self.email_error() == "user with this email address already exists."
+            assert self.email_error() == "User with this email address already exists."
             print("Success: create account email user exists error found.")
         except:
             print("No result found for email user exists error. ")
