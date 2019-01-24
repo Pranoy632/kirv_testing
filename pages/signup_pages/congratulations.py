@@ -10,7 +10,12 @@ class Cogratulations(BasePage):
     def check_title_congratulations(self, locator):
         return self.driver.find_element(*locator).text
 
+    def check_button_back_website(self):
+        return self.driver.find_element(CongratulationLocators.back_to_wesite_button)
+
     def check_elements_in_congratulation_page(self):
+        time.sleep(2)
+
         try:
             assert self.check_kirv_logo() == True
             print("Success: congratulation kirv logo found.")
@@ -24,5 +29,20 @@ class Cogratulations(BasePage):
         except:
             print("No result found for congratulations title.")
 
-        print(self.check_title_congratulations(
-            CongratulationLocators.application_successfully_sub_head))
+        try:
+            self.check_title_congratulations(
+                CongratulationLocators.application_successfully_sub_head) == 'Your application has been successfully submitted. We’re now in the process of reviewing it. Once approved, you’ll receive a digital contract from us that you’ll need to sign before getting full access to the Kirv Marketplace, so you can start placing orders!'
+            print("Success: Congratulations application successfully sub title found.")
+        except:
+            print(
+                "No result found for congratulations application successfully sub head.")
+
+        try:
+            self.driver.find_element(
+                *CongratulationLocators.back_to_wesite_button).is_displayed() == True
+            print("Success:Back to website Button is displayed")
+        except:
+            print("No result found for back to website button.")
+
+        self.driver.find_element(
+            *CongratulationLocators.back_to_wesite_button).click()

@@ -17,6 +17,7 @@ from pages.signup_pages.categories import Categories
 from pages.signup_pages.volumes import Volumes
 from pages.signup_pages.acknowledgement import Acknowledgement
 from pages.signup_pages.congratulations import Cogratulations
+from common.email_check import EmailCheck
 
 
 class kirvSignupTest(unittest.TestCase):
@@ -73,21 +74,26 @@ class kirvSignupTest(unittest.TestCase):
         acknowledge = Acknowledgement(self.driver)
         acknowledge.check_elements_in_acknowledgement()
 
-        # congrats = Cogratulations(self.driver)
-        # congrats.check_elements_in_congratulation_page()
+        congrats = Cogratulations(self.driver)
+        congrats.check_elements_in_congratulation_page()
 
         # email check
-        '''
         email_chk = EmailCheck()
         try:
             i = 1
-            while i < 10:
-                email_chk.email_check()
+            while i <= 10:
+                mail = email_chk.email_check()
+                if mail == "Thanks for your application":
+                    print(">>>>>>>>>>>>Email>>>>>>>>>>>>>>>>>")
+                    print("Thanks email successfully got.")
+                    break
+                else:
+                    print("mail not got.")
                 time.sleep(5)
                 i = i + 1
-        except:
-            print("No email found")
-        '''
+        finally:
+            print("Thanks.")
+
         # self.driver.close()
 
 
