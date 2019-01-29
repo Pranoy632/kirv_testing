@@ -15,6 +15,17 @@ class HomePageLocators(object):
     loader = (By.CLASS_NAME, 'centered')
     search = (By.NAME, 'search')
     search_button = (By.CSS_SELECTOR, '.search-box-header > button:nth-child(2)')
+    brands_link = (By.ID, 'navDropDown-2')
+    brands_menu = (By.CSS_SELECTOR, 'div.mega-menu.show')
+    brands_menu_list = (By.CSS_SELECTOR, 'div.col-sm-3.mb-4')
+    brands_images = (By.CSS_SELECTOR, 'div:nth-child(1) > img:nth-child(1)')
+    brand_name = (By.CSS_SELECTOR, 'h3:nth-child(2)')
+    brand_numbers = (By.CSS_SELECTOR, 'div:nth-child(3)')
+
+
+class ResultsPageLocators(object):
+    products_rows = (By.CSS_SELECTOR, 'div.col-xl-3.mb-4')
+    brands_category_page = (By.CSS_SELECTOR, 'div.col-md-12:nth-child(1)')
 
 
 class AllProductsLocators(object):
@@ -40,3 +51,7 @@ class AllProductsLocators(object):
     sort_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(3)')
     loader = (By.CLASS_NAME, 'centered')
     no_products = (By.CLASS_NAME, 'load-not-avd')
+
+
+class ProductDetailsLocator(object):
+    purchase_box = (By.CSS_SELECTOR, '.stock-available-box')

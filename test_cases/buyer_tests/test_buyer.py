@@ -14,7 +14,7 @@ class KirvBuyerTest(unittest.TestCase):
     def setUp(self):
         options = ChromeOptions()
         options.add_argument("--start-maximized")
-        #options.add_experimental_option("detach", True)
+        options.add_experimental_option("detach", True)
         self.driver = webdriver.Chrome(options=options)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
@@ -37,13 +37,19 @@ class KirvBuyerTest(unittest.TestCase):
         result2 = BuildLoad(self.driver).check_lowest_first_sorting()
         print(result, result1, result2)
 
-    def test_sorting(self):
+    def test_search(self):
         LoginBuyer().sign_in_existing_buyer(self)
         Search(self.driver).search_blank()
         Search(self.driver).search_invalid_data()
         text_message = Search(self.driver).find_no_results_page()
         self.assertEqual(text_message, 'Products Not Found !!')
-        Search(self.driver).search_categories_valid()
+        BuildLoad(self.driver).go_to_categories()
+        result = Search(self.driver).search_categories_valid()
+        print(result)
+        Search(self.driver).check_brands_menu_images()
+        Search(self.driver).check_brand_numbers()
+        check_result = Search(self.driver).search_brand_name()
+        self.assertEqual(check_result, 0, 'Result mismatch')
 
 
 if __name__ == "__main__":
