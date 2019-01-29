@@ -12,6 +12,8 @@ mail.select("INBOX")
 
 class EmailCheck(object):
 
+    received_mail = None
+
     def email_check(self):
         try:
             mail.select("INBOX")
@@ -26,9 +28,11 @@ class EmailCheck(object):
                             # print('<html>\n<body>' + original.get_payload(
                             # decode=True).decode("utf-8") + '\n' + '</body>\n'
                             # + '</html>')
-                            print(original['From'])
+                            # print(original['From'])
                             data = original['Subject']
-                            print(data)
+                            # print(data)
+                            received_mail = data
                             typ, data = mail.store(num, '+FLAGS', '\\Seen')
+                            return received_mail
         except Exception as e:
             print("Email:", str(e))

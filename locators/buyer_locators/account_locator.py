@@ -4,10 +4,10 @@ from selenium.webdriver.common.by import By
 class AccountLocators(object):
 
     account_link = (By.XPATH, '//ul[@class="navbar-nav-right"]')
-
-
-class AccountInnerLocators(object):
     my_account_title = (By.XPATH, '//h2[@class="page-title"]')
+
+
+class UserProfileLocators(object):
     sub_navbar_link = (By.XPATH, '//ul[@class="sub-navigation"]')
     customer_profile_title = (By.XPATH, '//h4[@class="section-title"]')
     customer_pro_edit_btn = (By.XPATH, '//span[@class="edit-but"]')
@@ -25,3 +25,7 @@ class AccountInnerLocators(object):
     other_phone = (By.XPATH, '//input[@placeholder="Enter Other Phone"]')
     other_phn_err = (
         By.XPATH, '//label [input[@placeholder="Enter Other Phone"]]/following-sibling::span[@class="error-detail"]')
+
+
+class BrandLocators(object):
+    brand_img = (By.XPATH, '//div[contains(@class, "brand-logos")]/img')

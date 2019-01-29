@@ -1,342 +1,426 @@
 from selenium.webdriver.common.by import By
 
 
-class SigninPageLocators(object):
+class SignupPageLocators(object):
 
-    # SignUp
-
-    title_login_signup = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > div > div > h1')
-
-    email_login_signup = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > label > input')
-    pwd_login_signup = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(2) > div > label > input')
-    email_login_signup_error = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > field:nth-child(1) > div > span')
-    pwd_login_signup_error = (
-        By.CSS_SELECTOR,
-        'ng-component > div > div > div > div > form > fieldset > field:nth-child(2) > div > span')
-    signup_login_btn = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
-
-    # contactInfo
-
-    contactInfo_title = (
-        By.CSS_SELECTOR, 'app-contact > div > div > div.media > div > div > div > h1')
-
-    contactInfo_signUp_companyName = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > label > input')
-    contactInfo_signUp_contactName = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(2) > field > div > label > input')
-    contactInfo_signUp_phn = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(3) > field > div > label > input')
-    contactInfo_companyName_error = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(1) > field > div > span')
-    contactInfo_contactName_error = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(2) > field > div > span')
-    contactInfo_signUp_phn_number_error = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div:nth-child(3) > field > div > span')
-    contactInfo_signUp_btn = (
-        By.CSS_SELECTOR, 'app-contact > div > div > app-contact-form > div > div > form > fieldset > div > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
-
-    # brand
-    brand_title = (By.CSS_SELECTOR,
-                   'app-brands > div > div > div.media > div > div > div > h1')
-    brand_signUp = (By.CLASS_NAME, 'select-check')
-    brand_start_app_btn = (
-        By.CSS_SELECTOR, 'app-brands > div > div > app-brands-form > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
-
-    # companyInfo
-
-    companyinfo_title = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
-
-    compyinfo_signUp_reseller_id = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(1) > field > div > label > input')
-    compyinfo_signUp_street_add = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(2) > field > div > label > input')
-    compyinfo_signUp_city = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(3) > field > div > label > input')
-    compyinfo_signUp_state = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(4) > field > div > label > div > input')
-    compyinfo_signUp_post_code = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(5) > field > div > label > input')
-    compyinfo_signUp_website = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(6) > field > div > label > input')
-    compyinfo_signUp_email = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(7) > field > div > label > input')
-    compyinfo_signUp_phn = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(8) > field > div > label > input')
-    compyinfo_signUp_otherphn = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(9) > field > div > label > input')
-
-    companyinfo_street_add_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(2) > field > div > span')
-
-    companyinfo_city_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(3) > field > div > span')
-
-    companyinfo_state_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(4) > field > div > span')
-
-    companyinfo_post_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(5) > field > div > span')
-
-    companyinfo_website_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(6) > field > div > span')
-
-    companyinfo_email_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(7) > field > div > span')
-
-    companyinfo_phn_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(8) > field > div > span')
-
-    companyinfo_othr_error = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.row > div:nth-child(9) > field > div > span')
-
-    companyinfo_next_btn = (
-        By.CSS_SELECTOR, 'app-company-information > div > div > app-company-information-form > div > div > form > fieldset > div.sticky-bottom-btn-panel > div > div > button.btn.btn-green')
-
-    # location
-
-    location_title = (
-        By.CSS_SELECTOR, 'app-locations > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
-
-    location_signUp_name1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > input')
-    location_signUp_street_add1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field > div > label > input')
-
-    # location_signUp_street_add1 = (
-    # By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field >
-    # div > label > input')
-    location_signUp_city1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(3) > field > div > label > input')
-    location_signUp_state1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(4) > field > div > label > div > input')
-    location_signUp_post_code1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(5) > field > div > label > input')
-    location_signUp_email1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(6) > field > div > label > input')
-    location_signUp_phn1 = (
-        By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(7) > field > div > label > input')
-    location_signUp_otherphn1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(8) > field > div > label > input')
-
-    street_error1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(2) > field > div > span')
-    city_error1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(3) > field > div > span')
-    state_error1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(4) > field > div > span')
-    post_error1 = (
-        By.CSS_SELECTOR, '#collapse1 > div > div > div:nth-child(5) > field > div > span')
-    otr_phn_error1 = (By.CSS_SELECTOR,
-                      '#collapse1 > div > div > div:nth-child(8) > field > div > span')
-
-    location_signUp_name2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(1) > field > div > label > input')
-    location_signUp_street_add2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(2) > field > div > label > input')
-    location_signUp_city2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(3) > field > div > label > input')
-    location_signUp_state2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(4) > field > div > label > div > input')
-    location_signUp_post_code2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > label > input')
-    location_signUp_email2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > label > input')
-    location_signUp_phn2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(7) > field > div > label > input')
-    location_signUp_otherphn2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > label > input')
-    location_signUp_check2 = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div.col-md-4.location-checkbox > div > label')
-
-    loc2_post_code_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > span')
-    loc2_email_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > span')
-    loc2_phn_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(7) > field > div > span')
-
-    location_signUp_add_loc = (By.CLASS_NAME, 'add-location')
-    location_signUp_delete3 = (
-        By.CSS_SELECTOR, '#heading3 > h5 > div > i.material-icons.delete-location')
-    location_signUp_del_modal = (
-        By.XPATH, '//*[@id="remove-location-modal3"]/div/div/div[2]/button[2]')
-    loc_next_btn = (By.CSS_SELECTOR, 'app-locations > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(5) > div > div > div > button.btn.btn-green')
-
-    # warehouse/ship
-
-    ship_title = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
-
-    ship_signUp_start_time = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(9) > field > div > label > input')
-    ship_signUp_end_time = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(10) > field > div > label > input')
-    ship_start_time = (By.ID, 'timepicker-item-id-2')
-    ship_end_time = (By.ID, 'timepicker-item-id-6')
-    ship_ok_btn_start_end = (
-        By.XPATH, '//*[@id="time-picker"]/div[3]/button[2]')
-    ship_signUp_add_ship2 = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(3) > div > a')
-
-    ship2_name = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(1) > field > div > label > input')
-    ship2_street_add = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(2) > field > div > label > input')
-    ship2_city = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(3) > field > div > label > input')
-    ship2_state = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(4) > field > div > label > div > input')
-    ship2_post = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > label > input')
-    ship2_email = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > label > input')
-    ship2_phn = (By.CSS_SELECTOR,
-                 '#collapse2 > div > div > div:nth-child(7) > field > div > label > input')
-    ship2_othr_phn = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > label > input')
-    ship2_start = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(9) > field > div > label > input')
-    ship2_end = (By.CSS_SELECTOR,
-                 '#collapse2 > div > div > div:nth-child(10) > field > div > label > input')
-
-    ship2_street_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(2) > field > div > span')
-    ship2_city_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(3) > field > div > span')
-    ship2_post_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(5) > field > div > span')
-    ship2_email_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(6) > field > div > span')
-    ship2_phn_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(7) > field > div > span')
-    ship2_othr_phn_err = (
-        By.CSS_SELECTOR, '#collapse2 > div > div > div:nth-child(8) > field > div > span')
-
-    ship_signUp_add_ship3 = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(4) > div > a')
-
-    ship_signUp_delete3 = (By.XPATH, '//*[@id="heading3"]/h5/div/i[1]')
-    ship_signUp_del_modal = (
-        By.XPATH, '//*[@id="remove-location-modal3"]/div/div/div[2]/button[2]')
-    ship_next_btn = (
-        By.CSS_SELECTOR, 'app-warehouses > div > div > app-locations-form > div > div > form > fieldset > div:nth-child(5) > div > div > div > button.btn.btn-green')
-
-    # categories
-
-    categories_title = (
-        By.CSS_SELECTOR, 'app-categories > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
-
-    categories_signUp_cook_microwave = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(3) > field > div > label > div > input')
-    categories_signUp_cook_oven = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(4) > field > div > label > div > input')
-    categories_signUp_cook_hood = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
-    categories_signUp_cook_stove = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
-    categories_signUp_dish_dishwasher = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(2) > div > div > field > div > label > div > input')
-    categories_signUp_laundry_washer = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(1) > field > div > label > div > input')
-    categories_signUp_laundry_pedestal = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(2) > field > div > label > div > input')
-    categories_signUp_laundry_combo = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > field > div > label > div > input')
-    categories_signUp_laundry_dryer = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(4) > field > div > label > div > input')
-    categories_signUp_other_garbage = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(4) > div > div:nth-child(1) > field > div > label > div > input')
-    categories_signUp_other_compactor = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(4) > div > div:nth-child(2) > field > div > label > div > input')
-    categories_signUp_refrigeration_icemaker = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(1) > field > div > label > div > input')
-    categories_signUp_refrigeration_freezer = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(2) > field > div > label > div > input')
-    categories_signUp_refrigeration_refrigerator = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(3) > field > div > label > div > input')
-
-    categories_cooking_stove_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(1) > div > div:nth-child(4) > field > div > span')
-    categories_laundry_combo_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(3) > field > div > span')
-
-    categories_laundry_dryer_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(3) > div > div:nth-child(4) > field > div > span')
-    categories_other_compactor_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(4) > div > div:nth-child(2) > field > div > span')
-    categories_refrigeration_icemaker_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(1) > field > div > span')
-
-    categories_refrigeration_freezer_er = (
-        By.CSS_SELECTOR, 'app-categories-form > div > div > form > fieldset > div:nth-child(1) > div:nth-child(5) > div > div:nth-child(2) > field > div > span')
-
-    categories_signUp_next_btn = (
-        By.CSS_SELECTOR, 'app-categories > div > div > app-categories-form > div > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
-
-    # volumes
-
-    volumes_title = (
-        By.CSS_SELECTOR, 'ng-component > div > div > div.media > div > div > div.col-lg-7.col-md-12.text-center > h1')
-
-    volumes_signUp_quarter_truck_q1 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(1) > field > div > label > div > input')
-    volumes_signUp_half_truck_q1 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(2) > field > div > label > div > input')
-    volumes_signUp_full_truck_q1 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(3) > field > div > label > div > input')
-
-    volumes_signUp_check_q2 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div > div > label')
-    volumes_signUp_quarter_truck_q2 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(1) > field > div > label > div > input')
-    volumes_signUp_half_truck_q2 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2) > field > div > label > div > input')
-    volumes_signUp_full_truck_q2 = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(3) > field > div > label > div > input')
-
-    volumes_num_full_trucks_q1_err = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(3) > field > div > span')
-
-    volumes_num_half_trucks_q2_err = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2) > field > div > span')
-
-    volumes_num_full_trucks_q2_err = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(3) > field > div > span')
-
-    volumes_signUp_acknowledge_check = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.custom-control.custom-checkbox > label')
-
-    volumes_back_button = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button:nth-child(3)')
-
-    volumes_signUp_sub_app_btn = (
-        By.CSS_SELECTOR, 'ng-component > div.row > div > form > fieldset > div.row > div > div > div > button.btn.btn-green')
-
-    # congratulations
-
-    # congrats_kirv_image = (
-    #     By.XPATH, '//*[@class="logo"]')
-    # congrats_title = (
-    #     By.XPATH, '//*[contains(text(),"Congratulations!")]')
-    # congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > div > a')
-
-    congrats_kirv_image = (
-        By.CSS_SELECTOR, '#congrats > header > img')
-    congrats_title = (
-        By.CSS_SELECTOR, '#congrats > div > h1')
-    congratulation_modal_close = (By.CSS_SELECTOR, '#congrats > div > a')
-
-    # sign-up
-
-    signup = (By.CLASS_NAME, 'btn-green')
     signupLink = (By.XPATH, '//a[text()="Sign up here"]')
+    kirv_logo = (
+        By.XPATH, '//div[@class="header-new text-center"]/img[@class="logo"]')
+    business_looking = (
+        By.XPATH, '//div[@class="header-new text-center"]//following-sibling::div[1]')
+    cart_plus_icon = (
+        By.XPATH, '//h2[text()="I would like to buy remanufactured products from Kirv"]//preceding::img[1]')
+    buy_remanufactured_product = (
+        By.XPATH, '//h2[text()="I would like to buy remanufactured products from Kirv"]')
+    purchase_remanufactured_products_para = (
+        By.XPATH, '(//p[contains(@class, "panel-dicd")])[2]')
+    signup_to_buy_btn = (By.XPATH, '//a[text() = "Sign up to buy from us"]')
 
-    # sign-up steps
 
-    steps = (By.XPATH, '//ul[@class="steps-ul"]')
+class CreateAccountLocators(object):
+
+    create_account_title = (By.XPATH, '//div[contains(@class, "step-title")]')
+
+    set_credentials_para = (By.XPATH, '//p[@class="short-note"]')
+
+    already_account_link = (
+        By.XPATH, '//a[text()=" Already have an account?"]')
+
+    email_input = (
+        By.XPATH, '//span[text()=" Email address*"]//following-sibling::input')
+
+    password_input = (
+        By.XPATH, '//span[text()=" Create a password*"]//following-sibling::input')
+
+    email_err = (
+        By.XPATH, '//label [span[text()=" Email address*"]]//following-sibling::span[@class="error-detail"]')
+
+    password_err = (
+        By.XPATH, '//label [span[text()=" Create a password*"]]//following-sibling::span[@class="error-detail"]')
+
+    confirm_btn = (By.XPATH, '//button[text()="Confirm"]')
+
+
+class ContactInfoLocators(object):
+
+    tell_us_about_para = (By.XPATH, '//p[@class="signup-note"]')
+
+    comapany_name_input = (
+        By.XPATH, '//label [span[text()=" Company Name *"]]//following-sibling::input')
+
+    comapany_name_err = (
+        By.XPATH, '//label [span[text() = " Company Name *"]]//following-sibling::span[@class="error-detail"]')
+
+    contact_name_input = (
+        By.XPATH, '//label [span[text()=" Contact Name *"]]//following-sibling::input')
+
+    contact_name_err = (
+        By.XPATH, '//label [span[text() = " Contact Name *"]]//following-sibling::span[@class="error-detail"]')
+
+    phone_input = (
+        By.XPATH, '//label [span[text()=" Phone *"]]//following-sibling::input')
+
+    phone_err = (
+        By.XPATH, '//label [span[text() = " Phone *"]]//following-sibling::span[@class="error-detail"]')
+
+    create_account_button = (By.XPATH, '//button[text()="Create account"]')
+
+    quit_sign_up = (By.XPATH, '//div[text()="Quit sign up"]')
+
+
+class CompanyInfoLocators(object):
+    step_kirv_logo = (
+        By.XPATH, '//div[contains(@class, "text-center")] / img[@class = "logo"]')
+
+    steps = (By.XPATH, '//div[contains(@class, "signup-steps text-center")]')
+
+    welcome_title = (By.XPATH, '//div[@class = "step-title"]')
+
+    company_signup_note_para = (By.XPATH, '//p[@class="signup-note"]')
+
+    address_input = (
+        By.XPATH, '//label [span[contains(text(), "Address line 1*")]]//following-sibling::input')
+
+    address_err = (
+        By.XPATH, '//label [span[contains(text(), "Address line 1*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    unit_num_input = (
+        By.XPATH, '//label [span[contains(text(), "Unit Number")]]//following-sibling::input')
+
+    city_input = (
+        By.XPATH, '//label [span[contains(text(),"City*")]]//following-sibling::input')
+    city_error = (
+        By.XPATH, '// label [span[contains(text(), "City*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    state_input = (
+        By.XPATH, '//label [span[contains(text(),"State*")]]//following-sibling::div/input')
+    state_error = (
+        By.XPATH, '// label [span[contains(text(), "State*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    zip_code_input = (
+        By.XPATH, '//label [span[contains(text(),"Zip code*")]]//following-sibling::input')
+    zip_code_error = (
+        By.XPATH, '//label [span[contains(text(),"Zip code*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    reseller_id_input = (
+        By.XPATH, '//label [span[contains(text(),"Reseller ID*")]]//following-sibling::input')
+
+    reseller_id_error = (
+        By.XPATH, '//label [span[contains(text(),"Reseller ID*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    company_website_input = (
+        By.XPATH, '//label [span[contains(text(),"Company website*")]]//following-sibling::input')
+
+    company_website_error = (
+        By.XPATH, '//label [span[contains(text(),"Company website*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    email_input = (
+        By.XPATH, '//label [span[contains(text(),"Email*")]]//following-sibling::input')
+
+    email_input_error = (
+        By.XPATH, '//label [span[contains(text(),"Email*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    phone_number = (
+        By.XPATH, '//label [span[contains(text(),"Phone number*")]]//following-sibling::input')
+    phone_number_error = (
+        By.XPATH, '//label [span[contains(text(),"Phone number*")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    alter_phone_number = (
+        By.XPATH, '//label [span[contains(text(), "Alternate Phone number")]]//following-sibling::input')
+    alter_phon_error = (
+        By.XPATH, '//label [span[contains(text(), "Alternate Phone number")]]//following-sibling::span[contains(@class, "error-detail")]')
+
+    continue_btn = (By.XPATH, '//button[contains(text(), "Continue")]')
+
+
+class LocationLocators(object):
+
+    location_num1 = (By.XPATH, '//label[1]/span[text()="1"]')
+
+    location_num2 = (By.XPATH, '//label[2]/span[text()="2"]')
+
+    location_num3 = (By.XPATH, '//label[3]/span[text()="3"]')
+
+    enter_manually = (By.XPATH, '//a[text()="Enter address manually"]')
+
+    loc_name_input = (
+        By.XPATH, '//span[contains(text(),"Location name")]//following-sibling::input')
+
+    address_input = (
+        By.XPATH, '//span[contains(text(),"Address line 1")]//following-sibling::input')
+
+    unit_no_input = (
+        By.XPATH, '//span[contains(text(), "Unit number")]//following-sibling:: input')
+
+    city_input = (
+        By.XPATH, '//span[contains(text(),"City")]//following-sibling::input')
+
+    state_input = (
+        By.XPATH, '//span[contains(text(),"State")]//following-sibling::div/input')
+
+    zip_code_input = (
+        By.XPATH, '//span[contains(text(),"Zip code")]//following-sibling::input')
+
+    add_loc_btn = (By.XPATH, '//button[contains(text(),"Add location")]')
+
+    email_address_input = (
+        By.XPATH, '//span[contains(text(),"Location email address")]//following-sibling::input')
+
+    phone_number_input = (
+        By.XPATH, '//span[contains(text(),"Location phone number")]//following-sibling::input')
+
+    alt_phone_number_input = (
+        By.XPATH, '//span[contains(text(),"Location alt. phone number")]//following-sibling::input')
+
+    loc_name_error = (
+        By.XPATH, '//span[contains(text(),"Location name")]//ancestor::div[1]')
+
+    address_error = (
+        By.XPATH, '//span[contains(text(),"Address line 1")]//ancestor::div[1]')
+
+    city_error = (
+        By.XPATH, '//span[contains(text(),"City")]//ancestor::div[1]')
+
+    state_error = (
+        By.XPATH, '//span[contains(text(),"State")]//ancestor::div[1]')
+
+    zip_code_error = (
+        By.XPATH, '//span[contains(text(),"Zip code")]//ancestor::div[1]')
+
+    email_address_error = (
+        By.XPATH, '//span[contains(text(),"Location email address")]//ancestor::div[1]')
+
+    phone_number_error = (
+        By.XPATH, '//span[contains(text(),"Location phone number")]//ancestor::div[1]')
+
+    alt_phone_number_error = (
+        By.XPATH, '//span[contains(text(),"Location alt. phone number")]//ancestor::div[1]')
+
+    next_btn = (
+        By.XPATH, '//button[contains(text(),"Next")]')
+
+    edit_address_btn = (
+        By.XPATH, '//a[text()="Edit address"]')
+
+    update_loc_btn = (
+        By.XPATH, '//button[contains(text(),"Update location")]')
+
+    loc_address_input = (
+        By.XPATH, '//label[contains(text(), "Location address")]//following-sibling::input')
+
+    loc_address_error = (
+        By.XPATH, '//label[contains(text(), "Location address")]//ancestor::div[1]')
+
+    google_map = (
+        By.XPATH, '//agm-map/div')
+
+class WareHouseLocators(object):
+
+    check_retail_locartion = (
+        By.XPATH, '//label[text()="test city"]')
+
+    check_first_retail_location = (
+        By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[1]/label')
+
+    check_second_retail_location = (
+        By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[2]/label')
+
+    check_third_retail_location = (
+        By.XPATH, '//h3[text()="Retail location"]//following-sibling::div[3]/label')
+
+    check_none_retail_location = (
+        By.XPATH, '//label[text()="None of these"]')
+
+    check_first_retail_location_id = (
+        By.ID, 'customCheck0')
+
+    check_second_retail_location_id = (
+        By.ID, 'customCheck1')
+
+    check_none_retail_location_id = (
+        By.ID, 'customCheck_cancel')
+
+    confirm_btn = (
+        By.XPATH, '//button[text()="Confirm"]')
+
+    no_additional_warehouse_btn = (
+        By.XPATH, '//span[text()="No additional warehouses"]')
+
+    back_a_step = (
+        By.XPATH, '//div[contains(text(), "Back a step")]')
+
+    purchasing_preferences = (
+        By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
+
+    warehouse_num1 = (
+        By.XPATH, '//span[contains(text(), "1")]')
+
+    warehouse_num2 = (
+        By.XPATH, '//span[contains(text(), "2")]')
+
+    warehouse_name_input = (
+        By.XPATH, '//span[contains(text(), "Warehouse name")]//following-sibling::input')
+
+    warehouse_address_input = (
+            By.XPATH, '//label[contains(text(), "Warehouse address")]//following-sibling::input')
+
+    add_loc_btn = (
+        By.XPATH, '//button[contains(text(), "Add location")]')
+
+    warehouse_name_error = (
+        By.XPATH, '//span[contains(text(), "Warehouse name")]//ancestor::div[1]')
+
+    warehouse_address_error = (
+        By.XPATH, '//label[contains(text(), "Warehouse address")]//ancestor::div[1]')
+
+    manual_address_link = (
+        By.XPATH, '//a[contains(text(), "Enter address manually")]')
+
+    lookup_link = (
+        By.XPATH, '//a[contains(text(), "Enter by lookup")]')
+
+    google_map = (
+        By.XPATH, '//agm-map/div')
+
+    edit_address = (
+        By.XPATH, '//a[contains(text(), "Edit address")]')
+
+    update_location_btn = (
+        By.XPATH, '//button[contains(text(), "Update location")]')
+
+    warehouse_email_input = (
+        By.XPATH, '//span[contains(text(), "Warehouse email address")]//following-sibling::input')
+
+    warehouse_phone_no_input = (
+        By.XPATH, '//span[contains(text(), "Warehouse phone number")]//following-sibling::input')
+
+    warehouse_alt_phone_no_input = (
+        By.XPATH, '//span[contains(text(), "Warehouse alt. phone number")]//following-sibling::input')
+
+    warehouse_email_error = (
+        By.XPATH, '//span[contains(text(), "Warehouse email address")]//ancestor::div[1]')
+
+    warehouse_phone_no_error = (
+        By.XPATH, '//span[contains(text(), "Warehouse phone number")]//ancestor::div[1]')
+
+    warehouse_alt_phone_no_error = (
+        By.XPATH, '//span[contains(text(), "Warehouse alt. phone number")]//ancestor::div[1]')
+
+    confirm_and_continue_btn = (
+        By.XPATH, '//button[contains(text(), "Confirm & Continue")]')
+
+    from_time_btn = (
+        By.XPATH, '//span[contains(text(), "From")]//following-sibling::input')
+
+    until_time_btn = (
+        By.XPATH, '//span[contains(text(), "Until")]//following-sibling::input')
+
+    from_time = (
+        By.XPATH, '//button[contains(text(), "1")]')
+
+    until_time = (
+        By.XPATH, '//button[contains(text(), "3")]')
+
+    body = (
+        By.XPATH, '//body')
+
+    ok_btn = (
+        By.XPATH, '//button[contains(text(), "Ok")]')
+
+    manual_link = (
+        By.XPATH, '//a[contains(text(), "Enter address manually")]')
+
+    warehouse_name_input = (
+        By.XPATH, '//span[contains(text(), "Warehouse name")]//following-sibling::input')
+
+    warehouse_address_line_input = (
+        By.XPATH, '//span[contains(text(), "Address line 1")]//following-sibling::input')
+
+    warehouse_unit_number_input = (
+        By.XPATH, '//span[contains(text(), "Unit number")]//following-sibling::input')
+
+    warehouse_city_input = (
+        By.XPATH, '//span[contains(text(), "City")]//following-sibling::input')
+
+    warehouse_state_input = (
+        By.XPATH, '//span[contains(text(), "State")]//following-sibling::div/input')
+
+    warehouse_zipcode_input = (
+        By.XPATH, '//span[contains(text(), "Zip code")]//following-sibling::input')
+
+    warehouse_name_error = (
+        By.XPATH, '//span[contains(text(), "Warehouse name")]//ancestor::div[1]')
+
+    warehouse_address_line_error = (
+        By.XPATH, '//span[contains(text(), "Address line 1")]//ancestor::div[1]')
+
+    warehouse_unit_number_error = (
+        By.XPATH, '//span[contains(text(), "Unit number")]//ancestor::div[1]')
+
+    warehouse_city_error = (
+        By.XPATH, '//span[contains(text(), "City")]//ancestor::div[1]')
+
+    warehouse_state_error = (
+        By.XPATH, '//span[contains(text(), "State")]//ancestor::div[1]')
+
+    warehouse_zipcode_error = (
+        By.XPATH, '//span[contains(text(), "Zip code")]//ancestor::div[1]')
+
+
+class CategoriesLocators(object):
+
+    often_purchase_title = (By.XPATH, '//div[contains(@class, "step-title")]')
+
+    categories_step = (
+        By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
+
+    categories_title = (By.XPATH, '//ul[@class="categories-title"]')
+
+    categories_ul = (By.XPATH, '//ul[@class="categories-ul"]')
+
+
+class VolumesLocators(object):
+
+    volume_step = (
+        By.XPATH, '//div[contains(text(), "Step 5 of 5 - Purchasing volumes")]')
+
+    volumes_title = (By.XPATH, '//div[contains(@class, "step-title")]')
+
+    headers = (By.XPATH, '//h3')
+
+    trucks_list = (
+        By.XPATH, '//h3/following-sibling::div/div[contains(@class, "row")]')
+
+    plus_btn = (
+        By.XPATH, '//h3/following-sibling::div/div/div[2]/div/button[2]')
+
+
+class AcknowledgementLocator(object):
+
+    Great_everything_title = (
+        By.XPATH, '//div[contains(text(), "Great, that’s everything we need!")]')
+
+    submit_application_title = (
+        By.XPATH, '//div[contains(text(), "Please read and accept the disclaimer below to submit your application.")]')
+
+    disclaimer_header = (By.XPATH, '//h3[contains(text(),"Disclaimer")]')
+
+    disclaimer_label = (By.XPATH, '//label[contains(@class,"disclaimer")]')
+
+    disclaimer_check_box = (
+        By.XPATH, '//div[contains(@class, "custom-checkbox")]/label')
+
+    submit_app_button = (
+        By.XPATH, '//button[contains(text(), "Submit application")]')
+
+
+class CongratulationLocators(object):
+
+    congratulations_title = (
+        By.XPATH, '//h1[contains(text(), "Congratulations!")]')
+
+    application_successfully_sub_head = (
+        By.XPATH, '//p[contains(@class,"sub-head")]')
+
+    back_to_wesite_button = (
+        By.XPATH, '//a[contains(text(), "Back to Website")]')
