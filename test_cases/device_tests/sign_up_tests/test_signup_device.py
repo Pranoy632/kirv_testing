@@ -27,7 +27,6 @@ class kirvSignupTest(unittest.TestCase):
                         'deviceName': 'Z2 Plus'
                         }
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
-        self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 
     def test_signUp(self):

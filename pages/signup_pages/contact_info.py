@@ -18,6 +18,7 @@ class ContactInfo(BasePage):
         return self.driver.find_element(*ContactInfoLocators.tell_us_about_para).text
 
     def click_create_account_btn(self):
+        time.sleep(3)
         self.driver.find_element(
             *ContactInfoLocators.create_account_button).click()
 

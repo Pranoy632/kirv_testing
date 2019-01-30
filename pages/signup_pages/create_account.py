@@ -1,5 +1,6 @@
 import datetime
 
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
 from pages.basepage import *
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators
@@ -29,8 +30,12 @@ class CreateAccount(BasePage):
         return self.driver.find_element(*CreateAccountLocators.password_err).text
 
     def confirm_button(self):
-        self.driver.find_element(
-            *CreateAccountLocators.confirm_btn).click()
+        try:
+            self.driver.find_element(
+                *CreateAccountLocators.confirm_btn).click()
+        except WebDriverException:
+            BasePage(self.driver).close_chat_popup_while_button_click(self.driver.find_element(
+                *CreateAccountLocators.confirm_btn))
 
     def clear_put_value(self, locator):
         """

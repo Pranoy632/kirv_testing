@@ -184,11 +184,16 @@ class CompanyInfo(BasePage):
         self.driver.find_element(
             *CompanyInfoLocators.state_input).click()
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        for state in range(randrange(1, 15)):
-            action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        # action = action_chains.ActionChains(self.driver)
+        # for state in range(randrange(1, 15)):
+        #     action.send_keys(Keys.DOWN)
+        # action.send_keys(Keys.ENTER)
+        # action.perform()
+
+        dropdown_values = self.driver.find_element(*CompanyInfoLocators.dropdown_values)
+        states_list = dropdown_values.find_elements_by_tag_name('li')
+        random.choice(states_list).click()
+
 
         self.driver.find_element(
             *CompanyInfoLocators.zip_code_input).send_keys(fake.postcode())

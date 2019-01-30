@@ -132,6 +132,7 @@ class CompanyInfoLocators(object):
 
     continue_btn = (By.XPATH, '//button[contains(text(), "Continue")]')
 
+    dropdown_values = (By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
 
 class LocationLocators(object):
 
@@ -213,6 +214,9 @@ class LocationLocators(object):
 
     google_map = (
         By.XPATH, '//agm-map/div')
+
+    retail_dropdown = (By.CSS_SELECTOR, '.pac-container > .pac-item')
+
 
 class WareHouseLocators(object):
 

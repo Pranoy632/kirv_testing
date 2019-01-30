@@ -42,3 +42,5 @@ class SignInLocators(object):
     chat = (By.TAG_NAME, 'iframe')
 
     close_chat = (By.XPATH, '//*[@id="root"]/div/div[2]/button')
+
+    close_chat1 = (By.CSS_SELECTOR, '#root > div > div._30us5AS2WYfPMXSfbW1-5E > span > div:nth-child(2) > div > div > div._3rFYHyeAg3meOhdz2al1n- > div.nU8iBIlb3Pnpdfah8T0xS > div._1t1gRyGlfXe220eYtsZnFt')

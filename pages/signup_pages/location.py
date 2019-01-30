@@ -45,10 +45,11 @@ class Location(BasePage):
 
         self.put_input(LocationLocators.loc_address_input, 98)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*LocationLocators.retail_dropdown).click()
+        # action = action_chains.ActionChains(self.driver)
+        # action.send_keys(Keys.DOWN)
+        # action.send_keys(Keys.ENTER)
+        # action.perform()
         time.sleep(1)
 
         self.clear_input(LocationLocators.loc_name_input)
