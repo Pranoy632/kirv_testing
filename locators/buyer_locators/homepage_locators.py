@@ -51,6 +51,8 @@ class AllProductsLocators(object):
     sort_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(3)')
     loader = (By.CLASS_NAME, 'centered')
     no_products = (By.CLASS_NAME, 'load-not-avd')
+    select_ronkonkoma = (By.CSS_SELECTOR, '/html/body/app-root/product/ng-component/div/div/div/div[1]/div[3]/div[2]/div[1]/div/form/div[4]/label')
+    warehouse_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(5)')
 
 
 class ProductDetailsLocator(object):
