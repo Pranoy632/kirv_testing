@@ -6,6 +6,7 @@ import random
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 from faker import Factory
 from locators.sign_in_page_locators.signin_buyer_supplier_locator import SignInLocators
 from selenium.webdriver.common.keys import Keys
@@ -48,7 +49,10 @@ class BasePage(object):
     def close_chat_popup(self):
         self.driver.switch_to.frame(self.get_chat())
         time.sleep(1.5)
-        self.driver.find_element(*SignInLocators.close_chat1).click()
+        try:
+            self.driver.find_element(*SignInLocators.close_chat1).click()
+        except NoSuchElementException:
+            self.driver.find_element(*SignInLocators.close_chat).click()
         self.driver.switch_to.default_content()
         time.sleep(2)
 
