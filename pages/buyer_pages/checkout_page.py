@@ -30,7 +30,7 @@ class Checkout(BasePage):
                 category.click()
                 time.sleep(1)
             self.wait_for_element(AllProductsLocators.sorting_by_warehouse)
-
+            self.select_single_warehouse()
             all_menus = self.driver.find_element(*AllProductsLocators.page_menu)
             menu_list = all_menus.find_elements(*AllProductsLocators.all_menus)
             sub_category = random.choice(menu_list)
@@ -45,4 +45,8 @@ class Checkout(BasePage):
                 print(selected_product)
                 selected_product.click()
                 self.wait_for_element(ProductDetailsLocator.purchase_box)
-                #self.driver.find_element(ProductDetailsLocator.).click()
+                self.driver.find_element(*ProductDetailsLocator.product_quantity_dropdown).click()
+                time.sleep(1)
+                dropdown_values = self.driver.find_element(*ProductDetailsLocator.product_quantity)
+                li_list = dropdown_values.find_elements_by_tag_name('li')
+                li_list[-1].click()

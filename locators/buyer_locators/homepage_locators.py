@@ -36,7 +36,7 @@ class AllProductsLocators(object):
     page_menu = (By.CLASS_NAME, 'page-title-menu')
     all_menus = (By.TAG_NAME, 'li')
     sorting_by_price = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2)')
-    sorting_by_warehouse = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > a:nth-child(1)')
+    sorting_by_warehouse = (By.CSS_SELECTOR, 'div.dropdown:nth-child(1) > a:nth-child(1)')
     low_to_high = (By.ID, 'customCheck21')
     high_to_low = (By.ID, 'customCheck22')
     product_list = (By.CSS_SELECTOR, 'div.product-list:nth-child(4)')
@@ -51,9 +51,11 @@ class AllProductsLocators(object):
     sort_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(3)')
     loader = (By.CLASS_NAME, 'centered')
     no_products = (By.CLASS_NAME, 'load-not-avd')
-    select_ronkonkoma = (By.CSS_SELECTOR, '/html/body/app-root/product/ng-component/div/div/div/div[1]/div[3]/div[2]/div[1]/div/form/div[4]/label')
+    de_select_warehouse = (By.CSS_SELECTOR, 'div.show:nth-child(2) > form:nth-child(1)')
     warehouse_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(5)')
 
 
 class ProductDetailsLocator(object):
     purchase_box = (By.CSS_SELECTOR, '.stock-available-box')
+    product_quantity_dropdown = (By.CSS_SELECTOR, 'input[placeholder="Select Quantity"]')
+    product_quantity = (By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
