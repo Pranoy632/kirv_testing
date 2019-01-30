@@ -21,17 +21,17 @@ class Location(BasePage):
         """
             adds given number of locations
         """
-        self.negative_retail_location_by_lookup()
+        #self.negative_retail_location_by_lookup()
         self.positive_retail_location_by_lookup()
         self.equality_assert(self.driver.find_element(*LocationLocators.google_map).is_displayed(), True)
         self.edit_address_lookup()
-        self.negative_confirmation_location()
+        #self.negative_confirmation_location()
         self.positive_confirmation_location()
         cities = []
         for current in range(no_of_locations):
             self.driver.find_element(
                 *LocationLocators.enter_manually).click()
-            self.negative_retail_location_test()
+            #self.negative_retail_location_test()
             self.positive_retail_location_test()
             self.edit_address()
             #self.negative_confirmation_location()

@@ -30,7 +30,7 @@ class WareHouse(BasePage):
             self.subset_assert(self.driver.find_element(
                 *WareHouseLocators.check_third_retail_location).text, cities)
 
-        self.negative_retail_checklist_test()
+        #self.negative_retail_checklist_test()
         self.positive_retail_checklist_test()
 
     def negative_retail_checklist_test(self):
@@ -112,18 +112,18 @@ class WareHouse(BasePage):
         """
             add warehouse location
         """
-        self.negative_add_warehouse_by_lookup_test()
+        #self.negative_add_warehouse_by_lookup_test()
         self.positive_add_warehouse_by_lookup_test()
         self.equality_assert(self.driver.find_element(*WareHouseLocators.google_map).is_displayed(), True)
         self.edit_address()
-        self.negative_confirm_location_test()
+        #self.negative_confirm_location_test()
         self.positive_confirm_location_test()
         self.driver.find_element(*WareHouseLocators.manual_link).click()
         time.sleep(1)
-        self.negative_add_warehouse_manually_test()
+        #self.negative_add_warehouse_manually_test()
         self.positive_add_warehouse_manually_test()
         self.edit_address_manually()
-        self.negative_confirm_location_test()
+        #self.negative_confirm_location_test()
         self.positive_confirm_location_test()
 
     def negative_add_warehouse_by_lookup_test(self):
