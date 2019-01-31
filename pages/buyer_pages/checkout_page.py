@@ -12,7 +12,7 @@ class Checkout(BasePage):
 
     def select_single_warehouse(self):
         self.driver.find_element(*AllProductsLocators.sorting_by_warehouse).click()
-        self.wait_for_element(AllProductsLocators.select_ronkonkoma).click()
+        self.wait_for_element(AllProductsLocators.warehouse_dropdown).click()
         self.driver.find_element(*AllProductsLocators.warehouse_apply_button).click()
         self.wait_for_element(AllProductsLocators.loader)
         self.wait_for_element(AllProductsLocators.page_menu)

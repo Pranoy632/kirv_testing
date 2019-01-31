@@ -45,7 +45,8 @@ class AllProductsLocators(object):
     product_column = (By.CSS_SELECTOR, 'div.product-list:nth-child(4)')
     product_cell = (By.CSS_SELECTOR, 'div.col-lg-4')
     product_cell_price = (By.CSS_SELECTOR, 'div:nth-child(3) > span:nth-child(1)')
-    sort_lower = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) > div:nth-child(1) > label:nth-child(2)')
+    sort_lower = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) > div:nth-child(1)'
+                                   ' > label:nth-child(2)')
     sort_higher = (By.CSS_SELECTOR, 'div.dropdown:nth-child(2) > div:nth-child(2) > form:nth-child(1) >'
                                     ' div:nth-child(2) > label:nth-child(2)')
     sort_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(3)')
@@ -53,9 +54,12 @@ class AllProductsLocators(object):
     no_products = (By.CLASS_NAME, 'load-not-avd')
     de_select_warehouse = (By.CSS_SELECTOR, 'div.show:nth-child(2) > form:nth-child(1)')
     warehouse_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(5)')
+    warehouse_dropdown = (By.CSS_SELECTOR, 'div.dropdown:nth-child(1) > div:nth-child(2) > form:nth-child(1)')
+    warehouse_drop_down_values = (By.CSS_SELECTOR, '.custom-control')
 
 
 class ProductDetailsLocator(object):
     purchase_box = (By.CSS_SELECTOR, '.stock-available-box')
     product_quantity_dropdown = (By.CSS_SELECTOR, 'input[placeholder="Select Quantity"]')
     product_quantity = (By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
+
