@@ -26,34 +26,29 @@ class SignUpToBuy(BasePage):
     def page_elements(self):
         try:
             assert self.check_kirv_image() == True
-            print("Success: kirv logo found.")
         except:
             print("No result found for kirv image.")
 
         try:
             assert self.check_title_business_look(
             ) == "What type of business are you looking to do with us?"
-            print("Success: Business look title found.")
         except:
             print("No result found for Business look title.")
 
         try:
             assert self.check_cart_plus_icon() == True
-            print("Success: cart_plus_icon found.")
         except:
             print("No result found for cart_plus_icon.")
 
         try:
             assert self.check_remanufactured_header(
             ) == "I would like to buy remanufactured products from Kirv"
-            print("Success: Remanufactured products header found.")
         except:
             print("No result found Remanufactured products header.")
 
         try:
             assert self.check_purchase_remanufactured_para(
             ) == "Select this option if you’re a retailer that wants to purchase remanufactured products directly from Kirv."
-            print("Success: Purchase remanufactured para found.")
         except:
             print("No result found for purchase remanufactured para")
 

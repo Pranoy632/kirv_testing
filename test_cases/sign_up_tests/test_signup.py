@@ -2,6 +2,7 @@
 # sys.path.append('../pages')
 
 import unittest
+import time
 from selenium import webdriver
 from selenium.webdriver import ChromeOptions
 
@@ -88,7 +89,7 @@ class kirvSignupTest(unittest.TestCase):
                     print("Thanks email successfully got.")
                     break
                 else:
-                    print("mail not got.")
+                    print("Email not received.")
                 time.sleep(5)
                 i = i + 1
         finally:
