@@ -17,18 +17,11 @@ class WareHouse(BasePage):
                 *WareHouseLocators.check_first_retail_location).text, self.retail_address_lookup)
 
         try:
-            self.subset_assert(self.driver.find_element(
-                *WareHouseLocators.check_second_retail_location).text, cities)
-        except:
             self.equality_assert(self.driver.find_element(
                 *WareHouseLocators.check_second_retail_location).text, self.retail_address_lookup)
-
-        try:
-            self.equality_assert(self.driver.find_element(
-                *WareHouseLocators.check_third_retail_location).text, self.retail_address_lookup)
         except:
             self.subset_assert(self.driver.find_element(
-                *WareHouseLocators.check_third_retail_location).text, cities)
+                *WareHouseLocators.check_second_retail_location).text, cities)
 
         self.negative_retail_checklist_test()
         self.positive_retail_checklist_test()
@@ -118,6 +111,7 @@ class WareHouse(BasePage):
         self.edit_address()
         self.negative_confirm_location_test()
         self.positive_confirm_location_test()
+        self.negative_same_warehouse_address_test()
         self.driver.find_element(*WareHouseLocators.manual_link).click()
         time.sleep(1)
         self.negative_add_warehouse_manually_test()
@@ -134,10 +128,7 @@ class WareHouse(BasePage):
 
         self.put_input(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
 
         self.clear_input(WareHouseLocators.warehouse_name_input)
@@ -147,10 +138,24 @@ class WareHouse(BasePage):
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
         time.sleep(1)
         self.subset_assert('has-danger', self.driver.find_element(*WareHouseLocators.warehouse_name_error).get_attribute('class').split())
-        #self.subset_assert('has-danger', self.driver.find_element(*WareHouseLocators.warehouse_address_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(*WareHouseLocators.warehouse_address_error).get_attribute('class').split())
         
         self.driver.find_element(*WareHouseLocators.manual_address_link).click()
         self.driver.find_element(*WareHouseLocators.lookup_link).click()
+
+    def negative_same_warehouse_address_test(self):
+        """
+            negative test -> tests same address for lookup
+        """
+        time.sleep(1)
+        self.put_input(WareHouseLocators.warehouse_name_input, fake.street_name())
+        self.put_input(WareHouseLocators.warehouse_address_input, 77)
+        time.sleep(1)
+        self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
+        time.sleep(2)
+        self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
+        time.sleep(2)
+        self.subset_assert('has-danger', self.driver.find_element(*WareHouseLocators.warehouse_address_error).get_attribute('class').split())
 
     def positive_add_warehouse_by_lookup_test(self):
         """
@@ -164,10 +169,7 @@ class WareHouse(BasePage):
 
         self.put_input(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
         warehouse_address = self.driver.find_element(*WareHouseLocators.warehouse_address_input).get_attribute('value')
 
@@ -185,12 +187,9 @@ class WareHouse(BasePage):
 
         self.clear_input(WareHouseLocators.warehouse_address_input)
 
-        self.put_input(WareHouseLocators.warehouse_address_input, 12)
+        self.put_input(WareHouseLocators.warehouse_address_input, 77)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
         warehouse_address = self.driver.find_element(*WareHouseLocators.warehouse_address_input).get_attribute('value')
 

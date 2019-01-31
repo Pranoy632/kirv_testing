@@ -74,13 +74,19 @@ class BasePage(object):
         """
             assertion for equality of two arguments
         """
-        assert first_arg == second_arg
+        try:
+            assert first_arg == second_arg
+        except:
+            print ("Failure (equality assert):", first_arg, " and ", second_arg)
 
     def subset_assert(self, first_arg, second_arg):
         """
             assertion for subset of object
         """
-        assert first_arg in second_arg
+        try:
+            assert first_arg in second_arg
+        except:
+            print ("Failure (subset assert):", first_arg, " and ",second_arg)
 
     def clear_put_input_value(self, locator, input_value):
         """

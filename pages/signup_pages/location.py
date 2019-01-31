@@ -10,14 +10,14 @@ class Location(BasePage):
 
     def element_in_location_page(self):
         self.driver.find_element(
-            *LocationLocators.location_num3).click()
+            *LocationLocators.location_num2).click()
 
         time.sleep(2)
         self.equality_assert(self.driver.find_element(*LocationLocators.add_loc_btn).is_enabled(), False)
 
-        self.add_retail_location(2)
+        self.add_retail_location()
 
-    def add_retail_location(self, no_of_locations):
+    def add_retail_location(self):
         """
             adds given number of locations
         """
@@ -25,17 +25,17 @@ class Location(BasePage):
         self.positive_retail_location_by_lookup()
         self.equality_assert(self.driver.find_element(*LocationLocators.google_map).is_displayed(), True)
         self.edit_address_lookup()
-        self.negative_confirmation_location()
+        #self.negative_confirmation_location()
         self.positive_confirmation_location()
+        self.negative_retail_location_by_lookup()
         cities = []
-        for current in range(no_of_locations):
-            self.driver.find_element(
-                *LocationLocators.enter_manually).click()
-            self.negative_retail_location_test()
-            self.positive_retail_location_test()
-            self.edit_address()
-            #self.negative_confirmation_location()
-            self.positive_confirmation_location()
+        self.driver.find_element(
+        *LocationLocators.enter_manually).click()
+        self.negative_retail_location_test()
+        self.positive_retail_location_test()
+        self.edit_address()
+        #self.negative_confirmation_location()
+        self.positive_confirmation_location()
 
     def negative_retail_location_by_lookup(self):
         """
@@ -46,10 +46,6 @@ class Location(BasePage):
         self.put_input(LocationLocators.loc_address_input, 98)
         time.sleep(1)
         self.driver.find_element(*LocationLocators.retail_dropdown).click()
-        # action = action_chains.ActionChains(self.driver)
-        # action.send_keys(Keys.DOWN)
-        # action.send_keys(Keys.ENTER)
-        # action.perform()
         time.sleep(1)
 
         self.clear_input(LocationLocators.loc_name_input)
@@ -59,7 +55,17 @@ class Location(BasePage):
         self.driver.find_element(*LocationLocators.add_loc_btn).click()
         time.sleep(1)
         self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_name_error).get_attribute('class').split())
-        #self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_address_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_address_error).get_attribute('class').split())
+
+        if '2' in self.driver.find_element(*LocationLocators.retail_location_count).text:
+            self.put_input(LocationLocators.loc_name_input, fake.street_name())
+            self.put_input(LocationLocators.loc_address_input, 98)
+            time.sleep(1)
+            self.driver.find_element(*LocationLocators.retail_dropdown).click()
+            time.sleep(2)
+            self.driver.find_element(*LocationLocators.add_loc_btn).click()
+            time.sleep(2)
+            self.subset_assert('has-danger', self.driver.find_element(*LocationLocators.loc_address_error).get_attribute('class').split())
 
     def positive_retail_location_by_lookup(self):
         """
@@ -73,10 +79,7 @@ class Location(BasePage):
 
         self.put_input(LocationLocators.loc_address_input, 23)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
         retail_address = self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value')
 
@@ -96,10 +99,7 @@ class Location(BasePage):
 
         self.put_input(LocationLocators.loc_address_input, 98)
         time.sleep(1)
-        action = action_chains.ActionChains(self.driver)
-        action.send_keys(Keys.DOWN)
-        action.send_keys(Keys.ENTER)
-        action.perform()
+        self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
         #retail_address_lookup = self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value')
 

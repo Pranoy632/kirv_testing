@@ -217,6 +217,8 @@ class LocationLocators(object):
 
     retail_dropdown = (By.CSS_SELECTOR, '.pac-container > .pac-item')
 
+    retail_location_count = (
+        By.XPATH, '//div[contains(text(), "Tell us about the")]')
 
 class WareHouseLocators(object):
 
@@ -370,6 +372,7 @@ class WareHouseLocators(object):
     warehouse_zipcode_error = (
         By.XPATH, '//span[contains(text(), "Zip code")]//ancestor::div[1]')
 
+    warehouse_dropdown = (By.CSS_SELECTOR, '.pac-container > .pac-item')
 
 class CategoriesLocators(object):
 
