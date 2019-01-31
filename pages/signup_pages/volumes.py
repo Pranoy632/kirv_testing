@@ -42,7 +42,6 @@ class Volumes(BasePage):
 
     def fill_fields(self):
 
-        quater_list = []
         hdrs = self.driver.find_elements(*VolumesLocators.headers)
 
         for qutr_loop in range(len(hdrs)):
@@ -75,6 +74,9 @@ class Volumes(BasePage):
         if len(complete_btn) >= 1:
             for comp_btn in complete_btn:
                 k = k + 1
-               #print(k, "complete button found.")
+            try:
+                assert comp_btn.is_displayed() == True
+            except:
+                print("complete button is not displyed in quater.")
         # else:
         #     print("No result found for completebutton list")
