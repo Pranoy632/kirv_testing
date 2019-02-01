@@ -85,18 +85,21 @@ class kirvSignupTest(unittest.TestCase):
 
         # email check
         email_chk = EmailCheck()
+        email_flg = 0
         try:
             i = 1
             while i <= 10:
                 mail = email_chk.email_check()
                 if mail == "Thanks for your application":
-                    print(">>>>>>>>>>>>Email>>>>>>>>>>>>>>>>>")
                     print("Thanks email successfully got.")
+                    email_flg = 1
                     break
                 else:
-                    print("mail not got.")
+                    pass
                 time.sleep(5)
                 i = i + 1
+            if email_flg == 0:
+                raise ValueError("Email not received.")
         finally:
             print("Thanks.")
 

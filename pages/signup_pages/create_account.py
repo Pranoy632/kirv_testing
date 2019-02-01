@@ -49,25 +49,21 @@ class CreateAccount(BasePage):
     def create_account_page_elements(self):
         try:
             assert self.check_kirv_logo() == True
-            print("Success: kirv logo found on create account page.")
         except:
             print("No result found for kirv logo in create account page.")
 
         try:
             assert self.check_create_acc_title() == "Create your account"
-            print("Success: create account title found.")
         except:
             print("No result found for create account title.")
 
         try:
             assert self.credential_set_para() == "Set the credentials for your Kirv account."
-            print("Success: create account set credential paragraph found.")
         except:
             print("No result found for create account set credential paragraph.")
 
         try:
             assert self.check_already_account_link() == "Already have an account?"
-            print("Success: create account already have account link found.")
         except:
             print("No result found for create account already have account link.")
 
@@ -76,13 +72,11 @@ class CreateAccount(BasePage):
 
         try:
             assert self.email_error() == "This field is required."
-            print("Success: create account email field is required error found.")
         except:
             print("No result found for email error. ")
 
         try:
             assert self.password_error() == "This field is required."
-            print("Success: create account password field is required error found.")
         except:
             print("No result found for password error. ")
 
@@ -100,7 +94,6 @@ class CreateAccount(BasePage):
 
         try:
             assert self.email_error() == "Enter a valid email address."
-            print("Success: create account enter a valid email error found.")
         except:
             print("No result found for enter a valid email. ")
 
@@ -113,8 +106,6 @@ class CreateAccount(BasePage):
         try:
             assert self.password_error(
             ) == "This password is too short. It must contain at least 8 characters."
-            print(
-                "Success: create account password field is required 8 characters error found.")
         except:
             print("No result found for 8 character password error. ")
 
@@ -127,8 +118,6 @@ class CreateAccount(BasePage):
         try:
             assert self.password_error(
             ) == "This password is too common."
-            print(
-                "Success: create account password is too common error found.")
         except:
             print("No result found for password is too common error. ")
 
@@ -142,7 +131,6 @@ class CreateAccount(BasePage):
 
         try:
             assert self.email_error() == "This field may not be blank."
-            print("Success: create account email field blank error found.")
         except:
             print("No result found for email field blank error. ")
 
@@ -153,7 +141,6 @@ class CreateAccount(BasePage):
 
         try:
             assert self.email_error() == "User with this email address already exists."
-            print("Success: create account email user exists error found.")
         except:
             print("No result found for email user exists error. ")
 
@@ -168,7 +155,6 @@ class CreateAccount(BasePage):
 
         try:
             assert self.password_error() == "This field may not be blank."
-            print("Success: create account password field blank error found.")
         except:
             print("No result found for password field blank error. ")
 

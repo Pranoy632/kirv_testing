@@ -6,7 +6,7 @@ from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAc
 class ContactInfo(BasePage):
 
     def check_kirv_logo(self):
-        return self.driver.find_element(*SignupPageLocators.kirv_logo).is_displayed()
+        return self.driver.find_element(*ContactInfoLocators.kirv_logo).is_displayed()
 
     def check_create_acc_title(self):
         return self.driver.find_element(*CreateAccountLocators.create_account_title).text
@@ -41,28 +41,26 @@ class ContactInfo(BasePage):
         element.send_keys(Keys.DELETE)
 
     def contact_info_page_element(self):
+        time.sleep(2)
+
         try:
             assert self.check_kirv_logo() == True
-            print("Success: kirv logo found on contact Info page.")
         except:
             print("No result found for kirv logo in contact Info page.")
 
         try:
             assert self.check_quit_sign_up_title() == 'Quit sign up'
-            print("Success: contact info quit sign-up title found.")
         except:
             print("No result found for contact info quit sign-up title.")
 
         try:
-            assert self.check_create_acc_title() == "Create your account"
-            print("Success: create account title found in contact Info page.")
+            assert self.check_create_acc_title() == "Create your accounts"
         except:
             print("No result found for create account title in contact Info page..")
 
         try:
             assert self.check_tell_us_about_para(
             ) == "Tell us about you and your company and lets get your Kirv platform account created."
-            print("Success: Tell us about title found in contact info page.")
         except:
             print("No result found for tell us about title in contact info page.")
 
@@ -71,7 +69,6 @@ class ContactInfo(BasePage):
 
         try:
             assert self.company_name_error() == "This field is required."
-            print("Success: contact info comapany name feild is required error found.")
         except:
             print("No result found for contact info company name feild is required.")
 
@@ -85,13 +82,11 @@ class ContactInfo(BasePage):
 
         try:
             assert self.contact_name_error() == "This field may not be blank."
-            print("Success: contact info contact name feild is blank error found.")
         except:
             print("No result found for contact info contact name feild is blank.")
 
         try:
             assert self.phone_error() == "This field may not be blank."
-            print("Success: contact info phone number feild is blank error found.")
         except:
             print("No result found for contact info phone number feild is blank.")
 
@@ -112,7 +107,6 @@ class ContactInfo(BasePage):
 
         try:
             assert self.company_name_error() == "This field may not be blank."
-            print("Success: contact info comapany name feild blank error found.")
         except:
             print("No result found for contact info company name feild blank.")
 
@@ -127,7 +121,6 @@ class ContactInfo(BasePage):
 
         try:
             assert self.phone_error() == "The phone number entered is not valid."
-            print("Success: contact info phone number is not valid error found.")
         except:
             print("No result found for contact info phone number is not valid.")
 
