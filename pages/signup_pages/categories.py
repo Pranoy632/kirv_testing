@@ -20,29 +20,24 @@ class Categories(BasePage):
         return self.driver.find_element(*CategoriesLocators.often_purchase_title).text
 
     def elements_of_categories(self):
-        print('***********************************************')
         try:
             assert self.check_kirv_logo() == True
-            print("Success: Categories kirv logo found.")
         except:
             print("No result found for categories kirv logo.")
 
         try:
             assert self.check_quit_sign_up_title() == 'Quit sign up'
-            print("Success: Categories quit sign up title found.")
         except:
             print("No result found categories quit sign up title.")
 
         try:
             assert self.check_categories_step() == 'Step 4 of 5 - Purchasing preferences'
-            print("Success: Categories Step 4 of 5 - Purchasing preferences title found.")
         except:
             print("No result found for Step 4 of 5 - Purchasing preferences title.")
 
         try:
             assert self.check_often_do_you_purchase_title(
             ) == 'How often do you purchase these types of product?'
-            print("Success: categories often purchase title found.")
         except:
             print("No result found for categories often purchase title.")
 
@@ -53,23 +48,19 @@ class Categories(BasePage):
         categories_title_itr = self.driver.find_elements(
             *CategoriesLocators.categories_title)
 
-        print("Length of categories: ", len(categories_title_itr))
         for itr in range(len(categories_title_itr)):
-            print("Categories iteration number: ", itr)
             for category in categories_title_itr:
                 links = category.find_elements_by_tag_name('li')
                 if len(links) > 1:
                     title_check = links[0].text
-                    for l in links:
-                        print("------->", l.text)
-                else:
-                    for l in links:
-                        print(l.text)
+                #     for l in links:
+                #         print("------->", l.text)
+                # else:
+                #     for l in links:
+                #         print(l.text)
 
             for sub_category in self.driver.find_elements(*CategoriesLocators.categories_ul):
                 sub_links = sub_category.find_elements_by_tag_name('li')
-                print("Title -----------------> ", title_check)
-                print("-------------->", sub_links[0].text)
                 sub_links[randrange(1, len(sub_links))].find_element_by_tag_name(
                     'div').find_element_by_tag_name('label').click()
 
@@ -86,6 +77,6 @@ class Categories(BasePage):
         if len(complete_btn) >= 1:
             for comp_btn in complete_btn:
                 k = k + 1
-                print(k, "complete button found.")
+                #print(k, "complete button found.")
         else:
             print("No result found for completebutton list")

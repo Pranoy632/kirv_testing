@@ -43,6 +43,9 @@ class CreateAccountLocators(object):
 
 class ContactInfoLocators(object):
 
+    kirv_logo = (
+        By.XPATH, '//div[contains(@class, "text-sm-center")] / img[@class = "logo"]')
+
     tell_us_about_para = (By.XPATH, '//p[@class="signup-note"]')
 
     comapany_name_input = (
@@ -65,12 +68,13 @@ class ContactInfoLocators(object):
 
     create_account_button = (By.XPATH, '//button[text()="Create account"]')
 
-    quit_sign_up = (By.XPATH, '//div[text()="Quit sign up"]')
+    quit_sign_up = (By.XPATH, '//div[contains(text(),"Quit")]')
 
 
 class CompanyInfoLocators(object):
+
     step_kirv_logo = (
-        By.XPATH, '//div[contains(@class, "text-center")] / img[@class = "logo"]')
+        By.XPATH, '//div[contains(@class, "text-sm-center")] / img[@class = "logo"]')
 
     steps = (By.XPATH, '//div[contains(@class, "signup-steps text-center")]')
 
@@ -132,7 +136,9 @@ class CompanyInfoLocators(object):
 
     continue_btn = (By.XPATH, '//button[contains(text(), "Continue")]')
 
-    dropdown_values = (By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
+    dropdown_values = (
+        By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
+
 
 class LocationLocators(object):
 
@@ -220,6 +226,10 @@ class LocationLocators(object):
     retail_location_count = (
         By.XPATH, '//div[contains(text(), "Tell us about the")]')
 
+    loc_dropdown_values = (
+        By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
+
+
 class WareHouseLocators(object):
 
     check_retail_locartion = (
@@ -268,7 +278,7 @@ class WareHouseLocators(object):
         By.XPATH, '//span[contains(text(), "Warehouse name")]//following-sibling::input')
 
     warehouse_address_input = (
-            By.XPATH, '//label[contains(text(), "Warehouse address")]//following-sibling::input')
+        By.XPATH, '//label[contains(text(), "Warehouse address")]//following-sibling::input')
 
     add_loc_btn = (
         By.XPATH, '//button[contains(text(), "Add location")]')
@@ -373,6 +383,10 @@ class WareHouseLocators(object):
         By.XPATH, '//span[contains(text(), "Zip code")]//ancestor::div[1]')
 
     warehouse_dropdown = (By.CSS_SELECTOR, '.pac-container > .pac-item')
+
+    warehouse_dropdown_values = (
+        By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
+
 
 class CategoriesLocators(object):
 

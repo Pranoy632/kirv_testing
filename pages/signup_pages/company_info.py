@@ -24,13 +24,11 @@ class CompanyInfo(BasePage):
 
     def check_headers(self, form_head):
         for head in self.driver.find_elements_by_xpath('//h3'):
-            print(">>>>>>>>>>>>>", head.text)
             if head.text == form_head:
                 try:
                     assert head.text == form_head
-                    print("Success: %s header found." % (form_head))
                 except:
-                    print("Form header does not found.")
+                    print("Form %s header does not found." % (form_head))
 
     def click_on_continue_button(self):
         self.driver.find_element(
@@ -75,32 +73,27 @@ class CompanyInfo(BasePage):
     def company_info_page_element(self):
         try:
             assert self.check_kirv_logo() == True
-            print("Success: kirv logo found on company Info page.")
         except:
             print("No result found for kirv logo in company Info page.")
 
         try:
             assert self.check_quit_sign_up_title() == 'Quit sign up'
-            print("Success: contact info quit sign-up title found.")
         except:
-            print("No result found for contact info quit sign-up title.")
+            print("No result found for company info quit sign-up title.")
 
         try:
             assert self.check_step() == 'Step 1 of 5 - Company information'
-            print("Success: company info step 1 of 5 title found.")
         except:
             print("No result found for step 1 of 5 title found.")
 
         try:
             assert self.check_welcome_title() == 'Welcome to Kirv!'
-            print("Success: company info welcome to kirv title found.")
         except:
             print("No result found for welcome to kirv title.")
 
         try:
             assert self.check_company_signup_note_para(
             ) == 'We are pleased to confirm your account has been successfully created. Next up, please tell us a little about your company.'
-            print("Success: company info tell me about company para found.")
         except:
             print("No result found for tell me about comapny para.")
 
@@ -119,25 +112,21 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.address_error() == "This field may not be blank."
-            print("Success: company-info address blank error found.")
         except:
             print("No result found for company-info address blank error.")
 
         try:
             assert self.city_error() == "This field may not be blank."
-            print("Success: company-info city blank error found.")
         except:
             print("No result found for company-info city blank error.")
 
         try:
             assert self.state_error() == "This field may not be blank."
-            print("Success: company-info state  blank error found.")
         except:
             print("No result found for company-info state blank error.")
 
         try:
             assert self.zip_code_error() == "This field may not be blank."
-            print("Success: company-info zip-code  blank error found.")
         except:
             print("No result found for company-info zip-code  blank error.")
 
@@ -148,25 +137,21 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.reseller_id_error() == "This field may not be null."
-            print("Success: company-info reseller_id  null  error found.")
         except:
             print("No result found for company-info reseller_id  null error.")
 
         try:
             assert self.company_website_error() == "This field may not be null."
-            print("Success: company-info company_website null error found.")
         except:
             print("No result found for company-info company_website null error.")
 
         try:
             assert self.email_error() == "This field may not be blank."
-            print("Success: company-info email  blank error found.")
         except:
             print("No result found for company-info email blank error.")
 
         try:
             assert self.phone_number_err() == "This field may not be blank."
-            print("Success: company-info phone-number blank error found.")
         except:
             print("No result found for company-info phone-number blank error.")
 
@@ -190,10 +175,10 @@ class CompanyInfo(BasePage):
         # action.send_keys(Keys.ENTER)
         # action.perform()
 
-        dropdown_values = self.driver.find_element(*CompanyInfoLocators.dropdown_values)
+        dropdown_values = self.driver.find_element(
+            *CompanyInfoLocators.dropdown_values)
         states_list = dropdown_values.find_elements_by_tag_name('li')
-        random.choice(states_list).click()
-
+        random.choice(states_list[1:]).click()
 
         self.driver.find_element(
             *CompanyInfoLocators.zip_code_input).send_keys(fake.postcode())
@@ -216,7 +201,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.reseller_id_error() == "This field may not be blank."
-            print("Success: company-info reseller_id  blank  error found.")
         except:
             print("No result found for company-info reseller_id  blank error.")
 
@@ -231,7 +215,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.company_website_error() == "Invalid domain."
-            print("Success: company-info company_website invalid domain error found.")
         except:
             print(
                 "No result found for company-info company_website invalid domain error.")
@@ -247,7 +230,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.company_website_error() == "Unallowed characters in label ''."
-            print("Success: company-info company_website unallowed char error found.")
         except:
             print(
                 "No result found for company-info company_website unallowed char error.")
@@ -268,7 +250,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.email_error() == "Enter a valid email address."
-            print("Success: company-info email invalid error found.")
         except:
             print("No result found for company-info email invalid error.")
 
@@ -284,7 +265,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.phone_number_err() == "The phone number entered is not valid."
-            print("Success: company-info phone-number invalid error found.")
         except:
             print("No result found for company-info phone-number invalid error.")
 
@@ -299,7 +279,6 @@ class CompanyInfo(BasePage):
 
         try:
             assert self.other_phone() == "The phone number entered is not valid."
-            print("Success: company-info other phone-number invalid error found.")
         except:
             print("No result found for company-info other phone-number invalid error.")
 
