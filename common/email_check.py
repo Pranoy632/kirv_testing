@@ -2,13 +2,15 @@ import email
 import imaplib
 import ctypes
 import getpass
+import json
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com', 993)
 #usr = input("pls enter email")
 #pwd = getpass.getpass("pls enter password")
-mail.login('amztest18@gmail.com', 'amz@test')
+f = open("../../common/email_data.json", "r")
+data = json.load(f)
+mail.login(data["username"], data["password"])
 mail.select("INBOX")
-
 
 class EmailCheck(object):
 

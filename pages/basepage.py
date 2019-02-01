@@ -106,7 +106,7 @@ class BasePage(object):
         element.send_keys(Keys.CONTROL + 'a')
         element.send_keys(Keys.DELETE)
 
-    def put_input(self, locator, value):
+    def enter_text(self, locator, value):
         """
             puts input in input box
         """

@@ -124,9 +124,9 @@ class WareHouse(BasePage):
         """
             negative test -> add location using lookup
         """
-        self.put_input(WareHouseLocators.warehouse_name_input, fake.street_name())
+        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
 
-        self.put_input(WareHouseLocators.warehouse_address_input, 23)
+        self.enter_text(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
@@ -148,8 +148,8 @@ class WareHouse(BasePage):
             negative test -> tests same address for lookup
         """
         time.sleep(1)
-        self.put_input(WareHouseLocators.warehouse_name_input, fake.street_name())
-        self.put_input(WareHouseLocators.warehouse_address_input, 77)
+        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
+        self.enter_text(WareHouseLocators.warehouse_address_input, 77)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(2)
@@ -165,9 +165,9 @@ class WareHouse(BasePage):
         global warehouse_address
 
         warehouse_name = fake.street_name()
-        self.put_input(WareHouseLocators.warehouse_name_input, warehouse_name)
+        self.enter_text(WareHouseLocators.warehouse_name_input, warehouse_name)
 
-        self.put_input(WareHouseLocators.warehouse_address_input, 23)
+        self.enter_text(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
@@ -187,7 +187,7 @@ class WareHouse(BasePage):
 
         self.clear_input(WareHouseLocators.warehouse_address_input)
 
-        self.put_input(WareHouseLocators.warehouse_address_input, 77)
+        self.enter_text(WareHouseLocators.warehouse_address_input, 77)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
@@ -304,16 +304,16 @@ class WareHouse(BasePage):
         global zipcode
 
         name = fake.street_name()
-        self.put_input(WareHouseLocators.warehouse_name_input, name)
+        self.enter_text(WareHouseLocators.warehouse_name_input, name)
 
         address = fake.address()
-        self.put_input(WareHouseLocators.warehouse_address_line_input, address)
+        self.enter_text(WareHouseLocators.warehouse_address_line_input, address)
 
         unit_number = fake.random_int()
-        self.put_input(WareHouseLocators.warehouse_unit_number_input, unit_number)
+        self.enter_text(WareHouseLocators.warehouse_unit_number_input, unit_number)
 
         city = fake.city()
-        self.put_input(WareHouseLocators.warehouse_city_input, city)
+        self.enter_text(WareHouseLocators.warehouse_city_input, city)
 
         self.driver.find_element(
             *WareHouseLocators.warehouse_state_input).click()
@@ -325,7 +325,7 @@ class WareHouse(BasePage):
         state = self.driver.find_element(*WareHouseLocators.warehouse_state_input).get_attribute('value')
 
         zipcode = fake.zipcode()
-        self.put_input(WareHouseLocators.warehouse_zipcode_input, zipcode)
+        self.enter_text(WareHouseLocators.warehouse_zipcode_input, zipcode)
 
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()

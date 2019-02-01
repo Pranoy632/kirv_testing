@@ -401,6 +401,64 @@ class VolumesLocators(object):
     plus_btn = (
         By.XPATH, '//h3/following-sibling::div/div/div[2]/div/button[2]')
 
+class BackAStep(object):
+
+    back_a_step = (
+        By.XPATH, '//div[contains(text(), "Back a step")]')
+
+    kirv_logo = (
+        By.XPATH, '//img[contains(@class, "logo")]')
+
+    disclaimer = (
+        By.XPATH, '//h3[contains(text(), "Disclaimer")]')
+
+    submit_application = (
+        By.XPATH, '//button[contains(text(), "Submit application")]')
+
+    step5 = (
+        By.XPATH, '//div[contains(text(), "Step 5 of 5 - Purchasing volumes")]')
+
+    question1 = (
+        By.XPATH, '//h3[contains(text(), "Q1")]')
+
+    step4 = (
+        By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
+
+    cooking = (
+        By.XPATH, '//li[contains(text(), "Cooking")]')
+
+    step3 = (
+        By.XPATH, '//div[contains(text(), "Step 3 of 5 - Warehouse locations")]')
+
+    num1 = (
+        By.XPATH, '//label//span[contains(text(), "1")]')
+
+    retail_location = (
+        By.XPATH, '//h3[contains(text(), "Retail location")]')
+
+    confirm_btn = (
+        By.XPATH, '//button[contains(text(), "Confirm")]')
+
+    step2 = (
+        By.XPATH, '//div[contains(text(), "Step 2 of 5 - Retail locations")]')
+
+    step1 = (
+        By.XPATH, '//div[contains(text(), "Step 1 of 5 - Company information")]')
+
+    welcome = (
+        By.XPATH, '//div[contains(text(), "Welcome to Kirv")]')
+
+    company_address = (
+        By.XPATH, '//h3[contains(text(), "Company address")]')
+
+    continue_btn = (
+        By.XPATH, '//button[contains(text(), "Continue")]')
+
+    update_location = (
+        By.XPATH, '//button[contains(text(), "Update location")]')
+
+    next_btn = (
+        By.XPATH, '//button[contains(text(), "Next")]')
 
 class AcknowledgementLocator(object):
 
