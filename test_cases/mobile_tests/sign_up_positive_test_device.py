@@ -18,13 +18,15 @@ from pages.signup_pages.congratulations import Cogratulations
 from common.email_check import EmailCheck
 
 
-class kirvSignupTest(unittest.TestCase):
+class kirvSignupTestDevice(unittest.TestCase):
 
     def setUp(self):
-        options = ChromeOptions()
-        options.add_argument("--start-maximized")
-        options.add_experimental_option("detach", True)
-        self.driver = webdriver.Chrome(options=options)
+        capabilities = {'platformName': 'Android',
+                            'platformVersion': '6.0.1',
+                            'browserName': 'Chrome',
+                            'deviceName': 'Z2 Plus'
+                            }
+        self.driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
         self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 

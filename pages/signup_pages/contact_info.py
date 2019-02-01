@@ -1,6 +1,7 @@
 from pages.basepage import *
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators,  ContactInfoLocators
+from selenium.common.exceptions import WebDriverException
 
 
 class ContactInfo(BasePage):
@@ -18,8 +19,12 @@ class ContactInfo(BasePage):
         return self.driver.find_element(*ContactInfoLocators.tell_us_about_para).text
 
     def click_create_account_btn(self):
-        self.driver.find_element(
-            *ContactInfoLocators.create_account_button).click()
+        try:
+            self.driver.find_element(
+                *ContactInfoLocators.create_account_button).click()
+        except WebDriverException:
+            BasePage(self.driver).close_chat_popup_in_device(self.driver.find_element(
+                *ContactInfoLocators.create_account_button)).click()
 
     def contact_info_page_element(self):
         time.sleep(2)

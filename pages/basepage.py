@@ -51,6 +51,12 @@ class BasePage(object):
         self.driver.switch_to.default_content()
         time.sleep(2)
 
+    def close_chat_popup_device(self):
+        self.driver.switch_to.frame(self.get_chat())
+        self.driver.find_element(*SignInLocators.close_chat_device).click()
+        self.driver.switch_to.default_content()
+        time.sleep(2)
+
     def close_chat_popup_while_button_click(self, button):
         try:
             button.click()
@@ -64,6 +70,13 @@ class BasePage(object):
                 self.close_chat_popup()
                 button.click()
             '''
+
+    def close_chat_popup_in_device(self, button):
+        try:
+            button.click()
+        except:
+            self.close_chat_popup()
+            button.click()
 
     def equality_assert(self, first_arg, second_arg):
         """
