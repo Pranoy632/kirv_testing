@@ -77,7 +77,7 @@ class BasePage(object):
         try:
             assert first_arg == second_arg
         except:
-            print ("Failure (equality assert):", first_arg, " and ", second_arg)
+            print ("Failed (equality assert), at line ", inspect.currentframe().f_back.f_lineno, ", in ", inspect.currentframe().f_code.co_name, ",() args: ", first_arg, " and ", second_arg)
 
     def subset_assert(self, first_arg, second_arg):
         """
@@ -86,7 +86,7 @@ class BasePage(object):
         try:
             assert first_arg in second_arg
         except:
-            print ("Failure (subset assert):", first_arg, " and ",second_arg)
+            print ("Failed (subset assert), at line ", inspect.currentframe().f_back.f_lineno, ", in ", inspect.currentframe().f_code.co_name, ",() args: ", first_arg, " and ", second_arg)
 
     def clear_put_input_value(self, locator, input_value):
         """

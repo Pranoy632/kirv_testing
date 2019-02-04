@@ -37,6 +37,9 @@ class Location(BasePage):
             *LocationLocators.location_num2).click()
 
     def backStep_retail_location(self):
+        """
+            goes back one step and checks expected page
+        """
         time.sleep(2)
         self.driver.find_element(*LocationLocators.back_a_step).click()
         self.equality_assert(
@@ -143,7 +146,6 @@ class Location(BasePage):
         time.sleep(1)
         self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
-        #retail_address_lookup = self.driver.find_element(*LocationLocators.loc_address_input).get_attribute('value')
 
         self.driver.find_element(*LocationLocators.update_loc_btn).click()
         time.sleep(1)
@@ -225,10 +227,6 @@ class Location(BasePage):
         self.driver.find_element(
             *LocationLocators.state_input).click()
         time.sleep(1)
-        # action = action_chains.ActionChains(self.driver)
-        # action.send_keys(Keys.DOWN)
-        # action.send_keys(Keys.ENTER)
-        # action.perform()
         dropdown_values = self.driver.find_element(
             *LocationLocators.loc_dropdown_values)
         states_list = dropdown_values.find_elements_by_tag_name('li')
@@ -326,6 +324,9 @@ class Location(BasePage):
             *LocationLocators.next_btn).click()
 
     def backStep_confirm_location(self):
+        """
+            goes back and checks expected page
+        """
         time.sleep(2)
         self.driver.find_element(*LocationLocators.back_a_step).click()
         self.equality_assert(

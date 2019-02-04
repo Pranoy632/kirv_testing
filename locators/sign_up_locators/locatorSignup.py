@@ -401,6 +401,17 @@ class WareHouseLocators(object):
     warehouse_dropdown_values = (
         By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
 
+    kirv_logo = (
+        By.XPATH, '//img[contains(@class, "logo")]')
+
+    step3 = (
+        By.XPATH, '//div[contains(text(), "Step 3 of 5")]')
+
+    warehouse_location = (
+        By.XPATH, '//h3[contains(text(), "Warehouse location")]')
+
+    confirm_location_title = (
+        By.XPATH, '//div[contains(text(), "Confirm location")]')
 
 class CategoriesLocators(object):
 

@@ -102,7 +102,39 @@ class WareHouse(BasePage):
         self.driver.find_element(
             *WareHouseLocators.warehouse_num2).click()
 
+        time.sleep(1)
+        self.backStep_warehouse_locations_count_page()
+
         self.add_warehouse()
+
+    def backStep_warehouse_locations_count_page(self):
+        """
+            goes back one step and checks expected page
+        """
+        self.driver.find_element(
+                *WareHouseLocators.back_a_step).click()
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.step3).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.warehouse_num2).is_displayed(), True)
+        self.driver.find_element(
+            *WareHouseLocators.warehouse_num2).click()
+
+    def backStep_warehouse_location(self):
+        """
+            goes back one step and checks expected page
+        """
+        time.sleep(2)
+        self.driver.find_element(
+                *WareHouseLocators.back_a_step).click()
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.step3).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.warehouse_location).is_displayed(), True)
 
     def add_warehouse(self):
         """
@@ -115,8 +147,10 @@ class WareHouse(BasePage):
         self.edit_address()
         self.negative_confirm_location_test()
         self.positive_confirm_location_test()
+        self.backStep_confirm_location()
         self.negative_same_warehouse_address_test()
         self.driver.find_element(*WareHouseLocators.manual_link).click()
+        #self.backStep_warehouse_location()
         time.sleep(1)
         self.negative_add_warehouse_manually_test()
         self.positive_add_warehouse_manually_test()
@@ -183,6 +217,8 @@ class WareHouse(BasePage):
             *WareHouseLocators.warehouse_address_input).get_attribute('value')
 
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
+        self.backStep_warehouse_location()
+        self.driver.find_element(*WareHouseLocators.update_location_btn).click()
 
     def edit_address(self):
         """
@@ -359,10 +395,6 @@ class WareHouse(BasePage):
         self.driver.find_element(
             *WareHouseLocators.warehouse_state_input).click()
         time.sleep(1)
-        # action = action_chains.ActionChains(self.driver)
-        # action.send_keys(Keys.DOWN)
-        # action.send_keys(Keys.ENTER)
-        # action.perform()
         dropdown_values = self.driver.find_element(
             *WareHouseLocators.warehouse_dropdown_values)
         states_list = dropdown_values.find_elements_by_tag_name('li')
@@ -408,3 +440,19 @@ class WareHouse(BasePage):
         time.sleep(1)
         self.driver.find_element(
             *WareHouseLocators.update_location_btn).click()
+
+    def backStep_confirm_location(self):
+        """
+            goes back and checks expected page
+        """
+        time.sleep(2)
+        self.driver.find_element(
+                *WareHouseLocators.back_a_step).click()
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.step3).is_displayed(), True)
+        self.equality_assert(
+            self.driver.find_element(*WareHouseLocators.confirm_location_title).is_displayed(), True)
+        self.driver.find_element(
+                *WareHouseLocators.confirm_and_continue_btn).click()
