@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from faker import Factory
 from locators.sign_in_page_locators.signin_buyer_supplier_locator import SignInLocators
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import NoSuchElementException
 
 
 fake = Factory.create()
@@ -47,13 +48,11 @@ class BasePage(object):
 
     def close_chat_popup(self):
         self.driver.switch_to.frame(self.get_chat())
-        self.driver.find_element(*SignInLocators.close_chat).click()
-        self.driver.switch_to.default_content()
-        time.sleep(2)
-
-    def close_chat_popup_device(self):
-        self.driver.switch_to.frame(self.get_chat())
-        self.driver.find_element(*SignInLocators.close_chat_device).click()
+        time.sleep(1.5)
+        try:
+            self.driver.find_element(*SignInLocators.close_chat1).click()
+        except NoSuchElementException:
+            self.driver.find_element(*SignInLocators.close_chat).click()
         self.driver.switch_to.default_content()
         time.sleep(2)
 
@@ -70,13 +69,6 @@ class BasePage(object):
                 self.close_chat_popup()
                 button.click()
             '''
-
-    def close_chat_popup_in_device(self, button):
-        try:
-            button.click()
-        except:
-            self.close_chat_popup()
-            button.click()
 
     def equality_assert(self, first_arg, second_arg):
         """

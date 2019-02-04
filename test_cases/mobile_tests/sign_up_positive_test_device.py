@@ -1,3 +1,4 @@
+import warnings
 import unittest
 import time
 from selenium import webdriver
@@ -27,6 +28,7 @@ class kirvSignupTestDevice(unittest.TestCase):
                             'deviceName': 'Z2 Plus'
                             }
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 

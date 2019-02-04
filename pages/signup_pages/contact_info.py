@@ -23,8 +23,8 @@ class ContactInfo(BasePage):
             self.driver.find_element(
                 *ContactInfoLocators.create_account_button).click()
         except WebDriverException:
-            BasePage(self.driver).close_chat_popup_in_device(self.driver.find_element(
-                *ContactInfoLocators.create_account_button)).click()
+            BasePage(self.driver).close_chat_popup_while_button_click(self.driver.find_element(
+                *ContactInfoLocators.create_account_button))
 
     def contact_info_page_element(self):
         time.sleep(2)

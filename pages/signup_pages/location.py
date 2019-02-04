@@ -1,6 +1,6 @@
 from pages.basepage import *
 from selenium.webdriver.common import action_chains
-from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
 from locators.sign_up_locators.locatorSignup import LocationLocators
 
 cities = []
@@ -35,7 +35,7 @@ class Location(BasePage):
             *LocationLocators.enter_manually).click()
         # self.negative_retail_location_test()
         self.positive_retail_location_test()
-        self.edit_address()
+        self.edit_address_positive()
         # self.negative_confirmation_location()
         self.positive_confirmation_location()
 
@@ -92,8 +92,11 @@ class Location(BasePage):
             Edit Retail location form
         """
         global retail_address
-
-        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        try:
+            self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", self.driver.find_element(
+                *LocationLocators.edit_address_btn))
         self.equality_assert(self.driver.find_element(
             *LocationLocators.loc_name_input).get_attribute('value'), retail_loc_name)
         self.equality_assert(self.driver.find_element(
@@ -113,7 +116,11 @@ class Location(BasePage):
 
         self.driver.find_element(*LocationLocators.update_loc_btn).click()
         time.sleep(1)
-        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        try:
+            self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", self.driver.find_element(
+                *LocationLocators.edit_address_btn))
         time.sleep(1)
         self.driver.find_element(*LocationLocators.enter_manually).click()
         time.sleep(1)
@@ -179,7 +186,7 @@ class Location(BasePage):
         location_name = fake.street_name()
         self.put_input(LocationLocators.loc_name_input, location_name)
 
-        address = fake.address()
+        address = fake.street_name()
         self.put_input(LocationLocators.address_input, address)
 
         unit_number = fake.random_int()
@@ -217,7 +224,11 @@ class Location(BasePage):
         """
         self.equality_assert(self.driver.find_element(
             *LocationLocators.edit_address_btn).is_displayed(), True)
-        self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        try:
+            self.driver.find_element(*LocationLocators.edit_address_btn).click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", self.driver.find_element(
+                *LocationLocators.edit_address_btn))
         time.sleep(2)
 
         self.equality_assert(self.driver.find_element(
@@ -238,6 +249,23 @@ class Location(BasePage):
         self.clear_put_input_value(LocationLocators.city_input, new_city)
         cities.append(new_city)
 
+        time.sleep(1)
+        self.driver.find_element(
+            *LocationLocators.update_loc_btn).click()
+
+    def edit_address_positive(self):
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.loc_name_input).get_attribute('value'), location_name)
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.address_input).get_attribute('value'), address.replace('\n', ''))
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.unit_no_input).get_attribute('value'), str(unit_number))
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.city_input).get_attribute('value'), city)
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.state_input).get_attribute('value'), state)
+        self.equality_assert(self.driver.find_element(
+            *LocationLocators.zip_code_input).get_attribute('value'), zipcode)
         time.sleep(1)
         self.driver.find_element(
             *LocationLocators.update_loc_btn).click()

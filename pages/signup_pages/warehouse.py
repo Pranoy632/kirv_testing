@@ -1,6 +1,7 @@
 from pages.basepage import *
 from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
 from locators.sign_up_locators.locatorSignup import WareHouseLocators
 from .location import cities, retail_address_lookup
 
@@ -181,8 +182,11 @@ class WareHouse(BasePage):
             Edit warehouse address
         """
         global warehouse_address
-
-        self.driver.find_element(*WareHouseLocators.edit_address).click()
+        try:
+            self.driver.find_element(*WareHouseLocators.edit_address).click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", self.driver.find_element(
+                *WareHouseLocators.edit_address))
         self.equality_assert(self.driver.find_element(
             *WareHouseLocators.warehouse_name_input).get_attribute('value'), warehouse_name)
         self.equality_assert(self.driver.find_element(
@@ -380,7 +384,11 @@ class WareHouse(BasePage):
         """
         self.equality_assert(self.driver.find_element(
             *WareHouseLocators.edit_address).is_displayed(), True)
-        self.driver.find_element(*WareHouseLocators.edit_address).click()
+        try:
+            self.driver.find_element(*WareHouseLocators.edit_address).click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", self.driver.find_element(
+                *WareHouseLocators.edit_address))
         time.sleep(2)
 
         self.equality_assert(self.driver.find_element(

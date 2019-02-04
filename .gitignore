@@ -8,4 +8,4 @@ env/
 my_allure_results/
 .pytest_cache/
 .idea/
-/common/email_data.json
+/common/email_data.json/

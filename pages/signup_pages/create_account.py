@@ -3,6 +3,7 @@ import datetime
 from selenium.webdriver.common.keys import Keys
 from pages.basepage import *
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators
+from selenium.common.exceptions import WebDriverException
 
 
 time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
@@ -23,8 +24,12 @@ class CreateAccount(BasePage):
         return self.driver.find_element(*CreateAccountLocators.set_credentials_para).text
 
     def confirm_button(self):
-        self.driver.find_element(
-            *CreateAccountLocators.confirm_btn).click()
+        try:
+            self.driver.find_element(
+                *CreateAccountLocators.confirm_btn).click()
+        except WebDriverException:
+            BasePage(self.driver).close_chat_popup_while_button_click(self.driver.find_element(
+                *CreateAccountLocators.confirm_btn))
 
     def create_account_page_elements(self):
         try:
