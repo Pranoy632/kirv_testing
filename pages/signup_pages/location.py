@@ -35,7 +35,7 @@ class Location(BasePage):
             *LocationLocators.enter_manually).click()
         # self.negative_retail_location_test()
         self.positive_retail_location_test()
-        self.edit_address_positive()
+        self.edit_address()
         # self.negative_confirmation_location()
         self.positive_confirmation_location()
 
@@ -249,23 +249,6 @@ class Location(BasePage):
         self.clear_put_input_value(LocationLocators.city_input, new_city)
         cities.append(new_city)
 
-        time.sleep(1)
-        self.driver.find_element(
-            *LocationLocators.update_loc_btn).click()
-
-    def edit_address_positive(self):
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.loc_name_input).get_attribute('value'), location_name)
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.address_input).get_attribute('value'), address.replace('\n', ''))
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.unit_no_input).get_attribute('value'), str(unit_number))
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.city_input).get_attribute('value'), city)
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.state_input).get_attribute('value'), state)
-        self.equality_assert(self.driver.find_element(
-            *LocationLocators.zip_code_input).get_attribute('value'), zipcode)
         time.sleep(1)
         self.driver.find_element(
             *LocationLocators.update_loc_btn).click()
