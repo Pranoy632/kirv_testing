@@ -22,13 +22,13 @@ from common.email_check import EmailCheck
 class kirvSignupTestDevice(unittest.TestCase):
 
     def setUp(self):
+        warnings.filterwarnings("ignore", category=ResourceWarning)
         capabilities = {'platformName': 'Android',
                             'platformVersion': '6.0.1',
                             'browserName': 'Chrome',
                             'deviceName': 'Z2 Plus'
                             }
         self.driver = webdriver.Remote('http://localhost:4723/wd/hub', capabilities)
-        warnings.filterwarnings("ignore", category=ResourceWarning)
         self.driver.implicitly_wait(5)
         self.driver.get("http://kirv-ui-staging.herokuapp.com/signin")
 

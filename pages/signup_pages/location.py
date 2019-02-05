@@ -249,6 +249,8 @@ class Location(BasePage):
         self.clear_put_input_value(LocationLocators.city_input, new_city)
         cities.append(new_city)
 
+        # click on a label to dismiss the keyboard in device
+        self.driver.find_element(*LocationLocators.kirv_logo).click()
         time.sleep(1)
         self.driver.find_element(
             *LocationLocators.update_loc_btn).click()

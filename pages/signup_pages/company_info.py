@@ -2,6 +2,7 @@ from random import randrange
 from pages.basepage import *
 from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, ContactInfoLocators, CompanyInfoLocators
 
 
@@ -84,7 +85,11 @@ class CompanyInfo(BasePage):
         dropdown_values = self.driver.find_element(
             *CompanyInfoLocators.dropdown_values)
         states_list = dropdown_values.find_elements_by_tag_name('li')
-        random.choice(states_list[1:]).click()
+        selected_state = random.choice(states_list[1:])
+        try:
+            selected_state.click()
+        except WebDriverException:
+            self.driver.execute_script("arguments[0].click();", selected_state)
 
         self.driver.find_element(
             *CompanyInfoLocators.zip_code_input).send_keys(fake.postcode())

@@ -222,6 +222,9 @@ class LocationLocators(object):
     loc_dropdown_values = (
         By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
 
+    kirv_logo = (By.CSS_SELECTOR, 'body > app-root > ng-component > div.header-new > div > '
+                                  'div.col-md-8.col-sm-7.col-6.text-left.text-sm-center > img')
+
 
 class WareHouseLocators(object):
 

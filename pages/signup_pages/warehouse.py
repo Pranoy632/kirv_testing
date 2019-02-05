@@ -283,13 +283,22 @@ class WareHouse(BasePage):
         self.driver.find_element(*WareHouseLocators.from_time_btn).click()
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.from_time).click()
-        self.driver.find_element(*WareHouseLocators.ok_btn).click()
 
+        try:
+            self.driver.find_element(*WareHouseLocators.ok_btn).click()
+        except WebDriverException:
+            self.driver.execute_script('arguments[0].scrollIntoView(true);', self.driver.find_element(
+                *WareHouseLocators.ok_btn))
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.until_time_btn).click()
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.until_time).click()
-        self.driver.find_element(*WareHouseLocators.ok_btn).click()
+
+        try:
+            self.driver.find_element(*WareHouseLocators.ok_btn).click()
+        except WebDriverException:
+            self.driver.execute_script('arguments[0].scrollIntoView(true);', self.driver.find_element(
+                *WareHouseLocators.ok_btn))
 
         time.sleep(1)
         self.driver.find_element(
