@@ -26,6 +26,9 @@ class CreateAccount(BasePage):
     def email_error(self):
         return self.driver.find_element(*CreateAccountLocators.email_err).text
 
+    def email_err_user_exist(self):
+        return self.driver.find_element(*CreateAccountLocators.user_exit_email_err).text
+
     def password_error(self):
         return self.driver.find_element(*CreateAccountLocators.password_err).text
 
@@ -140,7 +143,8 @@ class CreateAccount(BasePage):
         time.sleep(2)
 
         try:
-            assert self.email_error() == "User with this email address already exists."
+            assert self.email_err_user_exist(
+            ) == "An account already exists for this email address. Sign in here or reset your password."
         except:
             print("No result found for email user exists error. ")
 

@@ -35,6 +35,9 @@ class CreateAccountLocators(object):
     email_err = (
         By.XPATH, '//label [span[text()=" Email address*"]]//following-sibling::span[@class="error-detail"]')
 
+    user_exit_email_err = (
+        By.XPATH, '//div[contains(@class, "error-msg-new")]')
+
     password_err = (
         By.XPATH, '//label [span[text()=" Create a password*"]]//following-sibling::span[@class="error-detail"]')
 
@@ -244,6 +247,7 @@ class LocationLocators(object):
     confirm_location_title = (
         By.XPATH, '//div[contains(text(), "Confirm location")]')
 
+
 class WareHouseLocators(object):
 
     check_retail_locartion = (
@@ -413,6 +417,7 @@ class WareHouseLocators(object):
     confirm_location_title = (
         By.XPATH, '//div[contains(text(), "Confirm location")]')
 
+
 class CategoriesLocators(object):
 
     often_purchase_title = (By.XPATH, '//div[contains(@class, "step-title")]')
@@ -439,6 +444,7 @@ class VolumesLocators(object):
 
     plus_btn = (
         By.XPATH, '//h3/following-sibling::div/div/div[2]/div/button[2]')
+
 
 class BackAStep(object):
 
@@ -498,6 +504,7 @@ class BackAStep(object):
 
     next_btn = (
         By.XPATH, '//button[contains(text(), "Next")]')
+
 
 class AcknowledgementLocator(object):
 
