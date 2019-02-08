@@ -7,6 +7,7 @@ from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAc
 
 
 time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+#token_data = {}
 
 
 class CreateAccount(BasePage):
@@ -171,3 +172,12 @@ class CreateAccount(BasePage):
         print("Password:", password_feild.get_attribute('value'))
 
         self.confirm_button()
+
+    #     time.sleep(2)
+    #     self.get_token_from_localstorage()
+
+    # def get_token_from_localstorage(self):
+
+    #     tkn = self.driver.execute_script(
+    #         'return JSON.parse(localStorage.getItem("token"));')['value']
+    #     token_data['token'] = tkn

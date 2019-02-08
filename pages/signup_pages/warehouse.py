@@ -112,7 +112,7 @@ class WareHouse(BasePage):
             goes back one step and checks expected page
         """
         self.driver.find_element(
-                *WareHouseLocators.back_a_step).click()
+            *WareHouseLocators.back_a_step).click()
         self.equality_assert(
             self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
         self.equality_assert(
@@ -128,7 +128,7 @@ class WareHouse(BasePage):
         """
         time.sleep(2)
         self.driver.find_element(
-                *WareHouseLocators.back_a_step).click()
+            *WareHouseLocators.back_a_step).click()
         self.equality_assert(
             self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
         self.equality_assert(
@@ -150,7 +150,7 @@ class WareHouse(BasePage):
         self.backStep_confirm_location()
         self.negative_same_warehouse_address_test()
         self.driver.find_element(*WareHouseLocators.manual_link).click()
-        #self.backStep_warehouse_location()
+        self.backStep_warehouse_location()
         time.sleep(1)
         self.negative_add_warehouse_manually_test()
         self.positive_add_warehouse_manually_test()
@@ -162,7 +162,8 @@ class WareHouse(BasePage):
         """
             negative test -> add location using lookup
         """
-        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
+        self.enter_text(WareHouseLocators.warehouse_name_input,
+                        fake.street_name())
 
         self.enter_text(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
@@ -189,7 +190,8 @@ class WareHouse(BasePage):
             negative test -> tests same address for lookup
         """
         time.sleep(1)
-        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
+        self.enter_text(WareHouseLocators.warehouse_name_input,
+                        fake.street_name())
         self.enter_text(WareHouseLocators.warehouse_address_input, 77)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
@@ -218,7 +220,8 @@ class WareHouse(BasePage):
 
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
         self.backStep_warehouse_location()
-        self.driver.find_element(*WareHouseLocators.update_location_btn).click()
+        self.driver.find_element(
+            *WareHouseLocators.update_location_btn).click()
 
     def edit_address(self):
         """
@@ -384,10 +387,12 @@ class WareHouse(BasePage):
         self.enter_text(WareHouseLocators.warehouse_name_input, name)
 
         address = fake.address()
-        self.enter_text(WareHouseLocators.warehouse_address_line_input, address)
+        self.enter_text(
+            WareHouseLocators.warehouse_address_line_input, address)
 
         unit_number = fake.random_int()
-        self.enter_text(WareHouseLocators.warehouse_unit_number_input, unit_number)
+        self.enter_text(
+            WareHouseLocators.warehouse_unit_number_input, unit_number)
 
         city = fake.city()
         self.enter_text(WareHouseLocators.warehouse_city_input, city)
@@ -447,7 +452,7 @@ class WareHouse(BasePage):
         """
         time.sleep(2)
         self.driver.find_element(
-                *WareHouseLocators.back_a_step).click()
+            *WareHouseLocators.back_a_step).click()
         self.equality_assert(
             self.driver.find_element(*WareHouseLocators.kirv_logo).is_displayed(), True)
         self.equality_assert(
@@ -455,4 +460,4 @@ class WareHouse(BasePage):
         self.equality_assert(
             self.driver.find_element(*WareHouseLocators.confirm_location_title).is_displayed(), True)
         self.driver.find_element(
-                *WareHouseLocators.confirm_and_continue_btn).click()
+            *WareHouseLocators.confirm_and_continue_btn).click()

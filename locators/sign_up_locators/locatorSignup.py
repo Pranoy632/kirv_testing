@@ -233,7 +233,7 @@ class LocationLocators(object):
         By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
 
     back_a_step = (
-        By.XPATH, '//div[contains(text(), "Back a step")]')
+        By.XPATH, '//div[contains(text(), "Back")]')
 
     step2 = (
         By.XPATH, '//div[contains(text(), "Step 2 of 5 - Retail locations")]')
@@ -281,7 +281,7 @@ class WareHouseLocators(object):
         By.XPATH, '//span[text()="No additional warehouses"]')
 
     back_a_step = (
-        By.XPATH, '//div[contains(text(), "Back a step")]')
+        By.XPATH, '//div[contains(text(), "Back")]')
 
     purchasing_preferences = (
         By.XPATH, '//div[contains(text(), "Step 4 of 5 - Purchasing preferences")]')
@@ -437,7 +437,7 @@ class VolumesLocators(object):
 
     volumes_title = (By.XPATH, '//div[contains(@class, "step-title")]')
 
-    headers = (By.XPATH, '//h3')
+    headers = (By.XPATH, '//h3[contains(@class, "border-0")]')
 
     trucks_list = (
         By.XPATH, '//h3/following-sibling::div/div[contains(@class, "row")]')
@@ -449,7 +449,7 @@ class VolumesLocators(object):
 class BackAStep(object):
 
     back_a_step = (
-        By.XPATH, '//div[contains(text(), "Back a step")]')
+        By.XPATH, '//div[contains(text(), "Back")]')
 
     kirv_logo = (
         By.XPATH, '//img[contains(@class, "logo")]')

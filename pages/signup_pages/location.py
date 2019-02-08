@@ -8,7 +8,7 @@ retail_address_lookup = ''
 
 
 class Location(BasePage):
-  
+
     def element_in_location_page(self):
         self.driver.find_element(
             *LocationLocators.location_num2).click()
@@ -92,12 +92,13 @@ class Location(BasePage):
         self.driver.find_element(*LocationLocators.add_loc_btn).click()
         time.sleep(1)
         self.subset_assert('has-danger', self.driver.find_element(*
-            LocationLocators.loc_name_error).get_attribute('class').split())
+                                                                  LocationLocators.loc_name_error).get_attribute('class').split())
         self.subset_assert('has-danger', self.driver.find_element(*
-            LocationLocators.loc_address_error).get_attribute('class').split())
+                                                                  LocationLocators.loc_address_error).get_attribute('class').split())
 
         if '2' in self.driver.find_element(*LocationLocators.retail_location_count).text:
-            self.enter_text(LocationLocators.loc_name_input, fake.street_name())
+            self.enter_text(LocationLocators.loc_name_input,
+                            fake.street_name())
             self.enter_text(LocationLocators.loc_address_input, 98)
             time.sleep(1)
             self.driver.find_element(*LocationLocators.retail_dropdown).click()
@@ -318,8 +319,10 @@ class Location(BasePage):
             positive testing of confirm location form
         """
         self.enter_text(LocationLocators.email_address_input, fake.email())
-        self.enter_text(LocationLocators.phone_number_input, self.create_phone_number())
-        self.enter_text(LocationLocators.alt_phone_number_input, self.create_phone_number())
+        self.enter_text(LocationLocators.phone_number_input,
+                        self.create_phone_number())
+        self.enter_text(LocationLocators.alt_phone_number_input,
+                        self.create_phone_number())
         self.driver.find_element(
             *LocationLocators.next_btn).click()
 

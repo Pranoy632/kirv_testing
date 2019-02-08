@@ -1,6 +1,8 @@
+import requests
 from pages.basepage import *
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators,  ContactInfoLocators
+#from .create_account import token_data
 
 
 class ContactInfo(BasePage):
@@ -129,3 +131,20 @@ class ContactInfo(BasePage):
         phone_num_feild.send_keys(self.create_phone_number())
 
         self.click_create_account_btn()
+    #    self.get_contact_data()
+
+    # def get_contact_data(self):
+    #     usr = self.driver.execute_script(
+    #         'return JSON.parse(localStorage.getItem("user"));')['accesses']
+    #     print("---------user---------", usr)
+    #     token_data['accesses'] = usr
+    #     print("-----token----------",
+    # token_data['accesses'][0]['buyer'], token_data['accesses'][0]['id'])
+
+    #     req = requests.get("https://kirv-services-staging.herokuapp.com/buyer/" +
+    # str(token_data['accesses'][0]['buyer']) + "/contact/",
+    # headers={"content-type": "application/json", "Authorization": "token " +
+    # str(token_data['token']), "X-Access-Id":
+    # str(token_data['accesses'][0]['id'])})
+
+    #     print(req.content)
