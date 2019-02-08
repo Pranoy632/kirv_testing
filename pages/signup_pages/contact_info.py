@@ -1,4 +1,4 @@
-import requests
+#import requests
 from pages.basepage import *
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators,  ContactInfoLocators
