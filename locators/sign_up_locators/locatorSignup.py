@@ -403,7 +403,7 @@ class VolumesLocators(object):
 
     volumes_title = (By.XPATH, '//div[contains(@class, "step-title")]')
 
-    headers = (By.XPATH, '//h3')
+    headers = (By.XPATH, '//h3[contains(@class, "border-0")]')
 
     trucks_list = (
         By.XPATH, '//h3/following-sibling::div/div[contains(@class, "row")]')
