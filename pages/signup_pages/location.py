@@ -5,7 +5,7 @@ from locators.sign_up_locators.locatorSignup import LocationLocators
 
 cities = []
 retail_address_lookup = ''
-
+retail_locations = {}
 
 class Location(BasePage):
 
@@ -112,17 +112,17 @@ class Location(BasePage):
         """
             positive test for retail location form using lookup
         """
-        global retail_loc_name
-        global retail_address
 
-        retail_loc_name = fake.street_name()
-        self.enter_text(LocationLocators.loc_name_input, retail_loc_name)
+        self.enter_text(LocationLocators.loc_name_input, fake.street_name())
 
         self.enter_text(LocationLocators.loc_address_input, 23)
         time.sleep(1)
         self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
-        retail_address = self.driver.find_element(
+
+        retail_locations['location_name1'] = self.driver.find_element(
+                *LocationLocators.loc_name_input).get_attribute('value')
+        retail_locations['address1'] = self.driver.find_element(
             *LocationLocators.loc_address_input).get_attribute('value')
 
         self.driver.find_element(*LocationLocators.add_loc_btn).click()
@@ -133,13 +133,12 @@ class Location(BasePage):
         """
             Edit Retail location form
         """
-        global retail_address
 
         self.driver.find_element(*LocationLocators.edit_address_btn).click()
         self.equality_assert(self.driver.find_element(
-            *LocationLocators.loc_name_input).get_attribute('value'), retail_loc_name)
+            *LocationLocators.loc_name_input).get_attribute('value'), retail_locations['location_name1'])
         self.equality_assert(self.driver.find_element(
-            *LocationLocators.loc_address_input).get_attribute('value'), retail_address)
+            *LocationLocators.loc_address_input).get_attribute('value'), retail_locations['address1'])
 
         self.clear_input(LocationLocators.loc_address_input)
 
@@ -147,6 +146,8 @@ class Location(BasePage):
         time.sleep(1)
         self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
+        retail_locations['address1'] = self.driver.find_element(
+            *LocationLocators.loc_address_input).get_attribute('value')
 
         self.driver.find_element(*LocationLocators.update_loc_btn).click()
         time.sleep(1)

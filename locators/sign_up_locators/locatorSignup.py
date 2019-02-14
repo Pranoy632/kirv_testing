@@ -51,10 +51,10 @@ class ContactInfoLocators(object):
 
     tell_us_about_para = (By.XPATH, '//p[@class="signup-note"]')
 
-    comapany_name_input = (
+    company_name_input = (
         By.XPATH, '//label [span[text()=" Company Name *"]]//following-sibling::input')
 
-    comapany_name_err = (
+    company_name_err = (
         By.XPATH, '//label [span[text() = " Company Name *"]]//following-sibling::span[@class="error-detail"]')
 
     contact_name_input = (

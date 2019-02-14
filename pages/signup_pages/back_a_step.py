@@ -110,7 +110,9 @@ class BackStep(BasePage):
         self.driver.execute_script('arguments[0].scrollIntoView(true);', self.driver.find_element(
             *BackAStep.confirm_btn))
         self.driver.find_element(*BackAStep.confirm_btn).click()
-        time.sleep(2)
+        time.sleep(3)
+        #element = self.wait_for_element(BackAStep.confirm_btn)
+        #element.click()
         (self.driver.find_elements(*BackAStep.continue_btn))[0].click()
         time.sleep(1)
         self.driver.find_element(*BackAStep.continue_btn).click()

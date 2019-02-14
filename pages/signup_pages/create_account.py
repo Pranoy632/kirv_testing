@@ -5,8 +5,8 @@ from selenium.webdriver.common.keys import Keys
 from pages.basepage import *
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators
 
-
 time_now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+create_account = {}
 #token_data = {}
 
 
@@ -84,14 +84,14 @@ class CreateAccount(BasePage):
         except:
             print("No result found for password error. ")
 
-        email_feild = self.driver.find_element(
+        email_field = self.driver.find_element(
             *CreateAccountLocators.email_input)
 
-        password_feild = self.driver.find_element(
+        password_field = self.driver.find_element(
             *CreateAccountLocators.password_input)
 
-        email_feild.send_keys('amz.test')
-        password_feild.send_keys('amz')
+        email_field.send_keys('amz.test')
+        password_field.send_keys('amz')
 
         self.confirm_button()
         time.sleep(2)
@@ -102,7 +102,7 @@ class CreateAccount(BasePage):
             print("No result found for enter a valid email. ")
 
         self.clear_put_value(CreateAccountLocators.email_input)
-        email_feild.send_keys("amztest18" + "+" + time_now + "@gmail.com")
+        email_field.send_keys("amztest18" + "+" + time_now + "@gmail.com")
 
         self.confirm_button()
         time.sleep(2)
@@ -114,7 +114,7 @@ class CreateAccount(BasePage):
             print("No result found for 8 character password error. ")
 
         self.clear_put_value(CreateAccountLocators.password_input)
-        password_feild.send_keys('qwerty123')
+        password_field.send_keys('qwerty123')
 
         self.confirm_button()
         time.sleep(2)
@@ -128,7 +128,7 @@ class CreateAccount(BasePage):
         self.clear_put_value(CreateAccountLocators.email_input)
 
         self.clear_put_value(CreateAccountLocators.password_input)
-        password_feild.send_keys('amazatic')
+        password_field.send_keys('amazatic')
 
         self.confirm_button()
         time.sleep(2)
@@ -138,7 +138,7 @@ class CreateAccount(BasePage):
         except:
             print("No result found for email field blank error. ")
 
-        email_feild.send_keys("amztest18@gmail.com")
+        email_field.send_keys("amztest18@gmail.com")
 
         self.confirm_button()
         time.sleep(2)
@@ -151,7 +151,7 @@ class CreateAccount(BasePage):
 
         self.clear_put_value(CreateAccountLocators.email_input)
 
-        email_feild.send_keys("amztest18" + "+" + time_now + "@gmail.com")
+        email_field.send_keys("amztest18" + "+" + time_now + "@gmail.com")
 
         self.clear_put_value(CreateAccountLocators.password_input)
 
@@ -165,11 +165,13 @@ class CreateAccount(BasePage):
 
         self.clear_put_value(CreateAccountLocators.email_input)
 
-        email_feild.send_keys("amztest18" + "+" + time_now + "@gmail.com")
-        print("Email:", email_feild.get_attribute('value'))
+        email_field.send_keys("amztest18" + "+" + time_now + "@gmail.com")
+        create_account['email'] = email_field.get_attribute('value')
+        print("Email:", create_account['email'])
 
-        password_feild.send_keys('amazatic')
-        print("Password:", password_feild.get_attribute('value'))
+        password_field.send_keys('amazatic')
+        create_account['password'] = password_field.get_attribute('value')
+        print("Password:", create_account['password'])
 
         self.confirm_button()
 

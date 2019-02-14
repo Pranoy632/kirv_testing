@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, CreateAccountLocators,  ContactInfoLocators
 #from .create_account import token_data
 
+contact_info = {}
 
 class ContactInfo(BasePage):
 
@@ -25,7 +26,7 @@ class ContactInfo(BasePage):
             *ContactInfoLocators.create_account_button).click()
 
     def company_name_error(self):
-        return self.driver.find_element(*ContactInfoLocators.comapany_name_err).text
+        return self.driver.find_element(*ContactInfoLocators.company_name_err).text
 
     def contact_name_error(self):
         return self.driver.find_element(*ContactInfoLocators.contact_name_err).text
@@ -72,12 +73,12 @@ class ContactInfo(BasePage):
         try:
             assert self.company_name_error() == "This field is required."
         except:
-            print("No result found for contact info company name feild is required.")
+            print("No result found for contact info company name field is required.")
 
-        comapany_name_feild = self.driver.find_element(
-            *ContactInfoLocators.comapany_name_input)
+        company_name_field = self.driver.find_element(
+            *ContactInfoLocators.company_name_input)
 
-        comapany_name_feild.send_keys(fake.company())
+        company_name_field.send_keys(fake.company())
 
         self.click_create_account_btn()
         time.sleep(3)
@@ -85,24 +86,24 @@ class ContactInfo(BasePage):
         try:
             assert self.contact_name_error() == "This field may not be blank."
         except:
-            print("No result found for contact info contact name feild is blank.")
+            print("No result found for contact info contact name field is blank.")
 
         try:
             assert self.phone_error() == "This field may not be blank."
         except:
-            print("No result found for contact info phone number feild is blank.")
+            print("No result found for contact info phone number field is blank.")
 
-        contact_name_feild = self.driver.find_element(
+        contact_name_field = self.driver.find_element(
             *ContactInfoLocators.contact_name_input)
 
-        phone_num_feild = self.driver.find_element(
+        phone_num_field = self.driver.find_element(
             *ContactInfoLocators.phone_input)
 
-        contact_name_feild.send_keys(fake.name())
+        contact_name_field.send_keys(fake.name())
 
-        phone_num_feild.send_keys(self.create_phone_number())
+        phone_num_field.send_keys(self.create_phone_number())
 
-        self.clear_put_value(ContactInfoLocators.comapany_name_input)
+        self.clear_put_value(ContactInfoLocators.company_name_input)
 
         self.click_create_account_btn()
         time.sleep(3)
@@ -110,13 +111,13 @@ class ContactInfo(BasePage):
         try:
             assert self.company_name_error() == "This field may not be blank."
         except:
-            print("No result found for contact info company name feild blank.")
+            print("No result found for contact info company name field blank.")
 
-        comapany_name_feild.send_keys(fake.company())
+        company_name_field.send_keys(fake.company())
 
         self.clear_put_value(ContactInfoLocators.phone_input)
 
-        phone_num_feild.send_keys('54667')
+        phone_num_field.send_keys('54667')
 
         self.click_create_account_btn()
         time.sleep(3)
@@ -128,9 +129,15 @@ class ContactInfo(BasePage):
 
         self.clear_put_value(ContactInfoLocators.phone_input)
 
-        phone_num_feild.send_keys(self.create_phone_number())
+        phone_num_field.send_keys(self.create_phone_number())
+
+        contact_info['company_name'] = company_name_field.get_attribute('value')
+        contact_info['contact_name'] = contact_name_field.get_attribute('value')
+        contact_info['phone_no'] = phone_num_field.get_attribute('value')
 
         self.click_create_account_btn()
+
+
     #    self.get_contact_data()
 
     # def get_contact_data(self):

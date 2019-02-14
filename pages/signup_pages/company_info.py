@@ -4,6 +4,7 @@ from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import SignupPageLocators, ContactInfoLocators, CompanyInfoLocators
 
+company_info = {}
 
 class CompanyInfo(BasePage):
 
@@ -285,6 +286,16 @@ class CompanyInfo(BasePage):
         self.clear_put_value(CompanyInfoLocators.alter_phone_number)
         self.driver.find_element(
             *CompanyInfoLocators.alter_phone_number).send_keys(self.create_phone_number())
+
+        company_info['address'] = self.driver.find_element(*CompanyInfoLocators.address_input).get_attribute('value')
+        company_info['city'] = self.driver.find_element(*CompanyInfoLocators.city_input).get_attribute('value')
+        company_info['state'] = self.driver.find_element(*CompanyInfoLocators.state_input).get_attribute('value')
+        company_info['zip_code'] = self.driver.find_element(*CompanyInfoLocators.zip_code_input).get_attribute('value')
+        company_info['reseller_id'] = self.driver.find_element(*CompanyInfoLocators.reseller_id_input).get_attribute('value')
+        company_info['website'] = self.driver.find_element(*CompanyInfoLocators.company_website_input).get_attribute('value')
+        company_info['email'] = self.driver.find_element(*CompanyInfoLocators.email_input).get_attribute('value')
+        company_info['phone_no'] = self.driver.find_element(*CompanyInfoLocators.phone_number).get_attribute('value')
+        company_info['alt_phone_no'] = self.driver.find_element(*CompanyInfoLocators.alter_phone_number).get_attribute('value')
 
         self.click_on_continue_button()
         time.sleep(1)
