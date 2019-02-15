@@ -89,4 +89,3 @@ class BuildLoad(BasePage):
         product_sorted_low = self.get_price()
         print(product_sorted_low, '=low')
         return all(product_sorted_low[i] <= product_sorted_low[i + 1] for i in range(len(product_sorted_low) - 1))
-

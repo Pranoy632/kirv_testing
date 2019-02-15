@@ -53,7 +53,7 @@ class AllProductsLocators(object):
     loader = (By.CLASS_NAME, 'centered')
     no_products = (By.CLASS_NAME, 'load-not-avd')
     de_select_warehouse = (By.CSS_SELECTOR, 'div.show:nth-child(2) > form:nth-child(1)')
-    warehouse_apply_button = (By.CSS_SELECTOR, 'button.btn:nth-child(5)')
+    warehouse_apply_button = (By.CSS_SELECTOR, 'button.pt-2:nth-child(2)')
     warehouse_dropdown = (By.CSS_SELECTOR, 'div.dropdown:nth-child(1) > div:nth-child(2) > form:nth-child(1)')
     warehouse_drop_down_values = (By.CSS_SELECTOR, '.custom-control')
 
@@ -62,4 +62,16 @@ class ProductDetailsLocator(object):
     purchase_box = (By.CSS_SELECTOR, '.stock-available-box')
     product_quantity_dropdown = (By.CSS_SELECTOR, 'input[placeholder="Select Quantity"]')
     product_quantity = (By.CSS_SELECTOR, '.ng2-auto-complete-wrapper > ng2-auto-complete > div > ul')
-
+    warehouse_locations_tabs = (By.ID, 'stock-available-tabs')
+    warehouse_tab_link = (By.ID, 'Ronkonkoma')
+    add_to_load = (By.CSS_SELECTOR, 'button.btn-green:nth-child(1)')
+    truck_types = (By.CSS_SELECTOR, '#truckLoadmodal > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > '
+                                    'div:nth-child(2)')
+    truck = (By.CSS_SELECTOR, '.col-md-4.mb-3')
+    confirmation_load = (By.CSS_SELECTOR, '#addToLoad > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > '
+                                          'button:nth-child(2)')
+    add_to_load_loader = (By.CSS_SELECTOR, '#stockAvailableTabContent > div.row > div:nth-child(2) > div > button > '
+                                           'i[hidden]')
+    added_products = (By.CLASS_NAME, 'load-scroll')
+    product_single = (By.CSS_SELECTOR, 'div[_ngcontent-c4=""]')
+    selected_product_name = (By.CSS_SELECTOR, '.col-xl-8 > h2:nth-child(1)')
