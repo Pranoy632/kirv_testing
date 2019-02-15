@@ -75,3 +75,5 @@ class ProductDetailsLocator(object):
     added_products = (By.CLASS_NAME, 'load-scroll')
     product_single = (By.CSS_SELECTOR, 'div[_ngcontent-c4=""]')
     selected_product_name = (By.CSS_SELECTOR, '.col-xl-8 > h2:nth-child(1)')
+    checkout_button = (By.CSS_SELECTOR, 'button.position-relative')
+    load_percentage = (By.CSS_SELECTOR, '.text-md-right > h2:nth-child(2)')

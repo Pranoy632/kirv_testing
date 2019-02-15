@@ -95,16 +95,21 @@ class Checkout(BasePage):
                 except ElementNotVisibleException:
                     pass
 
-                product_basket = self.driver.find_element(*ProductDetailsLocator.added_products)
-                list_of_products = product_basket.find_elements(*ProductDetailsLocator.product_single)
-                number_of_products = len(list_of_products)
-                flag = 0
-                for x in range(1,number_of_products+1):
-                    pro_name = self.driver.find_element_by_css_selector(
-                        '.load-scroll > div:nth-child({0}) > div:nth-child(1) > div:nth-child(2) > h4:nth-child(1)'.format(x)).text
-                    if pro_name in product_name:
-                        flag = 1
-                if flag == 0:
-                    print('product not in cart')
-                else:
-                    print('product was found')
+                # product_basket = self.driver.find_element(*ProductDetailsLocator.added_products)
+                # list_of_products = product_basket.find_elements(*ProductDetailsLocator.product_single)
+                # number_of_products = len(list_of_products)
+                # flag = 0
+                # for x in range(1,number_of_products):
+                #     pro_name = self.driver.find_element_by_css_selector('.load-scroll > div:nth-child({0}) > div:nth-child(1) > div:nth-child(2) > h4:nth-child(1)'.format(x)).text
+                #     if pro_name in product_name:
+                #         flag = 1
+                # if flag == 0:
+                #     print('product not in cart')
+                # else:
+                #     print('product was found')
+                try:
+                    percentage_text = self.driver.find_element(*ProductDetailsLocator.load_percentage).text
+                    percentage = int((percentage_text.split('%'))[0])
+                    self.driver.find_element(*ProductDetailsLocator.checkout_button).click()
+                except NoSuchElementException:
+                    flag = 0
