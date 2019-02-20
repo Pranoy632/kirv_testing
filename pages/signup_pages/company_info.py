@@ -299,3 +299,4 @@ class CompanyInfo(BasePage):
 
         self.click_on_continue_button()
         time.sleep(1)
+        print (company_info)

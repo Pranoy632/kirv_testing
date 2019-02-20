@@ -53,26 +53,27 @@ class Location(BasePage):
         """
             adds given number of locations
         """
-        self.negative_retail_location_by_lookup()
+        #self.negative_retail_location_by_lookup()
         self.positive_retail_location_by_lookup()
         self.equality_assert(self.driver.find_element(
             *LocationLocators.google_map).is_displayed(), True)
         self.edit_address_lookup()
-        self.negative_confirmation_location()
-        self.positive_confirmation_location()
+        #self.negative_confirmation_location()
+        self.positive_confirmation_location(1)
         self.backStep_confirm_location()
-        self.negative_retail_location_by_lookup()
+        #self.negative_retail_location_by_lookup()
         cities = []
         self.driver.find_element(
             *LocationLocators.enter_manually).click()
         self.backStep_retail_location()
         self.driver.find_element(
             *LocationLocators.enter_manually).click()
-        self.negative_retail_location_test()
+        #self.negative_retail_location_test()
         self.positive_retail_location_test()
         self.edit_address()
-        self.negative_confirmation_location()
-        self.positive_confirmation_location()
+        #self.negative_confirmation_location()
+        self.positive_confirmation_location(2)
+        print (retail_locations)
 
     def negative_retail_location_by_lookup(self):
         """
@@ -116,7 +117,7 @@ class Location(BasePage):
         self.enter_text(LocationLocators.loc_name_input, fake.street_name())
 
         self.enter_text(LocationLocators.loc_address_input, 23)
-        time.sleep(1)
+        time.sleep(2)
         self.driver.find_element(*LocationLocators.retail_dropdown).click()
         time.sleep(1)
 
@@ -172,16 +173,16 @@ class Location(BasePage):
             *LocationLocators.add_loc_btn).click()
         time.sleep(2)
 
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.loc_name_error).get_attribute('class').split())
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.address_error).get_attribute('class').split())
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.city_error).get_attribute('class').split())
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.state_error).get_attribute('class').split())
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.zip_code_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.loc_name_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.address_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.city_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.state_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.zip_code_error).get_attribute('class').split())
 
         self.clear_put_input_value(LocationLocators.zip_code_input, 'abc')
 
@@ -189,8 +190,8 @@ class Location(BasePage):
             *LocationLocators.add_loc_btn).click()
         time.sleep(1)
 
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.zip_code_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.zip_code_error).get_attribute('class').split())
 
         self.clear_put_input_value(LocationLocators.zip_code_input, 1234567)
 
@@ -198,8 +199,8 @@ class Location(BasePage):
             *LocationLocators.add_loc_btn).click()
         time.sleep(1)
 
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.zip_code_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.zip_code_error).get_attribute('class').split())
         self.clear_input(LocationLocators.zip_code_input)
 
     def positive_retail_location_test(self):
@@ -216,15 +217,23 @@ class Location(BasePage):
 
         location_name = fake.street_name()
         self.enter_text(LocationLocators.loc_name_input, location_name)
+        retail_locations['location_name2'] = self.driver.find_element(
+                *LocationLocators.loc_name_input).get_attribute('value')
 
         address = fake.address()
         self.enter_text(LocationLocators.address_input, address)
+        retail_locations['address2'] = self.driver.find_element(
+                *LocationLocators.address_input).get_attribute('value')
 
         unit_number = fake.random_int()
         self.enter_text(LocationLocators.unit_no_input, unit_number)
+        retail_locations['unit_number2'] = self.driver.find_element(
+                *LocationLocators.unit_no_input).get_attribute('value')
 
         city = fake.city()
         self.enter_text(LocationLocators.city_input, city)
+        retail_locations['city2'] = self.driver.find_element(
+                *LocationLocators.city_input).get_attribute('value')
 
         self.driver.find_element(
             *LocationLocators.state_input).click()
@@ -236,9 +245,12 @@ class Location(BasePage):
 
         state = self.driver.find_element(
             *LocationLocators.state_input).get_attribute('value')
+        retail_locations['state2'] = state
 
         zipcode = fake.zipcode()
         self.enter_text(LocationLocators.zip_code_input, zipcode)
+        retail_locations['zipcode2'] = self.driver.find_element(
+                *LocationLocators.loc_name_input).get_attribute('value')
 
         time.sleep(1)
         self.driver.find_element(
@@ -270,6 +282,8 @@ class Location(BasePage):
         new_city = fake.city()
         self.clear_put_input_value(LocationLocators.city_input, new_city)
         cities.append(new_city)
+        retail_locations['city2'] = self.driver.find_element(
+                *LocationLocators.city_input).get_attribute('value')
 
         time.sleep(1)
         self.driver.find_element(
@@ -287,8 +301,8 @@ class Location(BasePage):
         time.sleep(2)
         self.subset_assert('has-danger', self.driver.find_element(
             *LocationLocators.email_address_error).get_attribute('class').split())
-        self.subset_assert('has-danger', self.driver.find_element(*
-                                                                  LocationLocators.phone_number_error).get_attribute('class').split())
+        self.subset_assert('has-danger', self.driver.find_element(
+            *LocationLocators.phone_number_error).get_attribute('class').split())
 
         for current in invalid_email_id:
             self.clear_put_input_value(
@@ -315,15 +329,24 @@ class Location(BasePage):
         self.clear_input(LocationLocators.phone_number_input)
         self.clear_input(LocationLocators.alt_phone_number_input)
 
-    def positive_confirmation_location(self):
+    def positive_confirmation_location(self, count):
         """
             positive testing of confirm location form
         """
         self.enter_text(LocationLocators.email_address_input, fake.email())
+        retail_locations['email'+str(count)] = self.driver.find_element(
+                *LocationLocators.email_address_input).get_attribute('value')
+
         self.enter_text(LocationLocators.phone_number_input,
                         self.create_phone_number())
+        retail_locations['phone_no'+str(count)] = self.driver.find_element(
+                *LocationLocators.phone_number_input).get_attribute('value')
+
         self.enter_text(LocationLocators.alt_phone_number_input,
                         self.create_phone_number())
+        retail_locations['alt_phone_no'+str(count)] = self.driver.find_element(
+                *LocationLocators.alt_phone_number_input).get_attribute('value')
+
         self.driver.find_element(
             *LocationLocators.next_btn).click()
 

@@ -5,7 +5,7 @@ from locators.sign_up_locators.locatorSignup import WareHouseLocators
 from .location import cities, retail_address_lookup
 
 warehouse_city = []
-
+warehouse_locations={}
 
 class WareHouse(BasePage):
 
@@ -95,6 +95,7 @@ class WareHouse(BasePage):
         self.driver.find_element(
             *WareHouseLocators.check_first_retail_location).click()
 
+        time.sleep(1)
         self.driver.find_element(
             *WareHouseLocators.confirm_btn).click()
 
@@ -140,24 +141,25 @@ class WareHouse(BasePage):
         """
             add warehouse location
         """
-        self.negative_add_warehouse_by_lookup_test()
+        #self.negative_add_warehouse_by_lookup_test()
         self.positive_add_warehouse_by_lookup_test()
         self.equality_assert(self.driver.find_element(
             *WareHouseLocators.google_map).is_displayed(), True)
         self.edit_address()
-        self.negative_confirm_location_test()
-        self.positive_confirm_location_test()
+        #self.negative_confirm_location_test()
+        self.positive_confirm_location_test(1)
         self.backStep_confirm_location()
-        self.negative_same_warehouse_address_test()
+        #self.negative_same_warehouse_address_test()
         self.driver.find_element(*WareHouseLocators.manual_link).click()
         #self.backStep_warehouse_location()
         #self.driver.find_element(*WareHouseLocators.manual_link).click()
         time.sleep(1)
-        self.negative_add_warehouse_manually_test()
+        #self.negative_add_warehouse_manually_test()
         self.positive_add_warehouse_manually_test()
         self.edit_address_manually()
-        self.negative_confirm_location_test()
-        self.positive_confirm_location_test()
+        #self.negative_confirm_location_test()
+        self.positive_confirm_location_test(2)
+        print (warehouse_locations)
 
     def negative_add_warehouse_by_lookup_test(self):
         """
@@ -206,17 +208,17 @@ class WareHouse(BasePage):
         """
             positive test -> add location using lookup
         """
-        global warehouse_name
         global warehouse_address
 
-        warehouse_name = fake.street_name()
-        self.enter_text(WareHouseLocators.warehouse_name_input, warehouse_name)
+        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
+        warehouse_locations['warehouse_name1'] = self.driver.find_element(
+                *WareHouseLocators.warehouse_name_input).get_attribute('value')
 
         self.enter_text(WareHouseLocators.warehouse_address_input, 23)
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
-        warehouse_address = self.driver.find_element(
+        warehouse_locations['address1'] = self.driver.find_element(
             *WareHouseLocators.warehouse_address_input).get_attribute('value')
 
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
@@ -232,9 +234,9 @@ class WareHouse(BasePage):
 
         self.driver.find_element(*WareHouseLocators.edit_address).click()
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_name_input).get_attribute('value'), warehouse_name)
+            *WareHouseLocators.warehouse_name_input).get_attribute('value'), warehouse_locations['warehouse_name1'])
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_address_input).get_attribute('value'), warehouse_address)
+            *WareHouseLocators.warehouse_address_input).get_attribute('value'), warehouse_locations['address1'])
 
         self.clear_input(WareHouseLocators.warehouse_address_input)
 
@@ -242,7 +244,7 @@ class WareHouse(BasePage):
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.warehouse_dropdown).click()
         time.sleep(1)
-        warehouse_address = self.driver.find_element(
+        warehouse_locations['address1'] = self.driver.find_element(
             *WareHouseLocators.warehouse_address_input).get_attribute('value')
 
         self.driver.find_element(
@@ -309,16 +311,24 @@ class WareHouse(BasePage):
         self.subset_assert('has-danger', self.driver.find_element(
             *WareHouseLocators.warehouse_alt_phone_no_error).get_attribute('class').split())
 
-    def positive_confirm_location_test(self):
+    def positive_confirm_location_test(self, count):
         """
             positive test -> confirm location of warehouse
         """
         self.clear_put_input_value(
             WareHouseLocators.warehouse_email_input, fake.email())
+        warehouse_locations['email'+str(count)] = self.driver.find_element(
+            *WareHouseLocators.warehouse_email_input).get_attribute('value')
+
         self.clear_put_input_value(
             WareHouseLocators.warehouse_phone_no_input, self.create_phone_number())
+        warehouse_locations['phone_no'+str(count)] = self.driver.find_element(
+            *WareHouseLocators.warehouse_phone_no_input).get_attribute('value')
+
         self.clear_put_input_value(
             WareHouseLocators.warehouse_alt_phone_no_input, self.create_phone_number())
+        warehouse_locations['alt_phone_no'+str(count)] = self.driver.find_element(
+            *WareHouseLocators.warehouse_phone_no_input).get_attribute('value')
 
         self.driver.find_element(*WareHouseLocators.from_time_btn).click()
         time.sleep(1)
@@ -377,26 +387,24 @@ class WareHouse(BasePage):
         """
             positive test -> Add warehouse manually
         """
-        global name
-        global address
-        global unit_number
-        global city
-        global state
-        global zipcode
+        self.enter_text(WareHouseLocators.warehouse_name_input, fake.street_name())
+        warehouse_locations['warehouse_name2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_name_input).get_attribute('value')
 
-        name = fake.street_name()
-        self.enter_text(WareHouseLocators.warehouse_name_input, name)
-
-        address = fake.address()
         self.enter_text(
-            WareHouseLocators.warehouse_address_line_input, address)
+            WareHouseLocators.warehouse_address_line_input, fake.address())
+        warehouse_locations['address2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_address_line_input).get_attribute('value')
 
-        unit_number = fake.random_int()
         self.enter_text(
-            WareHouseLocators.warehouse_unit_number_input, unit_number)
+            WareHouseLocators.warehouse_unit_number_input, fake.random_int())
+        warehouse_locations['unit_number2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_address_line_input).get_attribute('value')
 
-        city = fake.city()
-        self.enter_text(WareHouseLocators.warehouse_city_input, city)
+        self.enter_text(
+            WareHouseLocators.warehouse_city_input, fake.city())
+        warehouse_locations['city2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_city_input).get_attribute('value')
 
         self.driver.find_element(
             *WareHouseLocators.warehouse_state_input).click()
@@ -405,12 +413,13 @@ class WareHouse(BasePage):
             *WareHouseLocators.warehouse_dropdown_values)
         states_list = dropdown_values.find_elements_by_tag_name('li')
         random.choice(states_list[1:]).click()
-
-        state = self.driver.find_element(
+        warehouse_locations['state2'] = self.driver.find_element(
             *WareHouseLocators.warehouse_state_input).get_attribute('value')
 
-        zipcode = fake.zipcode()
-        self.enter_text(WareHouseLocators.warehouse_zipcode_input, zipcode)
+        self.enter_text(
+            WareHouseLocators.warehouse_zipcode_input, fake.zipcode())
+        warehouse_locations['zipcode2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_zipcode_input).get_attribute('value')
 
         time.sleep(1)
         self.driver.find_element(*WareHouseLocators.add_loc_btn).click()
@@ -425,22 +434,24 @@ class WareHouse(BasePage):
         time.sleep(2)
 
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_name_input).get_attribute('value'), name)
+            *WareHouseLocators.warehouse_name_input).get_attribute('value'), warehouse_locations['warehouse_name2'])
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_address_line_input).get_attribute('value'), address.replace('\n', ''))
+            *WareHouseLocators.warehouse_address_line_input).get_attribute('value'), warehouse_locations['address2'].replace('\n', ''))
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_unit_number_input).get_attribute('value'), str(unit_number))
+            *WareHouseLocators.warehouse_unit_number_input).get_attribute('value'), str(warehouse_locations['unit_number2']))
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_city_input).get_attribute('value'), city)
+            *WareHouseLocators.warehouse_city_input).get_attribute('value'), warehouse_locations['city2'])
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_state_input).get_attribute('value'), state)
+            *WareHouseLocators.warehouse_state_input).get_attribute('value'), warehouse_locations['state2'])
         self.equality_assert(self.driver.find_element(
-            *WareHouseLocators.warehouse_zipcode_input).get_attribute('value'), zipcode)
+            *WareHouseLocators.warehouse_zipcode_input).get_attribute('value'), warehouse_locations['zipcode2'])
 
         self.clear_input(WareHouseLocators.warehouse_city_input)
         new_city = fake.city()
         self.clear_put_input_value(
             WareHouseLocators.warehouse_city_input, new_city)
+        warehouse_locations['city2'] = self.driver.find_element(
+            *WareHouseLocators.warehouse_city_input).get_attribute('value')
         warehouse_city.append(new_city)
 
         time.sleep(1)

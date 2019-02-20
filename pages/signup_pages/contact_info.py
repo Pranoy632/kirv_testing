@@ -136,6 +136,7 @@ class ContactInfo(BasePage):
         contact_info['phone_no'] = phone_num_field.get_attribute('value')
 
         self.click_create_account_btn()
+        print (contact_info)
 
 
     #    self.get_contact_data()

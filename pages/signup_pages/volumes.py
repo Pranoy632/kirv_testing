@@ -4,6 +4,7 @@ from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import CompanyInfoLocators, ContactInfoLocators, VolumesLocators
 
+purchasing_volumes = {}
 
 class Volumes(BasePage):
     def check_kirv_logo(self):
@@ -54,6 +55,9 @@ class Volumes(BasePage):
                 *VolumesLocators.trucks_list)
 
             click_random = list_trucks[randrange(0, len(list_trucks))]
+            print (click_random)
+            print (click_random.text)
+            print (qutr_loop)
 
             click_random.find_element_by_xpath(
                 './/div[2]/div/button[2]').click()
@@ -64,11 +68,15 @@ class Volumes(BasePage):
             click_random.find_element_by_xpath(
                 './/div[2]/div/button[2]').click()
 
+            print (click_random.find_element_by_xpath('.//div[2]/div/input').get_attribute('value'))
+            purchasing_volumes['q'+str(qutr_loop+1)+'_'+click_random.text.split('\n')[0].replace(' ', '_')] = click_random.find_element_by_xpath('.//div[2]/div/input').get_attribute('value')
+
             self.driver.find_element_by_xpath(
                 '//button[contains(text(),"Continue")]').click()
             time.sleep(1)
 
             self.check_complete_button()
+        print (purchasing_volumes)
 
     def check_complete_button(self):
 

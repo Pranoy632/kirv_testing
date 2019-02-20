@@ -4,6 +4,7 @@ from selenium.webdriver.common import action_chains
 from selenium.webdriver.common.keys import Keys
 from locators.sign_up_locators.locatorSignup import CompanyInfoLocators, CategoriesLocators,  ContactInfoLocators
 
+purchasing_preferences = {}
 
 class Categories(BasePage):
 
@@ -61,13 +62,16 @@ class Categories(BasePage):
 
             for sub_category in self.driver.find_elements(*CategoriesLocators.categories_ul):
                 sub_links = sub_category.find_elements_by_tag_name('li')
-                sub_links[randrange(1, len(sub_links))].find_element_by_tag_name(
+                rand_no = randrange(1, len(sub_links))
+                sub_links[rand_no].find_element_by_tag_name(
                     'div').find_element_by_tag_name('label').click()
+                purchasing_preferences[sub_links[0].text] = 'often' if rand_no == 1 else 'sometimes' if rand_no == 2 else 'all_the_time' if rand_no == 3 else 'never'
 
             self.driver.find_element_by_xpath(
                 '//button[contains(text(), "Continue")]').click()
 
             self.check_complete_button()
+        print (purchasing_preferences)
 
     def check_complete_button(self):
 
