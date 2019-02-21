@@ -499,6 +499,9 @@ class BackAStep(object):
     continue_btn = (
         By.XPATH, '//button[contains(text(), "Continue")]')
 
+    volumes_continue_btn = (
+        By.XPATH, '(//button[contains(text(), "Continue")])[1]')
+
     update_location = (
         By.XPATH, '//button[contains(text(), "Update location")]')
 
