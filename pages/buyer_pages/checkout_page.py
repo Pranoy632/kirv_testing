@@ -1,7 +1,7 @@
 import time
 import random
 
-from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException
+from selenium.common.exceptions import NoSuchElementException, ElementNotVisibleException,WebDriverException
 
 from pages.basepage import BasePage
 from pages.buyer_pages.load_building import BuildLoad
@@ -20,7 +20,7 @@ class Checkout(BasePage):
         self.wait_for_element(AllProductsLocators.page_menu)
 
     def get_each_category(self):
-        product_description = []
+
         # click on categories menu
         BuildLoad(self.driver).go_to_categories()
 
@@ -42,17 +42,6 @@ class Checkout(BasePage):
             self.wait_for_element(AllProductsLocators.sorting_by_warehouse)
             self.select_single_warehouse()
 
-            # Collect all the sub-categories in a variable
-            #all_menus = self.driver.find_element(*AllProductsLocators.page_menu)
-            #menu_list = all_menus.find_elements(*AllProductsLocators.all_menus)
-
-            # select any product from the matrix of product
-            #sub_category = random.choice(menu_list)
-            #sub_category.click()
-            #self.wait_for_element(AllProductsLocators.loader)
-            #self.wait_for_element(AllProductsLocators.sorting_by_warehouse)
-
-            # if there are "no products" found under a particular category, then skip it and go to next category
             try:
                 self.driver.find_element(*AllProductsLocators.no_products)
             except NoSuchElementException:
@@ -95,21 +84,11 @@ class Checkout(BasePage):
                 except ElementNotVisibleException:
                     pass
 
-                # product_basket = self.driver.find_element(*ProductDetailsLocator.added_products)
-                # list_of_products = product_basket.find_elements(*ProductDetailsLocator.product_single)
-                # number_of_products = len(list_of_products)
-                # flag = 0
-                # for x in range(1,number_of_products):
-                #     pro_name = self.driver.find_element_by_css_selector('.load-scroll > div:nth-child({0}) > div:nth-child(1) > div:nth-child(2) > h4:nth-child(1)'.format(x)).text
-                #     if pro_name in product_name:
-                #         flag = 1
-                # if flag == 0:
-                #     print('product not in cart')
-                # else:
-                #     print('product was found')
-                try:
-                    percentage_text = self.driver.find_element(*ProductDetailsLocator.load_percentage).text
-                    percentage = int((percentage_text.split('%'))[0])
-                    self.driver.find_element(*ProductDetailsLocator.checkout_button).click()
-                except NoSuchElementException:
-                    flag = 0
+        try:
+            percentage_text = self.driver.find_element(*ProductDetailsLocator.load_percentage).text
+            percentage = float((percentage_text.split('%'))[0])
+            if percentage > 0:
+                self.driver.find_element(*ProductDetailsLocator.checkout_button).click()
+        except WebDriverException:
+            BasePage(self.driver).close_chat_popup_while_button_click(
+                self.driver.find_element(*ProductDetailsLocator.checkout_button))

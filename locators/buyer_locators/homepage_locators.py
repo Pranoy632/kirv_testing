@@ -3,8 +3,7 @@ from selenium.webdriver.common.by import By
 
 class HomePageLocators(object):
 
-    search_bar = (By.CSS_SELECTOR, 'body > app-root > product > header > header-options >'
-                                   ' div > div > div.col-xl-4.col-lg-5.col-md-5.col-12.search-box-m > form > input')
+    search_bar = (By.NAME, 'search')
     categories_link = (By.ID, 'navDropDown-1')
     category_dropdpwn = (By.CSS_SELECTOR, 'div.show > div:nth-child(1) > div:nth-child(1) > div.row.product-list')
     total_categories = (By.CSS_SELECTOR, 'div.show > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)')
