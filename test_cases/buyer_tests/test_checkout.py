@@ -35,7 +35,6 @@ def setup(request):
 @pytest.mark.usefixtures("setup")
 class TestCheckout:
 
-    #@error_screenshot
     def test_checkout(self):
         LoginBuyer().sign_in_existing_buyer(self)
         Checkout(self.driver).get_each_category()
