@@ -63,10 +63,10 @@ class Supplier_Test(unittest.TestCase):
                 assert supplier_homepage.check_account_status_table_header().is_displayed()
             else:
                 assert supplier_homepage.get_search_message().is_displayed()
-            print ("Success -> check table header of %s tab" %
+            print("Success -> check table header of %s tab" %
                    (status_tab_name))
         except:
-            print ("AssertionError --------> %s tab table header error" %
+            print("AssertionError --------> %s tab table header error" %
                    (status_tab_name))
 
     def check_tab_is_active(self, status_tab_name):
@@ -79,7 +79,7 @@ class Supplier_Test(unittest.TestCase):
             print ("Success -> check tab is active for %s tab" %
                    (status_tab_name))
         except:
-            print ("AssertionError --------> %s tab is_active error" %
+            print("AssertionError --------> %s tab is_active error" %
                    (status_tab_name))
 
     def check_customers_count(self, status_tab_name):
@@ -226,7 +226,6 @@ class Supplier_Test(unittest.TestCase):
     def test_supplier(self):
         # sign_in = SignIn(self.driver)
         # sign_in.sign_in_credentials()
-
         #signupTest = kirvSignupTest()
         # signupTest.test_signUp()
         username = 'w@kirv.co'
@@ -238,7 +237,7 @@ class Supplier_Test(unittest.TestCase):
         supplier_customer = SupplierCustomers(self.driver)
         #self.check_home_page()
 
-        status_tab = ["all_customers", "Pending", "Active", "Inactive"]
+        #status_tab = ["all_customers", "Pending", "Active", "Inactive"]
         #self.check_all_status_tab(status_tab)
 
         supplier_customer.check_pending_customer_first_record()

@@ -60,10 +60,12 @@ class SupplierCustomers(BasePage):
                     SupplierPageLocators.first_record_main_contact).text == contactInfo['contact_name']
             assert self.get_element(SupplierPageLocators.first_record_phone_number).text == contactInfo[
                     'phone_no'] if contactInfo['phone_no'][0] == '+' else '+' + contactInfo['phone_no']
-            assert self.get_element(
-                    first_record_account_status).text == 'Pending'
+            assert self.get_element('first_record_account_status').text == 'Pending'
+
             print ("Success -> Pending Customer partial first record")
+
         except:
+
             print ("AssertionError --------> Customer partial details not found")
 
     def clear_put_value(self, locator, input_value):

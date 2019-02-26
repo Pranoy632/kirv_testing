@@ -13,11 +13,12 @@ class SignInLocators(object):
 
     signup_title = (
         By.CSS_SELECTOR, 'div > p')
-    #email_login = ( By.CSS_SELECTOR, 'div > div:nth-child(1) > div > form > input:nth-child(3)')
+
+    #email_login = ( By.CSS_SELECTOR, 'div > div:nth-child(1) > div > form > input:nth-child(3)')"
+
     email_login = (
         By.XPATH, '//label[text()="Email address"]/following-sibling::input')
 
-    #pwd_login = (By.CSS_SELECTOR, 'ng-component > div.container-fluid > div > div:nth-child(1) > div > form > fieldset > field:nth-child(2) > div > label > input')
     pwd_login = (
         By.XPATH, '//label[text()="Password"]/following-sibling::input')
 
@@ -39,6 +40,7 @@ class SignInLocators(object):
     signin_login_btn = (By.CLASS_NAME, 'btn-primary')
 
     ############ Chat popup locators ###########
+
     chat = (By.TAG_NAME, 'iframe')
 
     close_chat = (By.XPATH, '//*[@id="root"]/div/div[2]/button')

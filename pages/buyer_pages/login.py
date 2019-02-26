@@ -21,3 +21,11 @@ class Login(BasePage):
 
     def wait_for_home_page(self):
         self.wait_for_element(HomePageLocators.search_bar)
+
+    """"
+    Supllier credensial
+    
+    """
+    def enter_credentials_existing_supplier(self):
+        self.driver.find_element(*LoginLocators.email).send_keys(cfg['existing_supplier']['username'])
+        self.driver.find_element(*LoginLocators.password).send_keys(cfg['existing_supplier']['password'])
