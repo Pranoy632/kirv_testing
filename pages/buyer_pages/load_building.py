@@ -65,7 +65,8 @@ class BuildLoad(BasePage):
 
     def apply_sorting(self):
         self.driver.find_element(*AllProductsLocators.sort_apply_button).click()
-        self.wait_for_element(AllProductsLocators.loader)
+        time.sleep(5)
+        #self.wait_for_element(AllProductsLocators.loader)
         self.wait_for_element(AllProductsLocators.product_column)
 
     def get_price(self):
