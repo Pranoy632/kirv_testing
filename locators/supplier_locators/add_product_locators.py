@@ -41,7 +41,7 @@ class AddProduct(object):
         liquidation_Cost = (By.XPATH, "//div[@class='row mb-4']//div[6]//fieldset[1]//div[1]//div[1]//field[1]//div[1]//label[1]//input[1]")
         liquidation_SellingPrice = (By.XPATH, "//div[@class='row mb-4']//div[6]//fieldset[1]//div[1]//div[2]//field[1]//div[1]//label[1]//input[1]")
         add_Competitor = (By.XPATH, "//button[contains(text(),'Add Competitor')]")
-        add_Property = (By.XPATH, "//button[contains(text(),'Add Property')]")  
+        add_Property = (By.XPATH, "//button[contains(text(),'Add Property')]")
         shipping_dim_uom_dd = (By.XPATH, "//div[@class='row no-gutters-5 mt-4']//div[1]//field[1]//div[1]//label[1]//div[1]//input[1]")
         shipping_Length = (By.XPATH, "//div[@class='row no-gutters-5 mt-4']//input[contains(@placeholder,'Enter Length')]")
         shipping_width = (By.XPATH, "//div[@class='row no-gutters-5 mt-4']//input[@placeholder='Enter Width']")

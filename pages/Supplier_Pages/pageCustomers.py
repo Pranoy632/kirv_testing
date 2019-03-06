@@ -577,8 +577,8 @@ class SupplierCustomers(BasePage):
             assert self.driver.find_element(*SupplierPageLocators.volume_q4_half_trucks).get_attribute('value') == volumeInfo['q2_halfTruck']
             assert self.driver.find_element(*SupplierPageLocators.volume_q4_full_trucks).get_attribute('value') == volumeInfo['q2_fullTruck']
         except Exception as error:
-            print ("AssertionError --------> check_pending_customer_buying_volume_detail")
-            print (repr(error))
+            print("AssertionError --------> check_pending_customer_buying_volume_detail")
+            print(repr(error))
 
         self.close_chat_popup_while_button_click(
                 self.get_element(SupplierPageLocators.volume_cancel_button))
