@@ -117,7 +117,7 @@ class Supplier_Test(unittest.TestCase):
                 assert supplier_homepage.get_total_pages() == pages
                 self.check_tab_is_active("1")
                 supplier_homepage.click_button(
-                    supplier_homepage.get_second_pagination_tab())
+                supplier_homepage.get_second_pagination_tab())
                 self.check_tab_is_active(status_tab_name)
                 supplier_homepage.scroll_down_window()
                 self.check_tab_is_active("2")
